@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Script_FOV : MonoBehaviour
+public class PlayerVision : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask; //Controls the Objects that Block the RayCast
 

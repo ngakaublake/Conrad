@@ -2,26 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Script_Player : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] private Script_FOV FOV; 
+    [SerializeField] private PlayerVision FOV; 
 
     public float m_HorizontalVelocity = 1.5f;
     public float m_VerticalVelocity = 1.5f;
     Vector2 m_HorizontalMovement;
     Vector2 m_VerticalMovement;
+    public bool m_IsPlayerMoving; 
  
 
     Rigidbody2D RB;
 
-    void MovePlayer() //Basic Player Movement : (WILL CHANGE CAUSE ITS SHIT RIGHT NOW) - Patrick 
+    void MovePlayer() //Basic Player Movement
     {
         FOV.SetOrigin(transform.position); //Setting the Origin Position for the Vision Cone
 
-        //Player Movement 
+        //Reseting the Movement Vectors
         m_VerticalMovement = Vector2.zero;
         m_VerticalMovement = Vector2.zero;
+        
+        //Getting the Direction Input 
         m_HorizontalMovement.x = 1.0f * Input.GetAxis("Horizontal");
         m_VerticalMovement.x = 1.0f * Input.GetAxis("Vertical");
 
@@ -29,7 +32,20 @@ public class Script_Player : MonoBehaviour
         Temp.y = m_VerticalMovement.x * m_VerticalVelocity;
         Temp.x = m_HorizontalMovement.x * m_HorizontalVelocity;
 
+        //Apply the Velocity to the Player (RB)
         RB.velocity = Temp;
+
+
+
+        //Checking if the Player is Moving
+        if (Temp.x == 0.0f && Temp.y == 0.0f)
+        {
+            m_IsPlayerMoving = false; 
+        }
+        else
+        {
+            m_IsPlayerMoving = true;
+        }
     }
 
     void FollowCursor() // Aims the Player towards the Mouse Cursor
@@ -53,7 +69,7 @@ public class Script_Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1)) 
         {
-            FOV.UpdateFOV();
+            FOV.UpdateFOV(); //Swaps FOV between 'Explore' & 'Combat' 
         }
        
     }
@@ -61,6 +77,7 @@ public class Script_Player : MonoBehaviour
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
+        m_IsPlayerMoving = false;
     }
 
     void Update()
