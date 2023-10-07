@@ -5,21 +5,23 @@ using UnityEngine;
 
 public class Script_FOV : MonoBehaviour
 {
-    [SerializeField] private LayerMask layerMask; 
+    [SerializeField] private LayerMask layerMask; //Controls the Objects that Block the RayCast
 
     private Mesh mesh;
 
-    private Vector3 m_Origin;
-    private float m_StartingAngle;
-    private float m_FOV = 90f; 
+    private Vector3 m_Origin; 
+    private float m_StartingAngle; 
+    private float m_FOV = 90f; //Vision Cone FOV 
+    int m_RayCount = 180; //How Many Triangles in the Vision Cone - More = Smoother 
+    float m_ViewDistance = 3.0f; //View Distance for the Vision Cone 
 
-    public Vector3 GetVectorFromAngle(float _angle)
+    public Vector3 GetVectorFromAngle(float _angle) //Function to get a Vector3 from a Angle 
     {
         float angleRad = _angle * (Mathf.PI / 180.0f);
         return new Vector3(Mathf.Cos(angleRad), Mathf.Sin(angleRad));
     }
 
-    public static float GetAngleFromVectorFloat(Vector3 _dir)
+    public static float GetAngleFromVectorFloat(Vector3 _dir) //Function to Get a Angle from a Vector3 
     {
         _dir = _dir.normalized;
         float n = Mathf.Atan2(_dir.y, _dir.x) * Mathf.Rad2Deg;
@@ -39,34 +41,29 @@ public class Script_FOV : MonoBehaviour
         GetComponent<MeshFilter>().mesh = mesh;
     }
 
-    void LateUpdate()
+    void LateUpdate() //Ill add comments later - Patrick 
     {
-        //float FOV = 90f;
-        int rayCount = 180;
         float currentAngle = m_StartingAngle;
-        float increaseAngle = m_FOV / rayCount;
-        float viewDistance = 3.0f;
-
-        //Vector3 origin = Vector3.zero;
-
-        Vector3[] vertices = new Vector3[rayCount + 1 + 1];
+        float increaseAngle = m_FOV / m_RayCount;
+       
+        Vector3[] vertices = new Vector3[m_RayCount + 1 + 1];
         Vector2[] uv = new Vector2[vertices.Length];
-        int[] triangles = new int[rayCount * 3];
+        int[] triangles = new int[m_RayCount * 3];
 
         vertices[0] = m_Origin;
 
         int vertexIndex = 1;
         int triangleIndex = 0;
 
-        for (int i = 0; i <= rayCount; i++)
+        for (int i = 0; i <= m_RayCount; i++)
         {
-            Vector3 vertex; //= origin + GetVectorFromAngle(currentAngle) * viewDistance;
+            Vector3 vertex; 
 
-            RaycastHit2D rayCastHit = Physics2D.Raycast(m_Origin, GetVectorFromAngle(currentAngle), viewDistance, layerMask);
+            RaycastHit2D rayCastHit = Physics2D.Raycast(m_Origin, GetVectorFromAngle(currentAngle), m_ViewDistance, layerMask); 
 
-            if (rayCastHit.collider == null)
+            if (rayCastHit.collider == null) //Checking if any Rays hit a Object 
             {
-                vertex = m_Origin + GetVectorFromAngle(currentAngle) * viewDistance;
+                vertex = m_Origin + GetVectorFromAngle(currentAngle) * m_ViewDistance;
             }
             else
             {

@@ -16,11 +16,11 @@ public class Script_Player : MonoBehaviour
 
     void MovePlayer() //Basic Player Movement : (WILL CHANGE CAUSE ITS SHIT RIGHT NOW) - Patrick 
     {
-        FOV.SetOrigin(transform.position);
+        FOV.SetOrigin(transform.position); //Setting the Origin Position for the Vision Cone
 
+        //Player Movement 
         m_VerticalMovement = Vector2.zero;
         m_VerticalMovement = Vector2.zero;
-
         m_HorizontalMovement.x = 1.0f * Input.GetAxis("Horizontal");
         m_VerticalMovement.x = 1.0f * Input.GetAxis("Vertical");
 
@@ -37,9 +37,9 @@ public class Script_Player : MonoBehaviour
 
         transform.up = (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y)); //Makes the Character look at the Mouse
 
+        //Makes the Vision Cone Look in current mouse Direction 
         Vector3 aimDir = transform.up;
         FOV.SetAimDirection(aimDir);
-
 
         //Printing Mouse Pos in the world to Debug Console 
         string mouseY = "Y : " + mousePos.y; 
@@ -57,7 +57,6 @@ public class Script_Player : MonoBehaviour
     {
         FollowCursor();
         MovePlayer();
-        
     }
 
 
