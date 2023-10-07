@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Script_Player : MonoBehaviour
 {
+
+    [SerializeField] private Script_FOV FOV; 
+
     public float m_HorizontalVelocity = 1.5f;
     public float m_VerticalVelocity = 1.5f;
     Vector2 m_HorizontalMovement;
@@ -13,6 +16,8 @@ public class Script_Player : MonoBehaviour
 
     void MovePlayer() //Basic Player Movement : (WILL CHANGE CAUSE ITS SHIT RIGHT NOW) - Patrick 
     {
+        FOV.SetOrigin(transform.position);
+
         m_VerticalMovement = Vector2.zero;
         m_VerticalMovement = Vector2.zero;
 
@@ -31,6 +36,10 @@ public class Script_Player : MonoBehaviour
         Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition); //Converts Screen Pos to World Pos
 
         transform.up = (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y)); //Makes the Character look at the Mouse
+
+        Vector3 aimDir = transform.up;
+        FOV.SetAimDirection(aimDir);
+
 
         //Printing Mouse Pos in the world to Debug Console 
         string mouseY = "Y : " + mousePos.y; 
