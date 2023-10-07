@@ -11,6 +11,7 @@ public class Script_Player : MonoBehaviour
     public float m_VerticalVelocity = 1.5f;
     Vector2 m_HorizontalMovement;
     Vector2 m_VerticalMovement;
+ 
 
     Rigidbody2D RB;
 
@@ -48,6 +49,15 @@ public class Script_Player : MonoBehaviour
         Debug.Log(mouseX);
     }
 
+    void ControlWeapon()
+    {
+        if (Input.GetMouseButtonDown(1)) 
+        {
+            FOV.UpdateFOV();
+        }
+       
+    }
+
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
@@ -57,6 +67,7 @@ public class Script_Player : MonoBehaviour
     {
         FollowCursor();
         MovePlayer();
+        ControlWeapon();
     }
 
 
