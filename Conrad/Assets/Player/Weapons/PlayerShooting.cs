@@ -14,15 +14,18 @@ public class PlayerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && PlayerMove.m_IsPlayerAiming == true)
         {
             Fire();
+            //Invoke("Fire", 3);
         }
     }
 
     void Fire()
     {
+
         GameObject projectile = Instantiate(m_projectilePrefab, m_firePoint.position, m_firePoint.rotation);
+
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         rb.AddForce(m_firePoint.up * m_projectileForce, ForceMode2D.Impulse);
     }

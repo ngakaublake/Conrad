@@ -11,7 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public float m_VerticalVelocity = 1.5f;
     Vector2 m_HorizontalMovement;
     Vector2 m_VerticalMovement;
-    public bool m_IsPlayerMoving; 
+    public bool m_IsPlayerMoving;
+    public bool m_IsPlayerAiming; 
  
 
     Rigidbody2D RB;
@@ -65,26 +66,44 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log(mouseX);
     }
 
-    void ControlWeapon()
+    void AimGun()
     {
+
+        // Checking if the right mouse button is being held down 
         if (Input.GetMouseButtonDown(1)) 
         {
             FOV.UpdateFOV(); //Swaps FOV between 'Explore' & 'Combat' 
+            m_IsPlayerAiming = true;
+
+            //Adjusting player speed to be slower whilst ADS'ed 
+            m_HorizontalVelocity = 0.5f;
+            m_VerticalVelocity = 0.5f;
         }
-       
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            FOV.UpdateFOV(); //Swaps FOV between 'Explore' & 'Combat' 
+            m_IsPlayerAiming = false;
+
+            //Returning Player speed to default 
+            m_HorizontalVelocity = 1.5f;
+            m_VerticalVelocity = 1.5f;
+        }
+
     }
 
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
         m_IsPlayerMoving = false;
+        m_IsPlayerAiming = false;
     }
 
     void Update()
     {
         FollowCursor();
         MovePlayer();
-        ControlWeapon();
+        AimGun();
     }
 
 

@@ -99,7 +99,6 @@ public class PlayerVision : MonoBehaviour
 
     public void SetAimDirection(Vector3 _aimDirection)
     {
-
         m_StartingAngle = GetAngleFromVectorFloat(_aimDirection) + m_FOV / 2f;
     }
 
