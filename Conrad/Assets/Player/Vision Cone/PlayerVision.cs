@@ -89,6 +89,7 @@ public class PlayerVision : MonoBehaviour
         mesh.vertices = vertices;
         mesh.uv = uv;
         mesh.triangles = triangles;
+       
     }
 
 

@@ -85,7 +85,7 @@ public class PlayerShooting : MonoBehaviour
         //Spawning the Projectile 
         GameObject projectile = Instantiate(m_projectilePrefab, m_firePoint.position, m_firePoint.rotation); 
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-
+        projectile.layer = 8;
         rb.AddForce(m_firePoint.up * m_projectileForce, ForceMode2D.Impulse); //Giving the Projectile Force 
 
         m_firePoint.transform.Rotate(0, 0, (-1 * m_CurrentSpread), Space.Self); //Reseting the Projectile Spawn Angle to 0 
