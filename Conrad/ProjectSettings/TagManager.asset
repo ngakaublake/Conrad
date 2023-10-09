@@ -42,3 +42,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: World Objects
+    uniqueID: 1259044869
+    locked: 0
+  - name: Enemies
+    uniqueID: 3838786045
+    locked: 0
+  - name: Player
+    uniqueID: 593854233
+    locked: 0
+  - name: Vision Cone
+    uniqueID: 1926843607
+    locked: 0
+  - name: UI Elements
+    uniqueID: 441835439
+    locked: 0

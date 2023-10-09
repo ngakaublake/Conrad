@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private PlayerMovement PlayerMove;
-    
+    [SerializeField] private PlayerCrosshair Crosshair; 
 
     public Transform m_firePoint;
     public GameObject m_projectilePrefab;
@@ -41,6 +41,7 @@ public class PlayerShooting : MonoBehaviour
             m_CurrentSpread = Random.Range(m_MaxNegSpread, m_MaxPosSpread); //Range of Spread in Degrees 
             m_CurrentPosSpread = m_MaxPosSpread;
             m_CurrentNegSpread = m_MaxNegSpread;
+            Crosshair.ResetScaleCrosshair();
         }
         else
         {
@@ -101,6 +102,7 @@ public class PlayerShooting : MonoBehaviour
             m_CurrentPosSpread -= 0.5f;
             m_CurrentNegSpread += 0.5f;
             m_CurrentSpread = Random.Range(m_CurrentNegSpread, m_CurrentPosSpread);
+            Crosshair.ScaleCrosshair();
         }
 
 
