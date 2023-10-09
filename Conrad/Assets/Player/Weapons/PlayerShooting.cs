@@ -9,6 +9,8 @@ public class PlayerShooting : MonoBehaviour
 
     public Transform m_firePoint;
     public GameObject m_projectilePrefab;
+    public GameObject m_MaskPrefab;
+
     public float m_projectileForce = 20f;
 
     public float m_MaxPosSpread = 8;
@@ -83,10 +85,17 @@ public class PlayerShooting : MonoBehaviour
         m_firePoint.transform.Rotate(0, 0, m_CurrentSpread, Space.Self); //Rotating the Projectile Spawn Point Angle 
 
         //Spawning the Projectile 
-        GameObject projectile = Instantiate(m_projectilePrefab, m_firePoint.position, m_firePoint.rotation); 
+        GameObject projectile = Instantiate(m_projectilePrefab, m_firePoint.position, m_firePoint.rotation);
+        GameObject ProjectileMask = Instantiate(m_MaskPrefab, m_firePoint.position, m_firePoint.rotation);
+
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        Rigidbody2D rbMask = ProjectileMask.GetComponent<Rigidbody2D>();
+
         projectile.layer = 8;
+        ProjectileMask.layer = 8;
+
         rb.AddForce(m_firePoint.up * m_projectileForce, ForceMode2D.Impulse); //Giving the Projectile Force 
+        rbMask.AddForce(m_firePoint.up * m_projectileForce, ForceMode2D.Impulse); //Giving the Projectile Force 
 
         m_firePoint.transform.Rotate(0, 0, (-1 * m_CurrentSpread), Space.Self); //Reseting the Projectile Spawn Angle to 0 
 
