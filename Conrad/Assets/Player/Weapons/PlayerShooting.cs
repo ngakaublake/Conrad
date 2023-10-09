@@ -4,21 +4,27 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
+    //Refrences
     [SerializeField] private PlayerMovement PlayerMove;
     [SerializeField] private PlayerCrosshair Crosshair; 
 
+    //Transform for FirePoint World Object 
     public Transform m_firePoint;
+
+    //Bullet Objects
     public GameObject m_projectilePrefab;
     public GameObject m_MaskPrefab;
 
-    public float m_projectileForce = 20f;
+    public float m_projectileForce = 20f; //Bullet Velocity 
 
+    //Varibles for Weapon Bloom
     public float m_MaxPosSpread = 8;
     public float m_MaxNegSpread = -8;
     public float m_CurrentPosSpread = 0;
     public float m_CurrentNegSpread = 0;
     public float m_CurrentSpread = 0;
 
+    //Timing Varibles
     public float m_TimeBetweenShots = 1.0f;
     public float m_TImeSinceLastShot = 0.0f;
 
@@ -29,6 +35,7 @@ public class PlayerShooting : MonoBehaviour
     
     private void Start()
     {
+        //Setting Default Values on Start up 
         m_CurrentPosSpread = m_MaxPosSpread;
         m_CurrentNegSpread = m_MaxNegSpread;
         m_CurrentSpread = m_MaxPosSpread;
@@ -45,9 +52,9 @@ public class PlayerShooting : MonoBehaviour
             m_CurrentNegSpread = m_MaxNegSpread;
             Crosshair.ResetScaleCrosshair();
         }
-        else
+        else //Player isnt moving 
         {
-            if (Time.time - m_TimeSinceLastSpread >= m_TimeBetweenSpread)
+            if (Time.time - m_TimeSinceLastSpread >= m_TimeBetweenSpread) //Tighten Weapon Bloom 
             {
                 DecreaseSpread();
                 m_TimeSinceLastSpread = Time.time;
@@ -58,12 +65,12 @@ public class PlayerShooting : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && PlayerMove.m_IsPlayerAiming == true && PlayerMove.m_CurrentAmmo > 0) //Fire Weapon
         {
-            Fire();
+            //Fire();
             if (Time.time - m_TImeSinceLastShot >= m_TimeBetweenShots)
             {
-                //Fire();
-                m_TImeSinceLastShot = Time.time;
-                //PlayerMove.m_CurrentAmmo--;
+                Fire(); //Firing the Projectile 
+                m_TImeSinceLastShot = Time.time; //Reseting the Time since last shot 
+                PlayerMove.m_CurrentAmmo--; //Adjusting Ammo Count 
             }
 
         }
@@ -73,13 +80,13 @@ public class PlayerShooting : MonoBehaviour
             Reload();
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && PlayerMove.m_CurrentAmmo != PlayerMove.m_MaxAmmo) //Reload Gun
+        if (Input.GetKeyDown(KeyCode.R) && PlayerMove.m_CurrentAmmo != PlayerMove.m_MaxAmmo) //Reload
         {
             Reload();
         }
     }
 
-    void Fire()
+    void Fire() //Fires the Weapon 
     {
         
         m_firePoint.transform.Rotate(0, 0, m_CurrentSpread, Space.Self); //Rotating the Projectile Spawn Point Angle 
@@ -87,15 +94,17 @@ public class PlayerShooting : MonoBehaviour
         //Spawning the Projectile 
         GameObject projectile = Instantiate(m_projectilePrefab, m_firePoint.position, m_firePoint.rotation);
         GameObject ProjectileMask = Instantiate(m_MaskPrefab, m_firePoint.position, m_firePoint.rotation);
-
+       
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
         Rigidbody2D rbMask = ProjectileMask.GetComponent<Rigidbody2D>();
 
+        //Setting the Layer
         projectile.layer = 8;
         ProjectileMask.layer = 8;
 
-        rb.AddForce(m_firePoint.up * m_projectileForce, ForceMode2D.Impulse); //Giving the Projectile Force 
-        rbMask.AddForce(m_firePoint.up * m_projectileForce, ForceMode2D.Impulse); //Giving the Projectile Force 
+        //Giving the Objects Force / Velocity
+        rb.AddForce(m_firePoint.up * m_projectileForce, ForceMode2D.Impulse); 
+        rbMask.AddForce(m_firePoint.up * m_projectileForce, ForceMode2D.Impulse); 
 
         m_firePoint.transform.Rotate(0, 0, (-1 * m_CurrentSpread), Space.Self); //Reseting the Projectile Spawn Angle to 0 
 
@@ -103,7 +112,7 @@ public class PlayerShooting : MonoBehaviour
     }
   
 
-    void DecreaseSpread()
+    void DecreaseSpread() //Deecrease the Weapon Bloom
     {
         if (m_CurrentPosSpread != 0 && m_CurrentNegSpread != 0)
         {
@@ -118,7 +127,7 @@ public class PlayerShooting : MonoBehaviour
         Debug.Log(m_CurrentPosSpread);
     }
 
-    void Reload()
+    void Reload() //Reloads the Gun 
     {
         PlayerMove.m_CurrentAmmo = PlayerMove.m_MaxAmmo;
     }
