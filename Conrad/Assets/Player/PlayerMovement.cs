@@ -12,8 +12,10 @@ public class PlayerMovement : MonoBehaviour
     Vector2 m_HorizontalMovement;
     Vector2 m_VerticalMovement;
     public bool m_IsPlayerMoving;
-    public bool m_IsPlayerAiming; 
- 
+    public bool m_IsPlayerAiming;
+
+    public int m_MaxAmmo = 6;
+    public int m_CurrentAmmo;
 
     Rigidbody2D RB;
 
@@ -62,8 +64,8 @@ public class PlayerMovement : MonoBehaviour
         //Printing Mouse Pos in the world to Debug Console 
         string mouseY = "Y : " + mousePos.y; 
         string mouseX = "X : " + mousePos.x;
-        Debug.Log(mouseY);
-        Debug.Log(mouseX);
+        //Debug.Log(mouseY);
+        //Debug.Log(mouseX);
     }
 
     void AimGun()
@@ -97,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         RB = GetComponent<Rigidbody2D>();
         m_IsPlayerMoving = false;
         m_IsPlayerAiming = false;
+        m_CurrentAmmo = m_MaxAmmo;
     }
 
     void Update()
