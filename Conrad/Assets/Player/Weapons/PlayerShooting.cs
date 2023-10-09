@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour
 {
     [SerializeField] private PlayerMovement PlayerMove;
+    
 
     public Transform m_firePoint;
     public GameObject m_projectilePrefab;
@@ -16,6 +17,14 @@ public class PlayerShooting : MonoBehaviour
     public float m_CurrentNegSpread = 0;
     public float m_CurrentSpread = 0;
 
+    public float m_TimeBetweenShots = 1.0f;
+    public float m_TImeSinceLastShot = 0.0f;
+
+    public float m_TimeBetweenSpread = 0.2f; 
+    public float m_TimeSinceLastSpread = 0.0f;
+
+
+    
     private void Start()
     {
         m_CurrentPosSpread = m_MaxPosSpread;
@@ -26,8 +35,8 @@ public class PlayerShooting : MonoBehaviour
     void Update()
     {
 
-        //Spread Control 
-        if (PlayerMove.m_IsPlayerMoving == true)
+        //Weapon Bloom 
+        if (PlayerMove.m_IsPlayerMoving == true) //This is gonna change to increase slowly by moving but for just gonna fully reset the spread 
         {
             m_CurrentSpread = Random.Range(m_MaxNegSpread, m_MaxPosSpread); //Range of Spread in Degrees 
             m_CurrentPosSpread = m_MaxPosSpread;
@@ -35,14 +44,25 @@ public class PlayerShooting : MonoBehaviour
         }
         else
         {
-            Invoke("DecreaseSpread", 2f);
-            //DecreaseSpread();
+            if (Time.time - m_TimeSinceLastSpread >= m_TimeBetweenSpread)
+            {
+                DecreaseSpread();
+                m_TimeSinceLastSpread = Time.time;
+                
+            }
+           
         }
 
         if (Input.GetButtonDown("Fire1") && PlayerMove.m_IsPlayerAiming == true && PlayerMove.m_CurrentAmmo > 0) //Fire Weapon
         {
             Fire();
-            PlayerMove.m_CurrentAmmo--; 
+            if (Time.time - m_TImeSinceLastShot >= m_TimeBetweenShots)
+            {
+                //Fire();
+                m_TImeSinceLastShot = Time.time;
+                //PlayerMove.m_CurrentAmmo--;
+            }
+
         }
 
         if (Input.GetButtonDown("Reload")) // Not working need to fix 
@@ -71,15 +91,20 @@ public class PlayerShooting : MonoBehaviour
 
 
     }
+  
 
     void DecreaseSpread()
     {
         if (m_CurrentPosSpread != 0 && m_CurrentNegSpread != 0)
         {
+            
             m_CurrentPosSpread -= 0.5f;
             m_CurrentNegSpread += 0.5f;
             m_CurrentSpread = Random.Range(m_CurrentNegSpread, m_CurrentPosSpread);
         }
+
+
+        Debug.Log(m_CurrentPosSpread);
     }
 
     void Reload()
