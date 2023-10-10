@@ -31,8 +31,9 @@ public class PlayerShooting : MonoBehaviour
     public float m_TimeBetweenSpread = 0.2f; 
     public float m_TimeSinceLastSpread = 0.0f;
 
+    //Animator ref
+    public Animator animator;
 
-    
     private void Start()
     {
         //Setting Default Values on Start up 
@@ -71,6 +72,9 @@ public class PlayerShooting : MonoBehaviour
                 Fire(); //Firing the Projectile 
                 m_TImeSinceLastShot = Time.time; //Reseting the Time since last shot 
                 PlayerMove.m_CurrentAmmo--; //Adjusting Ammo Count 
+
+
+                animator.SetTrigger("hasShot"); //placeholder. Sets animation param to activate boltpull animation
             }
 
         }
@@ -135,5 +139,6 @@ public class PlayerShooting : MonoBehaviour
     void GetProjectileSpread()
     {
     }
+
 }
 
