@@ -106,6 +106,9 @@ public class PlayerShooting : MonoBehaviour
         projectile.layer = 8;
         ProjectileMask.layer = 8;
 
+        projectile.GetComponent<Renderer>().sortingLayerID = SortingLayer.NameToID("Player");
+        ProjectileMask.GetComponent<Renderer>().sortingLayerID = SortingLayer.NameToID("Player");
+
         //Giving the Objects Force / Velocity
         rb.AddForce(m_firePoint.up * m_projectileForce, ForceMode2D.Impulse); 
         rbMask.AddForce(m_firePoint.up * m_projectileForce, ForceMode2D.Impulse); 

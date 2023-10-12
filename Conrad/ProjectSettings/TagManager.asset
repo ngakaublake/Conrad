@@ -15,7 +15,7 @@ TagManager:
   - Fog Mask
   - Behind Mask
   - Mask
-  - 
+  - Background
   - 
   - 
   - 
@@ -39,6 +39,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1893389311
+    locked: 0
+  - name: Background Objects
+    uniqueID: 1392415185
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
