@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI; //unity ui for ammo counter
+
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -16,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     public int m_MaxAmmo = 6;
     public int m_CurrentAmmo;
+
+    public Text ammoCounter; //ammocounter UI
 
     Rigidbody2D RB;
 
@@ -107,6 +111,15 @@ public class PlayerMovement : MonoBehaviour
         FollowCursor();
         MovePlayer();
         AimGun();
+
+        if (m_CurrentAmmo <= 0)
+            {
+                ammoCounter.text = "Press 'R' to reload"; //display reload message if out of ammo
+            }
+        else
+            {
+                ammoCounter.text = m_CurrentAmmo.ToString(); //update ammo counter UI to be == currentammo var
+            }
     }
 
 

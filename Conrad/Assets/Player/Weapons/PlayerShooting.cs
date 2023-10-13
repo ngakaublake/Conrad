@@ -17,6 +17,9 @@ public class PlayerShooting : MonoBehaviour
 
     public float m_projectileForce = 20f; //Bullet Velocity 
 
+    //muzzle flash object
+    public GameObject m_muzzleflash;
+
     //Varibles for Weapon Bloom
     public float m_MaxPosSpread = 8;
     public float m_MaxNegSpread = -8;
@@ -25,7 +28,7 @@ public class PlayerShooting : MonoBehaviour
     public float m_CurrentSpread = 0;
 
     //Timing Varibles
-    public float m_TimeBetweenShots = 1.0f;
+    public float m_TimeBetweenShots = 0.6f;
     public float m_TImeSinceLastShot = 0.0f;
 
     public float m_TimeBetweenSpread = 0.2f; 
@@ -74,7 +77,7 @@ public class PlayerShooting : MonoBehaviour
                 PlayerMove.m_CurrentAmmo--; //Adjusting Ammo Count 
 
 
-                animator.SetTrigger("hasShot"); //placeholder. Sets animation param to activate boltpull animation
+                
             }
 
         }
@@ -92,8 +95,12 @@ public class PlayerShooting : MonoBehaviour
 
     void Fire() //Fires the Weapon 
     {
-        
+        animator.SetTrigger("hasShot"); //placeholder. Sets animation param to activate fire animation
+
         m_firePoint.transform.Rotate(0, 0, m_CurrentSpread, Space.Self); //Rotating the Projectile Spawn Point Angle 
+
+        //spawning the muzzleflash
+        //GameObject muzzleFlash = Instantiate(m_muzzleflash, m_firePoint.position, m_firePoint.rotation); //currently non-functional. spawns at 90 degree angle and does not despawn
 
         //Spawning the Projectile 
         GameObject projectile = Instantiate(m_projectilePrefab, m_firePoint.position, m_firePoint.rotation);
