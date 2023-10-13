@@ -12,7 +12,7 @@ public class PlayerVision : MonoBehaviour
     private Vector3 m_Origin; 
     private float m_StartingAngle; 
     private float m_FOV = 90f; //Vision Cone FOV 
-    int m_RayCount = 180; //How Many Triangles in the Vision Cone - More = Smoother 
+    int m_RayCount = 720; //How Many Triangles in the Vision Cone - More = Smoother 
     float m_ViewDistance = 3.0f; //View Distance for the Vision Cone 
 
     public Vector3 GetVectorFromAngle(float _angle) //Function to get a Vector3 from a Angle 

@@ -7,10 +7,12 @@ using UnityEngine.UI; //unity ui for ammo counter
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] private PlayerVision FOV; 
+    [SerializeField] private PlayerVision FOV;
 
-    public float m_HorizontalVelocity = 1.5f;
-    public float m_VerticalVelocity = 1.5f;
+    public float m_HorizontalVelocity;
+    public float m_VerticalVelocity;
+
+    public float m_VelocityDefault = 1.0f;
     Vector2 m_HorizontalMovement;
     Vector2 m_VerticalMovement;
     public bool m_IsPlayerMoving;
@@ -92,8 +94,8 @@ public class PlayerMovement : MonoBehaviour
             m_IsPlayerAiming = false;
 
             //Returning Player speed to default 
-            m_HorizontalVelocity = 1.5f;
-            m_VerticalVelocity = 1.5f;
+            m_HorizontalVelocity = m_VelocityDefault;
+            m_VerticalVelocity = m_VelocityDefault;
         }
 
     }
@@ -104,6 +106,8 @@ public class PlayerMovement : MonoBehaviour
         m_IsPlayerMoving = false;
         m_IsPlayerAiming = false;
         m_CurrentAmmo = m_MaxAmmo;
+        m_HorizontalVelocity = m_VelocityDefault;
+        m_VerticalVelocity = m_VelocityDefault;
     }
 
     void Update()
