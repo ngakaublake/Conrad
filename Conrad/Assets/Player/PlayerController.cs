@@ -4,11 +4,10 @@ using UnityEngine;
 
 using UnityEngine.UI; //unity ui for ammo counter
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-
-    [SerializeField] private PlayerVision FOV;
-    //[SerializeField] private FogBehavior Fog;
+    public GameObject RealPlayer;
+    public GameObject CognitivePlayer;
 
     public float m_HorizontalVelocity;
     public float m_VerticalVelocity;
@@ -21,46 +20,38 @@ public class PlayerMovement : MonoBehaviour
     Vector2 m_RealWorldPositon; //Position in Real World.
     public bool m_IsPlayerinCognitiveWorld;
     public bool m_IsPlayerMoving;
-    public bool m_IsPlayerAiming;
-
-    public int m_MaxAmmo = 6;
-    public int m_CurrentAmmo;
-
-    public Text ammoCounter; //ammocounter UI
 
     Rigidbody2D RB;
 
     void MovePlayer() //Basic Player Movement
     {
-        if (m_IsPlayerinCognitiveWorld == true)
-        {
-            FOV.SetOrigin(transform.position); //Setting the Origin Position for the Vision Cone
-            //Fog.m_IsRenderingCognitiveWorld = true;
-        }
-        else
-        {
-            //Fog.m_IsRenderingCognitiveWorld = false;
-        }
-
         //Reseting the Movement Vectors
         m_VerticalMovement = Vector2.zero;
-        m_VerticalMovement = Vector2.zero;
-        
+        m_HorizontalMovement = Vector2.zero;
+
         //Teleport to second location
-        if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             //Check the current location of the player.
             if (m_IsPlayerinCognitiveWorld == true)
             {
-                transform.position = (m_RealWorldPositon); //Move to Real World
+                // Disable the current player in the Cognitive World and enable the player in the Real World
+                CognitivePlayer.SetActive(false);
+                RealPlayer.SetActive(true);
+
                 m_IsPlayerinCognitiveWorld = false;
-                FOV.UpdateFOV();
+                transform.position = (m_RealWorldPositon);
             }
             else
             {
-                transform.position = (m_CognitiveWorldPosition); //Move to Cognitive World
+                // Disable the current player in the Real World and enable the player in the Cognitive World
+                RealPlayer.SetActive(false);
+                CognitivePlayer.SetActive(true);
+
                 m_IsPlayerinCognitiveWorld = true;
-                FOV.UpdateFOV();
+
+                m_IsPlayerinCognitiveWorld = true;
+                transform.position = (m_CognitiveWorldPosition); //Move to Cognitive World
             }
         }
 
@@ -81,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         //Checking if the Player is Moving
         if (Temp.x == 0.0f && Temp.y == 0.0f)
         {
-            m_IsPlayerMoving = false; 
+            m_IsPlayerMoving = false;
         }
         else
         {
@@ -109,49 +100,17 @@ public class PlayerMovement : MonoBehaviour
 
         transform.up = (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y)); //Makes the Character look at the Mouse
 
-        //Makes the Vision Cone Look in current mouse Direction 
-        Vector3 aimDir = transform.up;
-        FOV.SetAimDirection(aimDir);
-
         //Printing Mouse Pos in the world to Debug Console 
-        string mouseY = "Y : " + mousePos.y; 
+        string mouseY = "Y : " + mousePos.y;
         string mouseX = "X : " + mousePos.x;
         //Debug.Log(mouseY);
         //Debug.Log(mouseX);
-    }
-
-    void AimGun()
-    {
-
-        // Checking if the right mouse button is being held down 
-        if (Input.GetMouseButtonDown(1)) 
-        {
-            FOV.UpdateFOV(); //Swaps FOV between 'Explore' & 'Combat' 
-            m_IsPlayerAiming = true;
-
-            //Adjusting player speed to be slower whilst ADS'ed 
-            m_HorizontalVelocity = 0.5f;
-            m_VerticalVelocity = 0.5f;
-        }
-
-        if (Input.GetMouseButtonUp(1))
-        {
-            FOV.UpdateFOV(); //Swaps FOV between 'Explore' & 'Combat' 
-            m_IsPlayerAiming = false;
-
-            //Returning Player speed to default 
-            m_HorizontalVelocity = m_VelocityDefault;
-            m_VerticalVelocity = m_VelocityDefault;
-        }
-
     }
 
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
         m_IsPlayerMoving = false;
-        m_IsPlayerAiming = false;
-        m_CurrentAmmo = m_MaxAmmo;
         m_HorizontalVelocity = m_VelocityDefault;
         m_VerticalVelocity = m_VelocityDefault;
         m_CognitiveWorldPosition = new Vector2(0.0f, 0.0f); //Set to spawn position in Cognitive World
@@ -163,17 +122,6 @@ public class PlayerMovement : MonoBehaviour
     {
         FollowCursor();
         MovePlayer();
-        AimGun();
-
-        if (m_CurrentAmmo <= 0)
-            {
-                ammoCounter.text = "Press 'R' to reload"; //display reload message if out of ammo
-            }
-        else
-            {
-                ammoCounter.text = m_CurrentAmmo.ToString(); //update ammo counter UI to be == currentammo var
-            }
     }
-
 
 }
