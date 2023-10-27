@@ -8,7 +8,6 @@ public class CognitivePlayer : MonoBehaviour
 {
 
     [SerializeField] private PlayerVision FOV;
-    //[SerializeField] private FogBehavior Fog;
 
     private PlayerController playerController;
 
@@ -71,9 +70,6 @@ public class CognitivePlayer : MonoBehaviour
     {
         if (playerController != null && playerController.m_IsPlayerinCognitiveWorld == true)
         {
-            //Set Position for FOV to Update
-            Vector3 newPosition = playerController.transform.position;
-            transform.position = newPosition;
 
             MovePlayer();
             AimGun();
