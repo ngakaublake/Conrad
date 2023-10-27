@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     Vector2 m_VerticalMovement;
     Vector2 m_IntialCognitiveWorldPosition; //Intial Position in Cognitive World, used to restart.
     Vector2 m_CognitiveWorldPosition; //Position in Cognitive World.
-    Vector2 m_RealWorldPositon; //Position in Real World.
+    Vector2 m_RealWorldPosition; //Position in Real World.
     public bool m_IsPlayerinCognitiveWorld;
     public bool m_IsPlayerMoving;
 
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
                 RealPlayer.SetActive(true);
 
                 m_IsPlayerinCognitiveWorld = false;
-                transform.position = (m_RealWorldPositon);
+                transform.position = (m_RealWorldPosition);
             }
             else
             {
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (m_IsPlayerinCognitiveWorld == false)
         {
-            m_RealWorldPositon = transform.position;
+            m_RealWorldPosition = transform.position;
         }
 
 
@@ -114,8 +114,10 @@ public class PlayerController : MonoBehaviour
         m_HorizontalVelocity = m_VelocityDefault;
         m_VerticalVelocity = m_VelocityDefault;
         m_CognitiveWorldPosition = new Vector2(0.0f, 0.0f); //Set to spawn position in Cognitive World
-        m_RealWorldPositon = new Vector2(20.0f, 0.0f); //Set to spawn position in Real World.
-        m_IsPlayerinCognitiveWorld = true;
+        m_RealWorldPosition = new Vector2(20.0f, 0.0f); //Set to spawn position in Real World.
+        m_IsPlayerinCognitiveWorld = false;
+        CognitivePlayer.SetActive(false);
+        transform.position = m_RealWorldPosition;
     }
 
     void Update()
