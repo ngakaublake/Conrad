@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     private float m_CurrentTime = 0;
-    private float m_Step = 0.1f; 
+    private float m_Step = 0.1f;
+
 
     // Start is called before the first frame update
     void Start()
