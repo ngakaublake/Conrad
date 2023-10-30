@@ -23,6 +23,10 @@ public class PlayerShooting : MonoBehaviour
     public Transform m_firePoint;
     public Transform m_MeleePoint;
 
+    private RaycastHit2D[] m_MeleeHits;
+
+    public float m_MeleeAttackRange = 6.0f;
+
     //Bullet Objects
     public GameObject m_projectilePrefab;
     public GameObject m_MaskPrefab;
@@ -185,7 +189,7 @@ public class PlayerShooting : MonoBehaviour
 
     void MeleeAttack()
     {
-        //Physics2D.CircleCast 
+        //m_MeleeHits = Physics2D.CircleCastAll(m_MeleePoint.position, m_MeleeAttackRange, transform.right, 0.0f)
     }
 
 
