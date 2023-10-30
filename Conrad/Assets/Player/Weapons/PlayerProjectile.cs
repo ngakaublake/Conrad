@@ -22,6 +22,6 @@ public class PlayerProjectile : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Destroys bullet on collision/
-        Destroy(gameObject);
+        //Destroy(gameObject);
     }
 }
