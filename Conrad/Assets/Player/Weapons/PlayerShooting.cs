@@ -63,8 +63,8 @@ public class PlayerShooting : MonoBehaviour
         m_CurrentNegSpread = m_MaxNegSpread;
         m_CurrentSpread = m_MaxPosSpread;
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
-        //CurrentWeapon = Weapon.Weapon_Shotgun;
-        CurrentWeapon = Weapon.Weapon_Rifle;
+        CurrentWeapon = Weapon.Weapon_Shotgun;
+        //CurrentWeapon = Weapon.Weapon_Rifle;
     }
 
     void Update()
@@ -172,16 +172,16 @@ public class PlayerShooting : MonoBehaviour
             GameObject ProjectileMask = Instantiate(m_MaskPrefab, m_firePoint.position, m_firePoint.rotation);
 
             Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-            Rigidbody2D rbMask = ProjectileMask.GetComponent<Rigidbody2D>();
+            //Rigidbody2D rbMask = ProjectileMask.GetComponent<Rigidbody2D>();
 
             projectile.layer = 8;
-            ProjectileMask.layer = 8;
+           // ProjectileMask.layer = 8;
 
             projectile.GetComponent<Renderer>().sortingLayerID = SortingLayer.NameToID("Player");
-            ProjectileMask.GetComponent<Renderer>().sortingLayerID = SortingLayer.NameToID("Player");
+            //ProjectileMask.GetComponent<Renderer>().sortingLayerID = SortingLayer.NameToID("Player");
 
             rb.AddForce(m_firePoint.up * m_projectileForce, ForceMode2D.Impulse);
-            rbMask.AddForce(m_firePoint.up * m_projectileForce, ForceMode2D.Impulse);
+            //rbMask.AddForce(m_firePoint.up * m_projectileForce, ForceMode2D.Impulse);
 
             m_firePoint.transform.Rotate(0, 0, (-1 * ShotGunSpread), Space.Self); //Reseting the Projectile Spawn Angle to 0 
         }
