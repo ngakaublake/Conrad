@@ -22,6 +22,7 @@ public class PlayerShooting : MonoBehaviour
     //Transforms for FirePoint & MeleePoint World Object 
     public Transform m_firePoint;
     public Transform m_MeleePoint;
+    
 
     private RaycastHit2D[] m_MeleeHits;
 
