@@ -64,8 +64,8 @@ public class PlayerShooting : MonoBehaviour
         m_CurrentNegSpread = m_MaxNegSpread;
         m_CurrentSpread = m_MaxPosSpread;
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
-        //CurrentWeapon = Weapon.Weapon_Shotgun;
-        CurrentWeapon = Weapon.Weapon_Rifle;
+        CurrentWeapon = Weapon.Weapon_Shotgun;
+        //CurrentWeapon = Weapon.Weapon_Rifle;
     }
 
     void Update()
