@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 using UnityEngine.UI; //unity ui for ammo counter
@@ -20,6 +21,9 @@ public class CognitivePlayer : MonoBehaviour
     public Text ammoCounter; //ammocounter UI
 
     //Rigidbody2D RB;
+
+    //Animator ref
+    public Animator animator;
 
     void MovePlayer() //Basic Player Movement
     {
@@ -42,6 +46,8 @@ public class CognitivePlayer : MonoBehaviour
             FOV.UpdateFOV(); //Swaps FOV between 'Explore' & 'Combat' 
             m_IsPlayerAiming = true;
 
+            animator.SetBool("isAiming", true); //swap to player aim sprite
+
             //Adjusting player speed to be slower whilst ADS'ed 
             playerController.m_HorizontalVelocity = 0.5f;
             playerController.m_VerticalVelocity = 0.5f;
@@ -51,6 +57,8 @@ public class CognitivePlayer : MonoBehaviour
         {
             FOV.UpdateFOV(); //Swaps FOV between 'Explore' & 'Combat' 
             m_IsPlayerAiming = false;
+
+            animator.SetBool("isAiming", false); //return to walking sprite
 
             //Returning Player speed to default 
             playerController.m_HorizontalVelocity = playerController.m_VelocityDefault;
@@ -83,6 +91,18 @@ public class CognitivePlayer : MonoBehaviour
                 ammoCounter.text = m_CurrentAmmo.ToString(); //update ammo counter UI to be == currentammo var
             }
         }
+
+        if (playerController.m_IsPlayerMoving == true)
+        {
+            //Debug.Log("moving");
+            animator.SetFloat("animSpeed", 1);
+        }
+        else
+        {
+            //Debug.Log("standin");
+            animator.SetFloat("animSpeed", 0);
+        }
+
     }
 
 

@@ -20,9 +20,9 @@ public class FogScript : MonoBehaviour
     {
      
 
-        if (transform.position.x > 5)
+        if (transform.position.x > 10)
         {
-            transform.position = new Vector2(0, 0);
+            transform.position = new Vector2(-10, 0);
         }
     }
 }

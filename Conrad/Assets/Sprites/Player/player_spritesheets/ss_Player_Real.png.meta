@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 45e849baf156b0c45b20212275c9d33c
+guid: 73623e6911892524c8fc5358f0be9cd0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -117,148 +117,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: S_Player 1_0
+      name: ss_Player_Real_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 96
+        width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.32291666, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d861ea3e931b3949a71667570c24e8e
-      internalID: -2039651713
+      spriteID: 0cfceaa02c6a7cd439cd760ac313b94c
+      internalID: -363042743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: S_Player 1_1
+      name: ss_Player_Real_1
       rect:
         serializedVersion: 2
-        x: 96
+        x: 64
         y: 0
-        width: 96
+        width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.32291666, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80936c89a8ca56541b1bb9713dcb55b3
-      internalID: -1019014116
+      spriteID: 092b3aa754357a8449051cbd8671c359
+      internalID: -1656097111
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: S_Player 1_2
+      name: ss_Player_Real_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49676e287cbd9904cb2ec71466e48233
+      internalID: -528349063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ss_Player_Real_3
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 96
+        width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.32291666, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e527b5c5f19ba64d8a1839b8aebfb22
-      internalID: 496087902
+      spriteID: a5c76d825b996554bab03521431bed15
+      internalID: -713222492
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: S_Player 1_3
+      name: ss_Player_Real_4
       rect:
         serializedVersion: 2
-        x: 288
+        x: 256
         y: 0
-        width: 96
+        width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.32291666, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2a4bdc36019962488436a19bbde6ab5
-      internalID: -1338349138
+      spriteID: 327d6b3194fa9214185c5da6bd8c3fa8
+      internalID: -333724784
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: S_Player 1_4
+      name: ss_Player_Real_5
       rect:
         serializedVersion: 2
-        x: 383
+        x: 320
         y: 0
-        width: 96
+        width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.32291666, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 639e333ab55429d448ce4fe3c8159314
-      internalID: -1410355603
+      spriteID: c70faba65dc7c0f4cb6ce1f30c95e5a8
+      internalID: 505601253
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: S_Player 1_5
+      name: ss_Player_Real_6
       rect:
         serializedVersion: 2
-        x: 480
+        x: 384
         y: 0
-        width: 96
+        width: 64
         height: 64
-      alignment: 9
-      pivot: {x: 0.32291666, y: 0.5}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bba0858c468b9d5488bf139d78e262ba
-      internalID: -471212052
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: S_Player 1_6
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 96
-        height: 64
-      alignment: 9
-      pivot: {x: 0.32291666, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 69e7c0799fdbaa741809965c017e0e6f
-      internalID: 1877991650
+      spriteID: 3592a3bfb30118a41a2a649dce2acb96
+      internalID: 140533749
       vertices: []
       indices: 
       edges: []
@@ -274,13 +274,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      S_Player 1_1: -1019014116
-      S_Player 1_4: -1410355603
-      S_Player 1_3: -1338349138
-      S_Player 1_2: 496087902
-      S_Player 1_0: -2039651713
-      S_Player 1_5: -471212052
-      S_Player 1_6: 1877991650
+      ss_Player_Real_3: -713222492
+      ss_Player_Real_6: 140533749
+      ss_Player_Real_0: -363042743
+      ss_Player_Real_5: 505601253
+      ss_Player_Real_1: -1656097111
+      ss_Player_Real_2: -528349063
+      ss_Player_Real_4: -333724784
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

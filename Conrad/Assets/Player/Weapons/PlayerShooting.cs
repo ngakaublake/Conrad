@@ -22,6 +22,7 @@ public class PlayerShooting : MonoBehaviour
     //Transforms for FirePoint & MeleePoint World Object 
     public Transform m_firePoint;
     public Transform m_MeleePoint;
+    
 
     private RaycastHit2D[] m_MeleeHits;
 
@@ -69,6 +70,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
+        WeaponCheck(); //WHAT AM I USING (for animations)
         WeaponBloom();
 
         if (Input.GetButtonDown("Fire1") && PlayerMove.m_IsPlayerAiming == true && PlayerMove.m_CurrentAmmo > 0) //Fire Weapon
@@ -83,6 +85,15 @@ public class PlayerShooting : MonoBehaviour
 
         }
 
+        if (Input.GetKey(KeyCode.LeftShift)) //melee keybind and animations
+        {
+            animator.SetBool("isMelee", true);
+        }
+        else
+        {
+            animator.SetBool("isMelee", false);
+        }
+
         if (Input.GetButtonDown("Reload")) // Not working need to fix 
         {
             Reload();
@@ -90,6 +101,7 @@ public class PlayerShooting : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.R) && PlayerMove.m_CurrentAmmo != PlayerMove.m_MaxAmmo) //Reload
         {
+            animator.SetTrigger("reload"); //set shared player animation trigger to reload
             Reload();
         }
     }
@@ -118,9 +130,23 @@ public class PlayerShooting : MonoBehaviour
 
     }
 
+    void WeaponCheck() //Checks what weapon is currently equipped to ensure correct sprite is shown
+    {
+        switch (CurrentWeapon)
+        {
+            case Weapon.Weapon_Rifle:
+                animator.SetBool("hasRifle", true);
+                break;
+
+            case Weapon.Weapon_Shotgun:
+                animator.SetBool("hasRifle", false);
+                break;
+        }
+    }
+
     void FireRifle()
     {
-        animator.SetTrigger("hasShot"); //placeholder. Sets animation param to activate fire animation
+        animator.SetTrigger("hasShot"); //Sets animation param to activate fire animation
 
         m_firePoint.transform.Rotate(0, 0, m_CurrentSpread, Space.Self); //Rotating the Projectile Spawn Point Angle 
 
@@ -151,7 +177,7 @@ public class PlayerShooting : MonoBehaviour
 
     void FireShotgun()
     {
-
+        animator.SetTrigger("hasShot"); //Sets animation param to activate fire animation
 
         for (int i = 0; i != 4; i++)
         {
@@ -187,7 +213,7 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    void MeleeAttack()
+    public void MeleeAttack()
     {
         //m_MeleeHits = Physics2D.CircleCastAll(m_MeleePoint.position, m_MeleeAttackRange, transform.right, 0.0f)
     }
@@ -227,6 +253,11 @@ public class PlayerShooting : MonoBehaviour
             }
 
         }
+    }
+
+    public void ShotgunReload()
+    {
+
     }
 
     void Reload() //Reloads the Gun 
