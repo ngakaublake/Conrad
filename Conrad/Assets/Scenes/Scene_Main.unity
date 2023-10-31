@@ -270,6 +270,7 @@ MonoBehaviour:
   m_MaxAmmo: 6
   m_CurrentAmmo: 0
   ammoCounter: {fileID: 1247734079}
+  animator: {fileID: 1048290195}
 --- !u!1 &238872662
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,7 +970,7 @@ SpriteRenderer:
   m_Size: {x: 0.96, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
 --- !u!1 &843508735
@@ -1501,7 +1502,7 @@ SpriteRenderer:
   m_Size: {x: 0.96, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
 --- !u!95 &1048290195

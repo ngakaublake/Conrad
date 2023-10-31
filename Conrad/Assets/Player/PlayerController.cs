@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 using UnityEngine.UI; //unity ui for ammo counter
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
     Vector2 m_RealWorldPosition; //Position in Real World.
     public bool m_IsPlayerinCognitiveWorld;
     public bool m_IsPlayerMoving;
+
+    //public Animator animator;
 
     Rigidbody2D RB;
 
@@ -124,6 +127,15 @@ public class PlayerController : MonoBehaviour
     {
         FollowCursor();
         MovePlayer();
+
+        //if (m_IsPlayerinCognitiveWorld == true)
+        //{
+        //    animator.SetBool("isCognitive", true);
+        //}
+        //else
+        //{
+        //    animator.SetBool("isCognitive", false);
+        //}
     }
 
 }
