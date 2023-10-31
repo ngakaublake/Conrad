@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 023b33f1f7ad3384eb8c126ff72ebfff
+guid: 73623e6911892524c8fc5358f0be9cd0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -125,14 +125,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2d2db314918c6c4f8338bb80fc21918
-      internalID: 683039009
+      spriteID: 0cfceaa02c6a7cd439cd760ac313b94c
+      internalID: -363042743
       vertices: []
       indices: 
       edges: []
@@ -146,14 +146,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f1c496f017ca6e4584533fb7a022c60
-      internalID: 193513670
+      spriteID: 092b3aa754357a8449051cbd8671c359
+      internalID: -1656097111
       vertices: []
       indices: 
       edges: []
@@ -167,14 +167,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1c8c0bf7be72d624b84bf08f6b89f361
-      internalID: -1407477609
+      spriteID: 49676e287cbd9904cb2ec71466e48233
+      internalID: -528349063
       vertices: []
       indices: 
       edges: []
@@ -188,14 +188,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa815b99f289c5a40aaa9a7b246a59d4
-      internalID: 1158323214
+      spriteID: a5c76d825b996554bab03521431bed15
+      internalID: -713222492
       vertices: []
       indices: 
       edges: []
@@ -209,14 +209,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72190e3f61b07ff4f8c6a1ad652f6618
-      internalID: 1907011736
+      spriteID: 327d6b3194fa9214185c5da6bd8c3fa8
+      internalID: -333724784
       vertices: []
       indices: 
       edges: []
@@ -225,19 +225,19 @@ TextureImporter:
       name: ss_Player_Real_5
       rect:
         serializedVersion: 2
-        x: 321
+        x: 320
         y: 0
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aaae354e0899afb40bfb24693a0d8106
-      internalID: -1932460511
+      spriteID: c70faba65dc7c0f4cb6ce1f30c95e5a8
+      internalID: 505601253
       vertices: []
       indices: 
       edges: []
@@ -251,14 +251,14 @@ TextureImporter:
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 276c4100d3b724540b97c213f849cc0d
-      internalID: -781692304
+      spriteID: 3592a3bfb30118a41a2a649dce2acb96
+      internalID: 140533749
       vertices: []
       indices: 
       edges: []
@@ -274,13 +274,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ss_Player_Real_3: 1158323214
-      ss_Player_Real_6: -781692304
-      ss_Player_Real_0: 683039009
-      ss_Player_Real_5: -1932460511
-      ss_Player_Real_1: 193513670
-      ss_Player_Real_2: -1407477609
-      ss_Player_Real_4: 1907011736
+      ss_Player_Real_3: -713222492
+      ss_Player_Real_6: 140533749
+      ss_Player_Real_0: -363042743
+      ss_Player_Real_5: 505601253
+      ss_Player_Real_1: -1656097111
+      ss_Player_Real_2: -528349063
+      ss_Player_Real_4: -333724784
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -63,8 +63,8 @@ public class PlayerShooting : MonoBehaviour
         m_CurrentNegSpread = m_MaxNegSpread;
         m_CurrentSpread = m_MaxPosSpread;
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
-        CurrentWeapon = Weapon.Weapon_Shotgun;
-        //CurrentWeapon = Weapon.Weapon_Rifle;
+        //CurrentWeapon = Weapon.Weapon_Shotgun;
+        CurrentWeapon = Weapon.Weapon_Rifle;
     }
 
     void Update()
@@ -84,7 +84,7 @@ public class PlayerShooting : MonoBehaviour
 
         }
 
-        if (Input.GetKey(KeyCode.E)) //melee keybind and animations
+        if (Input.GetKey(KeyCode.LeftShift)) //melee keybind and animations
         {
             animator.SetBool("isMelee", true);
         }
@@ -212,7 +212,7 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    void MeleeAttack()
+    public void MeleeAttack()
     {
         //m_MeleeHits = Physics2D.CircleCastAll(m_MeleePoint.position, m_MeleeAttackRange, transform.right, 0.0f)
     }
@@ -252,6 +252,11 @@ public class PlayerShooting : MonoBehaviour
             }
 
         }
+    }
+
+    public void ShotgunReload()
+    {
+
     }
 
     void Reload() //Reloads the Gun 

@@ -911,7 +911,7 @@ Animator:
   m_GameObject: {fileID: 810939340}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ff38e7713d3eb7d40ac6584172dceed4, type: 2}
+  m_Controller: {fileID: 9100000, guid: 98f2a2305126da24a9ac53835a3b5271, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -7433,6 +7433,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1782536927}
   - component: {fileID: 1782536929}
+  - component: {fileID: 1782536930}
   m_Layer: 0
   m_Name: RealPlayer
   m_TagString: Untagged
@@ -7482,6 +7483,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &1782536930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782536926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db573d99bb99cba4aad72a54e78a7302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 810939342}
 --- !u!1 &1819040249
 GameObject:
   m_ObjectHideFlags: 0
