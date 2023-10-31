@@ -26,6 +26,7 @@ public class CognitivePlayer : MonoBehaviour
         if (playerController.m_IsPlayerinCognitiveWorld == true)
         {
             FOV.SetOrigin(transform.position); //Setting the Origin Position for the Vision Cone
+            
         }
     }
 
@@ -70,17 +71,16 @@ public class CognitivePlayer : MonoBehaviour
     {
         if (playerController != null && playerController.m_IsPlayerinCognitiveWorld == true)
         {
-
             MovePlayer();
             AimGun();
 
             if (m_CurrentAmmo <= 0)
             {
-                //ammoCounter.text = "Press 'R' to reload"; //display reload message if out of ammo
+                ammoCounter.text = "Press 'R' to reload"; //display reload message if out of ammo
             }
             else
             {
-                //ammoCounter.text = m_CurrentAmmo.ToString(); //update ammo counter UI to be == currentammo var
+                ammoCounter.text = m_CurrentAmmo.ToString(); //update ammo counter UI to be == currentammo var
             }
         }
     }
