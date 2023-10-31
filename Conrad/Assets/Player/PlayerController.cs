@@ -7,6 +7,8 @@ using UnityEngine.UI; //unity ui for ammo counter
 
 public class PlayerController : MonoBehaviour
 {
+
+    //[SerializeField] private PlayerShooting playerShooting;
     public GameObject RealPlayer;
     public GameObject CognitivePlayer;
 
@@ -57,6 +59,8 @@ public class PlayerController : MonoBehaviour
                 transform.position = (m_CognitiveWorldPosition); //Move to Cognitive World
             }
         }
+
+
 
 
         //Getting the Direction Input 

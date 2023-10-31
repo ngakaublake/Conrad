@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-enum Weapon 
+public enum Weapon 
 { 
     Weapon_Shotgun,
     Weapon_Rifle,
@@ -18,6 +18,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private CognitivePlayer PlayerMove;
     [SerializeField] private PlayerCrosshair Crosshair;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private AmmoCounter weaponUI;
 
     //Transforms for FirePoint & MeleePoint World Object 
     public Transform m_firePoint;
@@ -55,7 +56,7 @@ public class PlayerShooting : MonoBehaviour
     public Animator animator;
 
     //Enum for Weapon
-    Weapon CurrentWeapon;
+    public Weapon CurrentWeapon;
 
     private void Start()
     {
@@ -64,8 +65,8 @@ public class PlayerShooting : MonoBehaviour
         m_CurrentNegSpread = m_MaxNegSpread;
         m_CurrentSpread = m_MaxPosSpread;
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
-        CurrentWeapon = Weapon.Weapon_Shotgun;
-        //CurrentWeapon = Weapon.Weapon_Rifle;
+        //CurrentWeapon = Weapon.Weapon_Shotgun;
+        CurrentWeapon = Weapon.Weapon_Rifle;
     }
 
     void Update()
@@ -83,6 +84,18 @@ public class PlayerShooting : MonoBehaviour
                 PlayerMove.m_CurrentAmmo--; //Adjusting Ammo Count 
             }
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            CurrentWeapon =  Weapon.Weapon_Rifle;
+            weaponUI.DisableShotgunCount();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            CurrentWeapon = Weapon.Weapon_Shotgun;
+            weaponUI.DisableRifleCount();
         }
 
         if (Input.GetKey(KeyCode.LeftShift)) //melee keybind and animations
