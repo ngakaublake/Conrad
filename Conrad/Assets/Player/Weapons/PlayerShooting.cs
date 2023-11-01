@@ -300,8 +300,15 @@ public class PlayerShooting : MonoBehaviour
 
                 if (PlayerMove.m_RifleAmmoSupply > 0 && PlayerMove.m_RifleCurrentAmmo <= PlayerMove.m_RifleMaxAmmo)
                 {
-                    PlayerMove.m_RifleCurrentAmmo++;
-                    PlayerMove.m_RifleAmmoSupply--;
+                    PlayerMove.m_RifleCurrentAmmo = 0;
+                    for (int i = 0; i != PlayerMove.m_RifleMaxAmmo; i++)
+                    {
+                        if (PlayerMove.m_RifleAmmoSupply > 0)
+                        {
+                            PlayerMove.m_RifleAmmoSupply--;
+                            PlayerMove.m_RifleCurrentAmmo++;
+                        }
+                    } 
                 }
 
                 break;
