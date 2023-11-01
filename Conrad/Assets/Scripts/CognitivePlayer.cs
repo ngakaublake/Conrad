@@ -87,15 +87,6 @@ public class CognitivePlayer : MonoBehaviour
         {
             MovePlayer();
             AimGun();
-
-            //if (m_CurrentAmmo <= 0)
-            //{
-            //    ammoCounter.text = "Press 'R' to reload"; //display reload message if out of ammo
-            //}
-            //else
-            //{
-            //    ammoCounter.text = m_CurrentAmmo.ToString(); //update ammo counter UI to be == currentammo var
-            //}
         }
 
         if (playerController.m_IsPlayerMoving == true)

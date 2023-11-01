@@ -83,13 +83,13 @@ public class PlayerShooting : MonoBehaviour
             Fire();
         }
         
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Alpha1)) //Swap To Rifle
         {
             CurrentWeapon =  Weapon.Weapon_Rifle;
             weaponUI.DisableShotgunCount();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.Alpha2)) //Swap to Shotgun
         {
             CurrentWeapon = Weapon.Weapon_Shotgun;
             weaponUI.DisableRifleCount();
@@ -109,8 +109,6 @@ public class PlayerShooting : MonoBehaviour
             Reload();
         }
 
-
-
         if (Input.GetKeyDown(KeyCode.R)) //Reload && PlayerMove.m_CurrentAmmo != PlayerMove.m_MaxAmmo
         {
             animator.SetTrigger("reload"); //set shared player animation trigger to reload
@@ -126,25 +124,21 @@ public class PlayerShooting : MonoBehaviour
                 
                 if (Time.time - m_RifleTimeSinceLastShot >= m_RifleTimeBetweenShots && PlayerMove.m_RifleCurrentAmmo > 0)
                 {
-                    //Fire(); //Firing the Projectile 
                     FireRifle();
                     m_RifleTimeSinceLastShot = Time.time; //Reseting the Time since last shot 
                     PlayerMove.m_RifleCurrentAmmo--; //Adjusting Ammo Count 
                 }
-               
                 break;
 
             case Weapon.Weapon_Shotgun:
 
                 if (Time.time - m_ShotgunTimeSinceLastShot >= m_ShotgunTimeBetweenShots && PlayerMove.m_ShotgunCurrentAmmo > 0)
                 {
-                    //Fire(); //Firing the Projectile 
                     FireShotgun();
                     m_ShotgunTimeSinceLastShot = Time.time; //Reseting the Time since last shot 
                     PlayerMove.m_ShotgunCurrentAmmo--; //Adjusting Ammo Count 
                     animator.SetInteger("shellCount", PlayerMove.m_ShotgunCurrentAmmo);
-                }
-                
+                }            
                 break;
 
             case Weapon.Weapon_Melee:
@@ -332,10 +326,6 @@ public class PlayerShooting : MonoBehaviour
                 
         }
        
-    }
-
-    void GetProjectileSpread()
-    {
     }
 
 }
