@@ -72,7 +72,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.16666667
+  - time: 0.083333336
     functionName: ShotgunReload
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: dba059624fd8c2146831000b58f3a1c5, type: 3}

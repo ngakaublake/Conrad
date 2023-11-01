@@ -142,6 +142,7 @@ public class PlayerShooting : MonoBehaviour
                     FireShotgun();
                     m_ShotgunTimeSinceLastShot = Time.time; //Reseting the Time since last shot 
                     PlayerMove.m_ShotgunCurrentAmmo--; //Adjusting Ammo Count 
+                    animator.SetInteger("shellCount", PlayerMove.m_ShotgunCurrentAmmo);
                 }
                 
                 break;
@@ -206,7 +207,7 @@ public class PlayerShooting : MonoBehaviour
     void FireShotgun()
     {
         animator.SetTrigger("hasShot"); //Sets animation param to activate fire animation
-
+        
         for (int i = 0; i != 4; i++)
         {
             float ShotGunSpread = 0.0f;
@@ -285,7 +286,9 @@ public class PlayerShooting : MonoBehaviour
 
     public void ShotgunReload()
     {
-
+        PlayerMove.m_ShotgunCurrentAmmo++;
+        PlayerMove.m_ShotgunAmmoSupply--;
+        animator.SetInteger("shellCount", PlayerMove.m_ShotgunCurrentAmmo);
     }
 
     void Reload() //Reloads the Gun 
@@ -308,8 +311,7 @@ public class PlayerShooting : MonoBehaviour
 
                 if (PlayerMove.m_ShotgunAmmoSupply > 0 && PlayerMove.m_ShotgunCurrentAmmo <= PlayerMove.m_ShotgunMaxAmmo)
                 {
-                    PlayerMove.m_ShotgunCurrentAmmo++;
-                    PlayerMove.m_ShotgunAmmoSupply--;
+                    ShotgunReload();
                 }
                 break;
 
