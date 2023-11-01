@@ -79,6 +79,8 @@ public class CognitivePlayer : MonoBehaviour
         m_RifleCurrentAmmo = m_RifleMaxAmmo;
         m_ShotgunCurrentAmmo = m_ShotgunMaxAmmo;
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
+
+        
     }
 
     void Update()

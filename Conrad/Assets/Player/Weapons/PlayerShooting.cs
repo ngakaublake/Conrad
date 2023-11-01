@@ -75,7 +75,8 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        WeaponCheck(); //WHAT AM I USING (for animations)
+        WeaponCheck(); //What weapon is being used for animations)
+
         WeaponBloom();
 
         if (Input.GetButtonDown("Fire1") && PlayerMove.m_IsPlayerAiming == true) //Fire Weapon
@@ -286,9 +287,13 @@ public class PlayerShooting : MonoBehaviour
 
     public void ShotgunReload()
     {
-        PlayerMove.m_ShotgunCurrentAmmo++;
-        PlayerMove.m_ShotgunAmmoSupply--;
-        animator.SetInteger("shellCount", PlayerMove.m_ShotgunCurrentAmmo);
+        if (PlayerMove.m_ShotgunAmmoSupply > 0 && PlayerMove.m_ShotgunCurrentAmmo <= PlayerMove.m_ShotgunMaxAmmo)
+        {
+            PlayerMove.m_ShotgunCurrentAmmo++;
+            PlayerMove.m_ShotgunAmmoSupply--;
+            animator.SetInteger("shellCount", PlayerMove.m_ShotgunCurrentAmmo);
+            animator.SetInteger("ammoSupply", PlayerMove.m_ShotgunAmmoSupply);
+        }
     }
 
     void Reload() //Reloads the Gun 
@@ -311,7 +316,7 @@ public class PlayerShooting : MonoBehaviour
 
                 if (PlayerMove.m_ShotgunAmmoSupply > 0 && PlayerMove.m_ShotgunCurrentAmmo <= PlayerMove.m_ShotgunMaxAmmo)
                 {
-                    ShotgunReload();
+                    //ShotgunReload(); //THIS IS COMMENT BECAUSE: function is already called in animation and will 'overfill' shotgun causing loop to break
                 }
                 break;
 
