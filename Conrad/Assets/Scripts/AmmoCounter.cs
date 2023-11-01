@@ -25,7 +25,7 @@ public class AmmoCounter : MonoBehaviour
         for (int i = 0; i != cognitivePlayer.m_ShotgunMaxAmmo; i++) //Spawn the ammo to the UI 
         {
             AmmoSpawn.transform.Rotate(0, 0, 0, Space.Self);
-            Vector3 PosOffset = new Vector3(24.0f * i, 0.0f, 0.0f); //Offset between Sprites 
+            Vector3 PosOffset = new Vector3(40.0f * i, 0.0f, 0.0f); //Offset between Sprites 
 
             ShellPos = AmmoSpawn.transform.position + PosOffset;
             GameObject newShell = Instantiate(ShotgunShell, ShellPos, AmmoSpawn.rotation, AmmoSpawn); //Creating the Object 
@@ -98,7 +98,7 @@ public class AmmoCounter : MonoBehaviour
                     
                     GameObject CurrentShell = GameObject.Find(counter);
                     //CurrentShell.SetActive(true);
-                    Vector3 PosOffset = new Vector3(24.0f * i, 0.0f, 0.0f); //Offset between Sprites 
+                    Vector3 PosOffset = new Vector3(40.0f * i, 0.0f, 0.0f); //Offset between Sprites 
 
                     CurrentShell.transform.position = AmmoSpawn.transform.position + PosOffset;
                 }
