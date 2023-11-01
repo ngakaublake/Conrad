@@ -273,8 +273,8 @@ MonoBehaviour:
   m_IsPlayerAiming: 0
   m_RifleMaxAmmo: 5
   m_ShotgunMaxAmmo: 6
-  m_RifleAmmoSupply: 6
-  m_ShotgunAmmoSupply: 6
+  m_RifleAmmoSupply: 30
+  m_ShotgunAmmoSupply: 69
   m_RifleCurrentAmmo: 0
   m_ShotgunCurrentAmmo: 0
   ammoCounter: {fileID: 1247734079}
@@ -1095,7 +1095,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -358.35, y: 164.5}
+  m_AnchoredPosition: {x: -350, y: 175.08}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &843508737
@@ -1116,6 +1116,7 @@ MonoBehaviour:
   RifleBullet: {fileID: 132422524}
   ShellPos: {x: 0, y: 0, z: 0}
   AmmoSpawn: {fileID: 843508736}
+  ammoCounter: {fileID: 1247734079}
 --- !u!1 &861059180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,7 +1153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 55.450012, y: -364.49}
+  m_AnchoredPosition: {x: 61.5, y: 0.000015259}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &861059182
@@ -1176,7 +1177,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 3750c318f40cab44a97d3a81beaefeb3, type: 3}
     m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 0
@@ -1188,7 +1189,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Ammo:'
+  m_Text: /
 --- !u!222 &861059183
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6879,7 +6880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 71.81, y: 0}
+  m_AnchoredPosition: {x: -21.9, y: -5.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1247734079
@@ -6903,7 +6904,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 97fb3dc2ba0db4d4688a5799813a15a8, type: 3}
     m_FontSize: 20
     m_FontStyle: 1
     m_BestFit: 0
