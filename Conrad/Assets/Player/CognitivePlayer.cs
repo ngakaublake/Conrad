@@ -15,8 +15,13 @@ public class CognitivePlayer : MonoBehaviour
 
     public bool m_IsPlayerAiming;
 
-    public int m_MaxAmmo = 6;
-    public int m_CurrentAmmo;
+    public int m_RifleMaxAmmo = 5;
+    public int m_ShotgunMaxAmmo = 6;
+    public int m_RifleAmmoSupply = 30;
+    public int m_ShotgunAmmoSupply = 69;
+
+    public int m_RifleCurrentAmmo;
+    public int m_ShotgunCurrentAmmo;
 
     public Text ammoCounter; //ammocounter UI
 
@@ -71,7 +76,8 @@ public class CognitivePlayer : MonoBehaviour
     {
         //RB = GetComponent<Rigidbody2D>();
         m_IsPlayerAiming = false;
-        m_CurrentAmmo = m_MaxAmmo;
+        m_RifleCurrentAmmo = m_RifleMaxAmmo;
+        m_ShotgunCurrentAmmo = m_ShotgunMaxAmmo;
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
     }
 
@@ -82,14 +88,14 @@ public class CognitivePlayer : MonoBehaviour
             MovePlayer();
             AimGun();
 
-            if (m_CurrentAmmo <= 0)
-            {
-                ammoCounter.text = "Press 'R' to reload"; //display reload message if out of ammo
-            }
-            else
-            {
-                ammoCounter.text = m_CurrentAmmo.ToString(); //update ammo counter UI to be == currentammo var
-            }
+            //if (m_CurrentAmmo <= 0)
+            //{
+            //    ammoCounter.text = "Press 'R' to reload"; //display reload message if out of ammo
+            //}
+            //else
+            //{
+            //    ammoCounter.text = m_CurrentAmmo.ToString(); //update ammo counter UI to be == currentammo var
+            //}
         }
 
         if (playerController.m_IsPlayerMoving == true)

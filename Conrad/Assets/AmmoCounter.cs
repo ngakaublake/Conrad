@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using UnityEngine.UI; //unity ui for ammo counter
+
 public class AmmoCounter : MonoBehaviour
 {
     [SerializeField] private PlayerShooting playerShooting;
@@ -13,12 +15,14 @@ public class AmmoCounter : MonoBehaviour
     public Vector3 ShellPos;
     public Transform AmmoSpawn;
 
+    public Text ammoCounter; //ammocounter UI
+
     // Start is called before the first frame update
     void Start()
     {
 
         //Shotgun 
-        for (int i = 0; i != cognitivePlayer.m_MaxAmmo; i++) //Spawn the ammo to the UI 
+        for (int i = 0; i != cognitivePlayer.m_ShotgunMaxAmmo; i++) //Spawn the ammo to the UI 
         {
             AmmoSpawn.transform.Rotate(0, 0, 0, Space.Self);
             Vector3 PosOffset = new Vector3(24.0f * i, 0.0f, 0.0f); //Offset between Sprites 
@@ -29,7 +33,7 @@ public class AmmoCounter : MonoBehaviour
         }
 
         //Rifle 
-        for (int i = 0; i != cognitivePlayer.m_MaxAmmo; i++) //Spawn the ammo to the UI 
+        for (int i = 0; i != cognitivePlayer.m_RifleMaxAmmo; i++) //Spawn the ammo to the UI 
         {
             AmmoSpawn.transform.Rotate(0, 0, 0, Space.Self);
             Vector3 PosOffset = new Vector3(24.0f * i, 0.0f, 0.0f); //Offset between Sprites 
@@ -74,13 +78,11 @@ public class AmmoCounter : MonoBehaviour
 
     void UpdateShotgunCount()
     {
-       
-
-        for (int i = 0; i != cognitivePlayer.m_MaxAmmo; i++)
+        for (int i = 0; i != cognitivePlayer.m_ShotgunMaxAmmo; i++)
         {
             string counter = "ShotgunShotCount" + i;
 
-            if (cognitivePlayer.m_CurrentAmmo <= i)
+            if (cognitivePlayer.m_ShotgunCurrentAmmo <= i)
             {
                 if (GameObject.Find(counter) == true)
                 {
@@ -88,7 +90,6 @@ public class AmmoCounter : MonoBehaviour
                     //CurrentShell.SetActive(false);
                     CurrentShell.transform.position = new Vector3(10000f, 10000.0f, 0.0f); ;
                 }
-          
             }
             else
             {
@@ -103,6 +104,7 @@ public class AmmoCounter : MonoBehaviour
                 }
             }
         }
+        ammoCounter.text = cognitivePlayer.m_ShotgunAmmoSupply.ToString();
     }
 
 
@@ -110,11 +112,11 @@ public class AmmoCounter : MonoBehaviour
     {
 
 
-        for (int i = 0; i != cognitivePlayer.m_MaxAmmo; i++)
+        for (int i = 0; i != cognitivePlayer.m_RifleMaxAmmo; i++)
         {
             string counter = "RifleShotCount" + i;
 
-            if (cognitivePlayer.m_CurrentAmmo <= i)
+            if (cognitivePlayer.m_RifleCurrentAmmo <= i)
             {
                 if (GameObject.Find(counter) == true)
                 {
@@ -137,12 +139,14 @@ public class AmmoCounter : MonoBehaviour
                 }
             }
         }
+
+        ammoCounter.text = cognitivePlayer.m_RifleAmmoSupply.ToString();
     }
 
     public void DisableShotgunCount()
     {
 
-        for (int i = 0; i != cognitivePlayer.m_MaxAmmo; i++)
+        for (int i = 0; i != cognitivePlayer.m_ShotgunMaxAmmo; i++)
         {
             string counter = "ShotgunShotCount" + i;
 
@@ -159,7 +163,7 @@ public class AmmoCounter : MonoBehaviour
     public void DisableRifleCount()
     {
 
-        for (int i = 0; i != cognitivePlayer.m_MaxAmmo; i++)
+        for (int i = 0; i != cognitivePlayer.m_RifleMaxAmmo; i++)
         {
             string counter = "RifleShotCount" + i;
 

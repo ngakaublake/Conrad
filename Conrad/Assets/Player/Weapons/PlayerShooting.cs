@@ -46,8 +46,12 @@ public class PlayerShooting : MonoBehaviour
     public float m_CurrentSpread = 0;
 
     //Timing Varibles
-    public float m_TimeBetweenShots = 0.6f;
-    public float m_TImeSinceLastShot = 0.0f;
+    public float m_ShotgunTimeBetweenShots = 1.2f;
+    public float m_ShotgunTimeSinceLastShot = 0.0f;
+
+    //Timing Varibles
+    public float m_RifleTimeBetweenShots = 1.0f;
+    public float m_RifleTimeSinceLastShot = 0.0f;
 
     public float m_TimeBetweenSpread = 0.2f;
     public float m_TimeSinceLastSpread = 0.0f;
@@ -74,18 +78,11 @@ public class PlayerShooting : MonoBehaviour
         WeaponCheck(); //WHAT AM I USING (for animations)
         WeaponBloom();
 
-        if (Input.GetButtonDown("Fire1") && PlayerMove.m_IsPlayerAiming == true && PlayerMove.m_CurrentAmmo > 0) //Fire Weapon
+        if (Input.GetButtonDown("Fire1") && PlayerMove.m_IsPlayerAiming == true) //Fire Weapon
         {
-
-            if (Time.time - m_TImeSinceLastShot >= m_TimeBetweenShots)
-            {
-                Fire(); //Firing the Projectile 
-                m_TImeSinceLastShot = Time.time; //Reseting the Time since last shot 
-                PlayerMove.m_CurrentAmmo--; //Adjusting Ammo Count 
-            }
-
+            Fire();
         }
-
+        
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             CurrentWeapon =  Weapon.Weapon_Rifle;
@@ -112,7 +109,9 @@ public class PlayerShooting : MonoBehaviour
             Reload();
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && PlayerMove.m_CurrentAmmo != PlayerMove.m_MaxAmmo) //Reload
+
+
+        if (Input.GetKeyDown(KeyCode.R)) //Reload && PlayerMove.m_CurrentAmmo != PlayerMove.m_MaxAmmo
         {
             animator.SetTrigger("reload"); //set shared player animation trigger to reload
             Reload();
@@ -124,11 +123,27 @@ public class PlayerShooting : MonoBehaviour
         switch (CurrentWeapon)
         {
             case Weapon.Weapon_Rifle:
-                FireRifle();
+                
+                if (Time.time - m_RifleTimeSinceLastShot >= m_RifleTimeBetweenShots && PlayerMove.m_RifleCurrentAmmo > 0)
+                {
+                    //Fire(); //Firing the Projectile 
+                    FireRifle();
+                    m_RifleTimeSinceLastShot = Time.time; //Reseting the Time since last shot 
+                    PlayerMove.m_RifleCurrentAmmo--; //Adjusting Ammo Count 
+                }
+               
                 break;
 
             case Weapon.Weapon_Shotgun:
-                FireShotgun();
+
+                if (Time.time - m_ShotgunTimeSinceLastShot >= m_ShotgunTimeBetweenShots && PlayerMove.m_ShotgunCurrentAmmo > 0)
+                {
+                    //Fire(); //Firing the Projectile 
+                    FireShotgun();
+                    m_ShotgunTimeSinceLastShot = Time.time; //Reseting the Time since last shot 
+                    PlayerMove.m_ShotgunCurrentAmmo--; //Adjusting Ammo Count 
+                }
+                
                 break;
 
             case Weapon.Weapon_Melee:
@@ -275,7 +290,39 @@ public class PlayerShooting : MonoBehaviour
 
     void Reload() //Reloads the Gun 
     {
-        PlayerMove.m_CurrentAmmo = PlayerMove.m_MaxAmmo;
+
+        switch (CurrentWeapon)
+        {
+            case Weapon.Weapon_Rifle:
+
+                if (PlayerMove.m_RifleAmmoSupply > 0 && PlayerMove.m_RifleCurrentAmmo <= PlayerMove.m_RifleMaxAmmo)
+                {
+                    PlayerMove.m_RifleCurrentAmmo++;
+                    PlayerMove.m_RifleAmmoSupply--;
+                }
+
+                break;
+
+            case Weapon.Weapon_Shotgun:
+
+
+                if (PlayerMove.m_ShotgunAmmoSupply > 0 && PlayerMove.m_ShotgunCurrentAmmo <= PlayerMove.m_ShotgunMaxAmmo)
+                {
+                    PlayerMove.m_ShotgunCurrentAmmo++;
+                    PlayerMove.m_ShotgunAmmoSupply--;
+                }
+                break;
+
+            case Weapon.Weapon_Melee:
+                
+                break;
+
+            default:
+                Debug.Log("no weapon selected");
+                break;
+                
+        }
+       
     }
 
     void GetProjectileSpread()
