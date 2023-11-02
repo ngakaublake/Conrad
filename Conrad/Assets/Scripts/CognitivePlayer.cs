@@ -120,7 +120,7 @@ public class CognitivePlayer : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy") && m_invulnerableCooldown == 0.0f)
         {
@@ -130,7 +130,7 @@ public class CognitivePlayer : MonoBehaviour
                 //Enter Restart mode.
                 ResetCognitivePlayer();
             }
-            m_invulnerableCooldown = 3.0f * Time.deltaTime;
+            m_invulnerableCooldown = 2.0f;
         }
     }
 
