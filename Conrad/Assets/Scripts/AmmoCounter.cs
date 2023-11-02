@@ -130,7 +130,7 @@ public class AmmoCounter : MonoBehaviour
             {
                 if (GameObject.Find(counter) == true)
                 {
-                    Debug.Log("Reload");
+                    //Debug.Log("Reload");
                     GameObject CurrentShell = GameObject.Find(counter);
                     //CurrentShell.SetActive(true);
                     Vector3 PosOffset = new Vector3(24.0f * i, 0.0f, 0.0f); //Offset between Sprites 

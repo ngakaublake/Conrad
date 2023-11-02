@@ -23,12 +23,15 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int m_spawnCount;           //The amount of creatures to spawn (ignored if spawnForever)
     [SerializeField] private float m_minimumSpawnTime;
     [SerializeField] private float m_maximumSpawnTime;
-    
+
+    private PlayerController playerController;
+
     public Transform SpawnerID;
     public GameObject spawnerHitbox;
     public GameObject triggerRange;
     public GameObject cognitivePlayer;
     private bool m_spawnerTriggered;
+    private int m_spawnCounter;
 
     private float m_timeUntilSpawn;
     private Vector2 m_spawnLocation;
@@ -47,52 +50,74 @@ public class EnemySpawner : MonoBehaviour
             m_minBoundary = spawnerHitbox.GetComponent<Renderer>().bounds.min;
             m_maxBoundary = spawnerHitbox.GetComponent<Renderer>().bounds.max;
         }
+        playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
+        m_spawnCounter = m_spawnCount;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (m_spawnerTriggered || m_spawnerHasTrigger == false)
+        if (playerController.m_IsPlayerinCognitiveWorld)
         {
-            m_timeUntilSpawn -= Time.deltaTime; //Slowly run down time
-        }
-
-        if (m_timeUntilSpawn <= 0)
-        {
-            if (m_spawnForever || m_spawnCount > 0)
+            if (m_spawnerTriggered || m_spawnerHasTrigger == false)
             {
-                //yaay
-                SpawnEnemy();
-                if (m_spawnCount > 0)
-                {
-                    m_spawnCount--;
-                }
+                m_timeUntilSpawn -= Time.deltaTime; //Slowly run down time
             }
-            SetTimeUntilSpawn();
-        }
 
-        if (triggerRange != null) 
-        {
-            Vector2 minBoundary = triggerRange.GetComponent<Collider2D>().bounds.min;
-            Vector2 maxBoundary = triggerRange.GetComponent<Collider2D>().bounds.max;
-            Collider2D[] colliders = Physics2D.OverlapAreaAll(minBoundary, maxBoundary);
-            foreach (Collider2D collider in colliders)
+            if (m_timeUntilSpawn <= 0)
             {
-                if (collider.gameObject == cognitivePlayer)
+                if (m_spawnForever || m_spawnCounter > 0)
                 {
-                    if (m_spawnerHasTrigger)
+                    //yaay
+                    SpawnEnemy();
+                    if (m_spawnCounter > 0)
                     {
-                        m_spawnerTriggered = true;
+                        m_spawnCounter--;
                     }
-                    // Handle what happens when the target overlaps with the TriggerRange
+                }
+                SetTimeUntilSpawn();
+            }
+
+            if (triggerRange != null)
+            {
+                Vector2 minBoundary = triggerRange.GetComponent<Collider2D>().bounds.min;
+                Vector2 maxBoundary = triggerRange.GetComponent<Collider2D>().bounds.max;
+                Collider2D[] colliders = Physics2D.OverlapAreaAll(minBoundary, maxBoundary);
+                foreach (Collider2D collider in colliders)
+                {
+                    if (collider.gameObject == cognitivePlayer)
+                    {
+                        if (m_spawnerHasTrigger)
+                        {
+                            m_spawnerTriggered = true;
+                        }
+                    }
                 }
             }
+        }
+        if (playerController.m_CognitiveWorldResetting)
+        {
+            //Resets.
+            ResetSpawner();
         }
     }
 
     private void SetTimeUntilSpawn()
     {
         m_timeUntilSpawn = UnityEngine.Random.Range(m_minimumSpawnTime, m_maximumSpawnTime);
+    }
+
+    private void ResetSpawner()
+    {
+        if (m_spawnCount > 0)
+        {
+            m_spawnCounter = m_spawnCount; //Reset spawncount
+        }
+        if (m_spawnerHasTrigger)
+        {
+            m_spawnerTriggered = false; //Reset spawncount
+        }
+        SetTimeUntilSpawn();
     }
 
     private void SpawnEnemy()
@@ -163,12 +188,3 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 }
-
-
-/*
- *  GameObject projectile = Instantiate(m_projectilePrefab, m_firePoint.position, m_firePoint.rotation);
- *  projectile.layer = 8;
- *  projectile.GetComponent<Renderer>().sortingLayerID = SortingLayer.NameToID("Player");
- *   Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
- *  if (GameObject.Find(counter) == true)
- */

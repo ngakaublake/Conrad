@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 103654970}
   m_Layer: 8
   m_Name: CognitivePlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -281,6 +281,7 @@ MonoBehaviour:
   m_ShotgunAmmoSupply: 69
   m_RifleCurrentAmmo: 0
   m_ShotgunCurrentAmmo: 0
+  m_maxHealth: 4
   ammoCounter: {fileID: 1247734079}
   animator: {fileID: 103654967}
 --- !u!95 &103654967
@@ -11100,11 +11101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2577017176201975095, guid: 6b7243578465e5f4181c88108e36c26d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 1
+      value: 8.77
       objectReference: {fileID: 0}
     - target: {fileID: 2577017176201975095, guid: 6b7243578465e5f4181c88108e36c26d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.094
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2577017176201975095, guid: 6b7243578465e5f4181c88108e36c26d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11121,6 +11122,10 @@ PrefabInstance:
     - target: {fileID: 2577017176201975100, guid: 6b7243578465e5f4181c88108e36c26d, type: 3}
       propertyPath: m_Name
       value: BasicEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2577017176201975100, guid: 6b7243578465e5f4181c88108e36c26d, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b7243578465e5f4181c88108e36c26d, type: 3}
