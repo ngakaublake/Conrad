@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Wall
+  - Bullet
+  - Enemy
+  - EnemyTargets
+  - Enemy Patrol Point
   layers:
   - Default
   - TransparentFX
