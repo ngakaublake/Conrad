@@ -30,7 +30,7 @@ public class HealthUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateHealthBar();
     }
 
     void UpdateHealthBar()
