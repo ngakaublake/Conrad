@@ -26,7 +26,7 @@ public class CognitivePlayer : MonoBehaviour
 
     public Text ammoCounter; //ammocounter UI
 
-    private int m_health;
+    public int m_health;
     private float m_invulnerableCooldown;
     //Rigidbody2D RB;
 

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class FogScript : MonoBehaviour
 {
+    public float m_FogSpeed = 0.2f;
 
     Rigidbody2D RB;
     
@@ -18,11 +19,13 @@ public class FogScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     
 
-        if (transform.position.x > 10)
+        transform.Translate(Vector3.right * m_FogSpeed * Time.deltaTime);
+
+        if (transform.position.x > 60)
         {
-            transform.position = new Vector2(-10, 0);
+            float YValue = Random.Range(5.5f, -5.2f);
+            transform.position = new Vector2(-60, YValue);
         }
     }
 }
