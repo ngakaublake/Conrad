@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     public float moveSpeed = 1.0f;
-    public float minimumDistance = 0.9f;
+    public float minimumDistance = 0.5f;
     int health = 2;
     float invulnerableCooldown = 0.0f;
 
@@ -106,6 +106,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        UnityEngine.Debug.Log("Please");
         if (collision.gameObject.CompareTag("Bullet") && invulnerableCooldown == 0.0f)
         {
             health = health - 1;
@@ -120,7 +121,7 @@ public class EnemyBehaviour : MonoBehaviour
                 //Die.
                 Destroy(gameObject);
             }
-            invulnerableCooldown = 3.0f;
+            invulnerableCooldown = 0.0f;
         }
     }
 

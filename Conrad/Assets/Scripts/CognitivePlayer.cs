@@ -28,6 +28,10 @@ public class CognitivePlayer : MonoBehaviour
 
     public int m_health;
     private float m_invulnerableCooldown;
+    public float m_TimeToCommitAction = 2.0f;
+    public bool m_CurrentlyComitting = false;
+    public float m_CommitActionTime = 0.0f;
+
     //Rigidbody2D RB;
 
     //Animator ref
@@ -92,6 +96,7 @@ public class CognitivePlayer : MonoBehaviour
         {
             MovePlayer();
             AimGun();
+            CommitingActions();
         }
 
         if (playerController.m_IsPlayerMoving == true)
@@ -115,7 +120,7 @@ public class CognitivePlayer : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Enemy") && m_invulnerableCooldown == 0.0f)
         {
@@ -125,9 +130,45 @@ public class CognitivePlayer : MonoBehaviour
                 //Enter Restart mode.
                 ResetCognitivePlayer();
             }
-            m_invulnerableCooldown = 3.0f * Time.deltaTime;
+            m_invulnerableCooldown = 2.0f;
         }
     }
+
+    void CommitingActions() //Handles all instances where the player is 'committing' to the action (Heal/Teleport)
+    {
+        //Heal is done with 'E'. Priortized over Teleport.
+        if (Input.GetKey(KeyCode.E) && playerController.m_CognitiveWorldResetting == false && m_health < 4)
+        {
+            m_CurrentlyComitting = true;
+            m_CommitActionTime += Time.deltaTime;
+            if (m_CommitActionTime >= m_TimeToCommitAction)
+            {
+                Debug.Log("Healed!");
+                m_CurrentlyComitting = false;
+                m_health++;
+                m_CommitActionTime = 0.0f;
+            }
+        }
+        else if (Input.GetKey(KeyCode.Q) && playerController.m_CognitiveWorldResetting == false)
+        {
+            m_CurrentlyComitting = true;
+            m_CommitActionTime += Time.deltaTime;
+            if (m_CommitActionTime >= m_TimeToCommitAction)
+            {
+                m_CurrentlyComitting = false;
+                Debug.Log("Vwoop!");
+                playerController.Teleport();
+                m_CommitActionTime = 0.0f;
+            }
+        }
+        else
+        {
+            //Not Commiting to an action currently.
+            m_CommitActionTime = 0.0f;
+        }
+
+    }
+
 
     private void ResetCognitivePlayer()
     {

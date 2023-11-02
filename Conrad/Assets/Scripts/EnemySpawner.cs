@@ -133,6 +133,7 @@ public class EnemySpawner : MonoBehaviour
             newEnemy.layer = 7;
             newEnemy.GetComponent<Renderer>().sortingLayerID = SortingLayer.NameToID("Enemies");
             EnemyBehaviour enemyScript = newEnemy.GetComponent<EnemyBehaviour>();
+            newEnemy.tag = "Enemy";
         }
         else if (m_spawnPositionSet)
         {
@@ -185,6 +186,7 @@ public class EnemySpawner : MonoBehaviour
             newEnemy.layer = 7;
             newEnemy.GetComponent<Renderer>().sortingLayerID = SortingLayer.NameToID("Enemies");
             EnemyBehaviour enemyScript = newEnemy.GetComponent<EnemyBehaviour>();
+            newEnemy.tag = "Enemy";
         }
     }
 }

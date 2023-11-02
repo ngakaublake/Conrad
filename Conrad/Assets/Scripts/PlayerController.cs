@@ -29,42 +29,14 @@ public class PlayerController : MonoBehaviour
 
     //public Animator animator;
 
-    Rigidbody2D RB;
+    private Transform dog;
+        Rigidbody2D RB;
 
     void MovePlayer() //Basic Player Movement
     {
         //Reseting the Movement Vectors
         m_VerticalMovement = Vector2.zero;
         m_HorizontalMovement = Vector2.zero;
-
-        //Teleport to second location
-        if (Input.GetKeyDown(KeyCode.Q) && m_CognitiveWorldResetting == false)
-        {
-            //Check the current location of the player.
-            if (m_IsPlayerinCognitiveWorld == true)
-            {
-                // Disable the current player in the Cognitive World and enable the player in the Real World
-                CognitivePlayer.SetActive(false);
-                RealPlayer.SetActive(true);
-
-                m_IsPlayerinCognitiveWorld = false;
-                transform.position = (m_RealWorldPosition);
-            }
-            else
-            {
-                // Disable the current player in the Real World and enable the player in the Cognitive World
-                RealPlayer.SetActive(false);
-                CognitivePlayer.SetActive(true);
-
-                m_IsPlayerinCognitiveWorld = true;
-
-                m_IsPlayerinCognitiveWorld = true;
-                transform.position = (m_CognitiveWorldPosition); //Move to Cognitive World
-            }
-        }
-
-
-
 
         //Getting the Direction Input 
         m_HorizontalMovement.x = 1.0f * Input.GetAxis("Horizontal");
@@ -77,10 +49,17 @@ public class PlayerController : MonoBehaviour
         //Apply the Velocity to the Player (RB)
         RB.velocity = Temp;
 
+        if (Input.GetKeyDown(KeyCode.Q) && m_IsPlayerinCognitiveWorld == false)
+        {
+            float distanceToDoggo = Vector2.Distance(transform.position, dog.position);
+            if (distanceToDoggo <= 0.5f)
+            {
+                Teleport();
+            }
+        }
 
-
-        //Checking if the Player is Moving
-        if (Temp.x == 0.0f && Temp.y == 0.0f)
+            //Checking if the Player is Moving
+            if (Temp.x == 0.0f && Temp.y == 0.0f)
         {
             m_IsPlayerMoving = false;
         }
@@ -104,6 +83,31 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void Teleport()
+    {
+        //Check the current location of the player.
+        if (m_IsPlayerinCognitiveWorld == true)
+        {
+            //Disable the current player in the Cognitive World and enable the player in the Real World
+            CognitivePlayer.SetActive(false);
+            RealPlayer.SetActive(true);
+
+            m_IsPlayerinCognitiveWorld = false;
+            transform.position = (m_RealWorldPosition);
+        }
+       else if (m_IsPlayerinCognitiveWorld == false)
+        {
+            // Disable the current player in the Real World and enable the player in the Cognitive World
+            RealPlayer.SetActive(false);
+            CognitivePlayer.SetActive(true);
+
+            m_IsPlayerinCognitiveWorld = true;
+
+            m_IsPlayerinCognitiveWorld = true;
+            transform.position = (m_CognitiveWorldPosition); //Move to Cognitive World
+        }
+    }
+
     void FollowCursor() // Aims the Player towards the Mouse Cursor
     {
         Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition); //Converts Screen Pos to World Pos
@@ -120,6 +124,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
+        dog = GameObject.FindGameObjectWithTag("Good Boy").transform;
         m_IsPlayerMoving = false;
         m_HorizontalVelocity = m_VelocityDefault;
         m_VerticalVelocity = m_VelocityDefault;

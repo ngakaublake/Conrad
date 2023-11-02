@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - EnemyTargets
   - Enemy Patrol Point
+  - Good Boy
   layers:
   - Default
   - TransparentFX
