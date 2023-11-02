@@ -120,7 +120,7 @@ public class EnemyBehaviour : MonoBehaviour
                 //Die.
                 Destroy(gameObject);
             }
-            invulnerableCooldown = 3.0f;
+            invulnerableCooldown = 0.0f;
         }
     }
 
