@@ -22,9 +22,12 @@ public class CognitivePlayer : MonoBehaviour
 
     public int m_RifleCurrentAmmo;
     public int m_ShotgunCurrentAmmo;
+    public int m_maxHealth = 4;
 
     public Text ammoCounter; //ammocounter UI
 
+    private int m_health;
+    private float m_invulnerableCooldown;
     //Rigidbody2D RB;
 
     //Animator ref
@@ -35,7 +38,7 @@ public class CognitivePlayer : MonoBehaviour
         if (playerController.m_IsPlayerinCognitiveWorld == true)
         {
             FOV.SetOrigin(transform.position); //Setting the Origin Position for the Vision Cone
-            
+
         }
     }
 
@@ -46,7 +49,7 @@ public class CognitivePlayer : MonoBehaviour
         FOV.SetAimDirection(aimDir);
 
         // Checking if the right mouse button is being held down 
-        if (Input.GetMouseButtonDown(1)) 
+        if (Input.GetMouseButtonDown(1))
         {
             FOV.UpdateFOV(); //Swaps FOV between 'Explore' & 'Combat' 
             m_IsPlayerAiming = true;
@@ -79,8 +82,8 @@ public class CognitivePlayer : MonoBehaviour
         m_RifleCurrentAmmo = m_RifleMaxAmmo;
         m_ShotgunCurrentAmmo = m_ShotgunMaxAmmo;
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
+        m_health = m_maxHealth;
 
-        
     }
 
     void Update()
@@ -93,16 +96,48 @@ public class CognitivePlayer : MonoBehaviour
 
         if (playerController.m_IsPlayerMoving == true)
         {
-            //Debug.Log("moving");
             animator.SetFloat("animSpeed", 1);
         }
         else
         {
-            //Debug.Log("standin");
             animator.SetFloat("animSpeed", 0);
         }
 
+        //Decrease Invulnerability
+        if (m_invulnerableCooldown > 0.0f)
+        {
+            m_invulnerableCooldown -= Time.deltaTime;
+
+            if (m_invulnerableCooldown <= 0.0f)
+            {
+                m_invulnerableCooldown = 0.0f; // Prevent Negative
+            }
+        }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy") && m_invulnerableCooldown == 0.0f)
+        {
+            m_health = m_health - 1;
+            if (m_health <= 0)
+            {
+                //Enter Restart mode.
+                ResetCognitivePlayer();
+            }
+            m_invulnerableCooldown = 3.0f * Time.deltaTime;
+        }
+    }
+
+    private void ResetCognitivePlayer()
+    {
+        //Reset Variables
+        m_RifleCurrentAmmo = m_RifleMaxAmmo;
+        m_ShotgunCurrentAmmo = m_ShotgunMaxAmmo;
+        m_health = m_maxHealth;
+
+        playerController.transform.position = playerController.m_IntialCognitiveWorldPosition;
+        playerController.ResetCognitive(true);
+    }
 
 }

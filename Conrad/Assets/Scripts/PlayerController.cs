@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -18,11 +19,13 @@ public class PlayerController : MonoBehaviour
     public float m_VelocityDefault = 1.0f;
     Vector2 m_HorizontalMovement;
     Vector2 m_VerticalMovement;
-    Vector2 m_IntialCognitiveWorldPosition; //Intial Position in Cognitive World, used to restart.
-    Vector2 m_CognitiveWorldPosition; //Position in Cognitive World.
-    Vector2 m_RealWorldPosition; //Position in Real World.
+    public Vector2 m_IntialCognitiveWorldPosition; //Intial Position in Cognitive World, used to restart.
+    public Vector2 m_CognitiveWorldPosition; //Position in Cognitive World.
+    public Vector2 m_RealWorldPosition; //Position in Real World.
     public bool m_IsPlayerinCognitiveWorld;
     public bool m_IsPlayerMoving;
+    public bool m_CognitiveWorldResetting = false;
+    public float m_CognitiveWorldResetCooldown = 1.0f;
 
     //public Animator animator;
 
@@ -35,7 +38,7 @@ public class PlayerController : MonoBehaviour
         m_HorizontalMovement = Vector2.zero;
 
         //Teleport to second location
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q) && m_CognitiveWorldResetting == false)
         {
             //Check the current location of the player.
             if (m_IsPlayerinCognitiveWorld == true)
@@ -121,7 +124,7 @@ public class PlayerController : MonoBehaviour
         m_HorizontalVelocity = m_VelocityDefault;
         m_VerticalVelocity = m_VelocityDefault;
         m_CognitiveWorldPosition = new Vector2(0.0f, 0.0f); //Set to spawn position in Cognitive World
-        m_RealWorldPosition = new Vector2(20.0f, 0.0f); //Set to spawn position in Real World.
+        m_RealWorldPosition = new Vector2(20.0f, 40.0f); //Set to spawn position in Real World.
         m_IsPlayerinCognitiveWorld = false;
         CognitivePlayer.SetActive(false);
         transform.position = m_RealWorldPosition;
@@ -129,17 +132,29 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        FollowCursor();
-        MovePlayer();
+        if (!m_CognitiveWorldResetting)
+        {
+            FollowCursor();
+            MovePlayer();
+        }
+        ResetCognitive(false); //Allows updating when reset is true
+    }
 
-        //if (m_IsPlayerinCognitiveWorld == true)
-        //{
-        //    animator.SetBool("isCognitive", true);
-        //}
-        //else
-        //{
-        //    animator.SetBool("isCognitive", false);
-        //}
+    public void ResetCognitive(bool resetConfirmation)
+    {
+        if (resetConfirmation)
+        {
+            m_CognitiveWorldResetting = resetConfirmation;
+        }
+        if (m_CognitiveWorldResetting)
+        {
+            m_CognitiveWorldResetCooldown -= Time.deltaTime* 2;
+            if (m_CognitiveWorldResetCooldown <= 0.0f)
+            {
+                m_CognitiveWorldResetting = false;
+              m_CognitiveWorldResetCooldown = 1.0f; // Reset
+            }
+        }
     }
 
 }

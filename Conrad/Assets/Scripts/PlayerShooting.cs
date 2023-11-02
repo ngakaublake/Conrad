@@ -254,7 +254,7 @@ public class PlayerShooting : MonoBehaviour
         }
 
 
-        Debug.Log(m_CurrentPosSpread);
+        //Debug.Log(m_CurrentPosSpread);
     }
 
     void WeaponBloom()
