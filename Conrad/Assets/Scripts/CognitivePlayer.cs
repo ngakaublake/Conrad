@@ -13,24 +13,35 @@ public class CognitivePlayer : MonoBehaviour
     private PlayerController playerController;
 
 
+    //Combat 
     public bool m_IsPlayerAiming;
 
+
+    //Ammo
     public int m_RifleMaxAmmo = 5;
     public int m_ShotgunMaxAmmo = 6;
     public int m_RifleAmmoSupply = 30;
     public int m_ShotgunAmmoSupply = 69;
-
     public int m_RifleCurrentAmmo;
     public int m_ShotgunCurrentAmmo;
-    public int m_maxHealth = 4;
 
     public Text ammoCounter; //ammocounter UI
 
+
+    //Health
     public int m_health;
+    public int m_maxHealth = 4;
+    public int m_MaxHealthKits = 4;
+    public int m_CurrentHealthKits = 0;
+
+   
+
+    //Actions
     private float m_invulnerableCooldown;
     public float m_TimeToCommitAction = 2.0f;
     public bool m_CurrentlyComitting = false;
     public float m_CommitActionTime = 0.0f;
+   
 
     //Rigidbody2D RB;
 
