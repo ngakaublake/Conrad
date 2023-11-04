@@ -66,7 +66,10 @@ public class Pickups : MonoBehaviour
                     break;
                 case PickupType.Pickup_RifleAmmo:
 
-
+                    GameObject rifleAmmoText = Instantiate(TextObject, transform.position, transform.rotation);
+                    //TextMesh theText = rifleAmmoText.GetComponent<TextMesh>();
+                    Text theText = rifleAmmoText.GetComponent<Text>();
+                    theText.text = TextPopup;
 
                     //TranslateText();
 
@@ -103,9 +106,10 @@ public class Pickups : MonoBehaviour
                     break;
                 case PickupType.Pickup_HealthKit:
 
-                    transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
+                    
                     if (Player.m_CurrentHealthKits < Player.m_MaxHealthKits)
                     {
+                        transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
                         Player.m_CurrentHealthKits++;
                     }
                     
@@ -117,6 +121,7 @@ public class Pickups : MonoBehaviour
 
     private void TranslateText()
     {
+        // HealthKitSpawn.transform.Rotate(0, 0, 0, Space.Self);
         GameObject rifleAmmoText = Instantiate(TextObject, transform.position, transform.rotation);
         TextMesh theText = rifleAmmoText.GetComponent<TextMesh>();
         theText.text = TextPopup;
