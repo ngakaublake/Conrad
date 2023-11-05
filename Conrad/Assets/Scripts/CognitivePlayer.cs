@@ -11,6 +11,7 @@ public class CognitivePlayer : MonoBehaviour
     [SerializeField] private PlayerVision FOV;
 
     private PlayerController playerController;
+   
 
 
     //Combat 
@@ -105,6 +106,7 @@ public class CognitivePlayer : MonoBehaviour
     {
         if (playerController != null && playerController.m_IsPlayerinCognitiveWorld == true)
         {
+          
             MovePlayer();
             AimGun();
             CommitingActions();

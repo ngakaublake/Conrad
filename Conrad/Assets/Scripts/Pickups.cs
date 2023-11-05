@@ -18,11 +18,14 @@ public class Pickups : MonoBehaviour
     public string TextPopup = "Description";
     public Text UIText;
     public GameObject TextObject;
+    public Transform TextTransform;
+    private GameObject rifleAmmoText;
 
 
     public PickupType PickupType; //Item Type 
 
     private bool isInRange; //Checks if player is in range of pickup
+    private bool isPickedUp = false; 
 
     //Object Refs 
     public CognitivePlayer Player;
@@ -33,7 +36,12 @@ public class Pickups : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        rifleAmmoText = Instantiate(TextObject, new Vector3(10000f, 10000.0f, 0.0f), transform.rotation, TextTransform);
+        //TextMesh theText = rifleAmmoText.GetComponent<TextMesh>();
+        Text theText = rifleAmmoText.GetComponent<Text>();
+        theText.text = TextPopup;
+        rifleAmmoText.name = TextPopup;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -66,19 +74,16 @@ public class Pickups : MonoBehaviour
                     break;
                 case PickupType.Pickup_RifleAmmo:
 
-                    GameObject rifleAmmoText = Instantiate(TextObject, transform.position, transform.rotation);
-                    //TextMesh theText = rifleAmmoText.GetComponent<TextMesh>();
-                    Text theText = rifleAmmoText.GetComponent<Text>();
-                    theText.text = TextPopup;
+                    
 
-                    //TranslateText();
+                    
 
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
                     for (int i = 0; i != 10; i++)
                     {
                         if (Player.m_RifleAmmoSupply < 45) 
                         {
-                            
+                            isPickedUp = true;
                             Player.m_RifleAmmoSupply++;
                         }
                     }
@@ -117,20 +122,25 @@ public class Pickups : MonoBehaviour
                 
             }
         }
+
+        if (isPickedUp == true)
+        {
+            TranslateText();
+
+            DestroyAfterDelay(5.0f);
+        }
     }
 
     private void TranslateText()
     {
-        // HealthKitSpawn.transform.Rotate(0, 0, 0, Space.Self);
-        GameObject rifleAmmoText = Instantiate(TextObject, transform.position, transform.rotation);
-        TextMesh theText = rifleAmmoText.GetComponent<TextMesh>();
-        theText.text = TextPopup;
+        rifleAmmoText.transform.Translate(Vector3.up * 10f * Time.deltaTime);
+    }
 
-        if (Time.time - m_TextCurrentTime <= m_TextMaxTime)
-        {
-            rifleAmmoText.transform.Translate(Vector3.up * 10f * Time.deltaTime);
-            m_TextCurrentTime = Time.time;  
-        }
-
+    private IEnumerator DestroyAfterDelay(float delay)
+    {
+        //Deletes object after 'delay' seconds.
+        //Used to delete BulletMask as it doesn't collide
+        yield return new WaitForSeconds(delay);
+        Destroy(rifleAmmoText);
     }
 }
