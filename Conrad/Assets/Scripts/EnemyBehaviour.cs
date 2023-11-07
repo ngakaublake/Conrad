@@ -106,7 +106,6 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        UnityEngine.Debug.Log("Please");
         if (collision.gameObject.CompareTag("Bullet") && invulnerableCooldown == 0.0f)
         {
             health = health - 1;
