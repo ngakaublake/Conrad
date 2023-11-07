@@ -20,12 +20,14 @@ public class PlayerController : MonoBehaviour
     Vector2 m_HorizontalMovement;
     Vector2 m_VerticalMovement;
     public Vector2 m_IntialCognitiveWorldPosition; //Intial Position in Cognitive World, used to restart.
+    public Vector2 m_IntialRealWorldPosition; //Intial Position in Cognitive World, used to restart.
     public Vector2 m_CognitiveWorldPosition; //Position in Cognitive World.
     public Vector2 m_RealWorldPosition; //Position in Real World.
     public bool m_IsPlayerinCognitiveWorld;
     public bool m_IsPlayerMoving;
     public bool m_CognitiveWorldResetting = false;
     public float m_CognitiveWorldResetCooldown = 1.0f;
+    public bool b_ForceTeleport = false;
 
     //public Animator animator;
 
@@ -52,7 +54,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && m_IsPlayerinCognitiveWorld == false)
         {
             float distanceToDoggo = Vector2.Distance(transform.position, dog.position);
-            if (distanceToDoggo <= 0.5f)
+            if (distanceToDoggo <= 0.8f)
             {
                 Teleport();
             }
@@ -108,6 +110,15 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void ScriptedTeleport(bool b_ForceTeleport)
+    {
+        //Reset only happens if confirmed true
+        if (b_ForceTeleport)
+        {
+            Teleport();
+        }
+    }
+
     void FollowCursor() // Aims the Player towards the Mouse Cursor
     {
         Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition); //Converts Screen Pos to World Pos
@@ -128,8 +139,8 @@ public class PlayerController : MonoBehaviour
         m_IsPlayerMoving = false;
         m_HorizontalVelocity = m_VelocityDefault;
         m_VerticalVelocity = m_VelocityDefault;
-        m_CognitiveWorldPosition = new Vector2(0.0f, 0.0f); //Set to spawn position in Cognitive World
-        m_RealWorldPosition = new Vector2(20.0f, 40.0f); //Set to spawn position in Real World.
+        m_CognitiveWorldPosition = m_IntialCognitiveWorldPosition; //Set to spawn position in Cognitive World
+        m_RealWorldPosition = m_IntialRealWorldPosition; //Set to spawn position in Real World.
         m_IsPlayerinCognitiveWorld = false;
         CognitivePlayer.SetActive(false);
         transform.position = m_RealWorldPosition;
@@ -147,9 +158,13 @@ public class PlayerController : MonoBehaviour
 
     public void ResetCognitive(bool resetConfirmation)
     {
+        //Reset only happens if confirmed true
         if (resetConfirmation)
         {
             m_CognitiveWorldResetting = resetConfirmation;
+            m_RealWorldPosition = m_IntialRealWorldPosition;
+            m_CognitiveWorldPosition = m_IntialCognitiveWorldPosition;
+            ScriptedTeleport(true); //Move to real world
         }
         if (m_CognitiveWorldResetting)
         {
