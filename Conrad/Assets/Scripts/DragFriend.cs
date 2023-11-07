@@ -49,7 +49,7 @@ public class DragFriend : MonoBehaviour
             DragMode = DragMode.Mode_Drag;
         }
 
-        if (isInRange == true && Input.GetKeyDown(KeyCode.E) && RandomDrop != 1) //Checking if the Player is in range of the Pickup & Checking for Player Input 
+        if (isInRange == true && Input.GetKey(KeyCode.E) && RandomDrop != 1) //Checking if the Player is in range of the Pickup & Checking for Player Input 
         {
 
 
