@@ -12,8 +12,9 @@ public class PlayerVision : MonoBehaviour
     private Vector3 m_Origin; 
     private float m_StartingAngle; 
     private float m_FOV = 90f; //Vision Cone FOV 
-    int m_RayCount = 720; //How Many Triangles in the Vision Cone - More = Smoother 
-    float m_ViewDistance = 3.0f; //View Distance for the Vision Cone 
+    int m_RayCount = 180; //How Many Triangles in the Vision Cone - More = Smoother 
+    float m_ViewDistance = 300.0f; //View Distance for the Vision Cone 
+    bool isStartUp = false;
 
     public Vector3 GetVectorFromAngle(float _angle) //Function to get a Vector3 from a Angle 
     {
@@ -37,12 +38,19 @@ public class PlayerVision : MonoBehaviour
  
     void Start()
     {
+       
         mesh = new Mesh();
         GetComponent<MeshFilter>().mesh = mesh;
     }
 
     void LateUpdate() //Ill add comments later - Patrick 
     {
+        //SetOrigin(m_Origin);
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            DontAskMeWhatThisIs();
+        }
         float currentAngle = m_StartingAngle;
         float increaseAngle = m_FOV / m_RayCount;
        
@@ -64,11 +72,13 @@ public class PlayerVision : MonoBehaviour
             if (rayCastHit.collider == null) //Checking if any Rays hit a Object 
             {
                 vertex = m_Origin + GetVectorFromAngle(currentAngle) * m_ViewDistance;
+              
             }
             else
             {
                 vertex = rayCastHit.point;
             }
+
 
 
             vertices[vertexIndex] = vertex;
@@ -95,7 +105,7 @@ public class PlayerVision : MonoBehaviour
 
     public void SetOrigin(Vector3 _origin)
     {
-        this.m_Origin = _origin; 
+        m_Origin = _origin; 
     }
 
     public void SetAimDirection(Vector3 _aimDirection)
@@ -119,5 +129,11 @@ public class PlayerVision : MonoBehaviour
            m_ViewDistance = 3.0f;
         }
         
+    }
+
+    public void DontAskMeWhatThisIs()
+    {
+        Debug.Log("Why no run");
+        m_ViewDistance = 3.0f;
     }
 }

@@ -51,6 +51,8 @@ public class CognitivePlayer : MonoBehaviour
 
     void MovePlayer() //Basic Player Movement
     {
+
+        
         if (playerController.m_IsPlayerinCognitiveWorld == true)
         {
             FOV.SetOrigin(transform.position); //Setting the Origin Position for the Vision Cone
@@ -104,6 +106,8 @@ public class CognitivePlayer : MonoBehaviour
 
     void Update()
     {
+
+
         if (playerController != null && playerController.m_IsPlayerinCognitiveWorld == true)
         {
           
@@ -172,6 +176,7 @@ public class CognitivePlayer : MonoBehaviour
                 Debug.Log("Vwoop!");
                 playerController.Teleport();
                 m_CommitActionTime = 0.0f;
+                FOV.DontAskMeWhatThisIs();
             }
         }
         else

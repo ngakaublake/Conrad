@@ -268,7 +268,7 @@ public class PlayerShooting : MonoBehaviour
                     
                 }
 
-                if (m_TimeSinceMeleeHeld <= 0.8f)
+                if (m_TimeSinceMeleeHeld <= 0.8f) 
                 {
                     m_TimeSinceMeleeHeld = 0.5f;
                 }
