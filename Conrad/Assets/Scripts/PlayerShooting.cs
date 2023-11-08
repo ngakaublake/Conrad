@@ -26,8 +26,11 @@ public class PlayerShooting : MonoBehaviour
     
 
     private RaycastHit2D[] m_MeleeHits;
+    [SerializeField] private Transform meeleTransform;
+    [SerializeField] private float meleeRange = 1.5f;
+    [SerializeField] private LayerMask attackableLayer;
 
-    public float m_MeleeAttackRange = 6.0f;
+    public float m_MeleeAttackRange = 1.5f;
 
     //Bullet Objects
     public GameObject m_projectilePrefab;
@@ -239,7 +242,25 @@ public class PlayerShooting : MonoBehaviour
 
     public void MeleeAttack()
     {
-        //m_MeleeHits = Physics2D.CircleCastAll(m_MeleePoint.position, m_MeleeAttackRange, transform.right, 0.0f)
+        m_MeleeHits = Physics2D.CircleCastAll(m_MeleePoint.position, m_MeleeAttackRange, transform.right, 0.0f, attackableLayer);
+
+        for (int i = 0; i < m_MeleeHits.Length; i++)
+        {
+            
+            EnemyDamageInterface iDamage = m_MeleeHits[i].collider.gameObject.GetComponent<EnemyDamageInterface>();
+
+            if (iDamage != null)
+            {
+                Debug.Log("Melee Hit");
+                iDamage.EnemyDamage(1);
+            }
+
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(meeleTransform.position, meleeRange) ;
     }
 
 

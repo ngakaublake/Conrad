@@ -341,7 +341,12 @@ MonoBehaviour:
   weaponUI: {fileID: 843508737}
   m_firePoint: {fileID: 1025692923}
   m_MeleePoint: {fileID: 881811881}
-  m_MeleeAttackRange: 6
+  meeleTransform: {fileID: 881811881}
+  meleeRange: 0.5
+  attackableLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  m_MeleeAttackRange: 0.5
   m_projectilePrefab: {fileID: 9159521743225563426, guid: d6fb339f0a0f4b0448ce384d756d51eb, type: 3}
   m_MaskPrefab: {fileID: 218837549441920747, guid: 1d1ce4fbb273f4a4790a7f325bde00c3, type: 3}
   m_projectileForce: 20
@@ -1564,6 +1569,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 476461200}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &502969469
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1269058366}
+    m_Modifications:
+    - target: {fileID: 469088219270571571, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_Name
+      value: ShotgunAmmoPickup (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 103654966}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: TextObject
+      value: 
+      objectReference: {fileID: 978191056}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: TextTransform
+      value: 
+      objectReference: {fileID: 978191057}
+    - target: {fileID: 7765776956640003226, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765776956640003226, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765776956640003226, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.025
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765776956640003226, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765776956640003226, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765776956640003226, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765776956640003226, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765776956640003226, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765776956640003226, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765776956640003226, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7765776956640003226, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c483d92914f443048bf2827acbc70194, type: 3}
 --- !u!1 &519719077
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,6 +1844,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &559519971 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7765776956640003226, guid: c483d92914f443048bf2827acbc70194, type: 3}
+  m_PrefabInstance: {fileID: 502969469}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &561188531
 GameObject:
   m_ObjectHideFlags: 0
@@ -2547,7 +2626,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 881811881}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MeleePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9020,6 +9099,7 @@ Transform:
   - {fileID: 1501193138}
   - {fileID: 1403584033}
   - {fileID: 52668950}
+  - {fileID: 559519971}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14152,7 +14232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7100213316174659235, guid: 6ae55e10c723d374ca2abea9c7422e84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.12
+      value: -2.13
       objectReference: {fileID: 0}
     - target: {fileID: 7100213316174659235, guid: 6ae55e10c723d374ca2abea9c7422e84, type: 3}
       propertyPath: m_LocalPosition.z

@@ -4,11 +4,11 @@ using System.Diagnostics;
 using System.Security.Cryptography;
 using UnityEngine;
 
-public class EnemyBehaviour : MonoBehaviour
+public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
 {
     public float moveSpeed = 1.0f;
     public float minimumDistance = 0.5f;
-    int health = 2;
+    float health = 2;
     float invulnerableCooldown = 0.0f;
 
     private float playerTargetZone = 4.0f;
@@ -137,5 +137,15 @@ public class EnemyBehaviour : MonoBehaviour
         patrolPoints[1] = patrolPoints[0];
         patrolPoints[0] = secondNearestPatrolPoint;
         switchPatrolPoint = 12.0f; // Reset the timer.
+    }
+
+    public void EnemyDamage(float _dmg)
+    {
+        health = health - 0.5f;
+
+        if (health <= 0 )
+        {
+            Destroy(gameObject);
+        }
     }
 }
