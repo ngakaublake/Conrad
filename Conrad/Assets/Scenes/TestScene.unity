@@ -342,11 +342,11 @@ MonoBehaviour:
   m_firePoint: {fileID: 1025692923}
   m_MeleePoint: {fileID: 881811881}
   meeleTransform: {fileID: 881811881}
-  meleeRange: 0.5
+  meleeRange: 0.2
   attackableLayer:
     serializedVersion: 2
     m_Bits: 128
-  m_MeleeAttackRange: 0.5
+  m_MeleeAttackRange: 0.2
   m_projectilePrefab: {fileID: 9159521743225563426, guid: d6fb339f0a0f4b0448ce384d756d51eb, type: 3}
   m_MaskPrefab: {fileID: 218837549441920747, guid: 1d1ce4fbb273f4a4790a7f325bde00c3, type: 3}
   m_projectileForce: 20
@@ -362,6 +362,9 @@ MonoBehaviour:
   m_RifleTimeSinceLastShot: 0
   m_TimeBetweenSpread: 0.2
   m_TimeSinceLastSpread: 0
+  m_TimeSinceMeleeHeld: 0
+  m_TimeMaxHoldMelee: 1.5
+  m_IsHoldingMelee: 0
   animator: {fileID: 103654967}
   CurrentWeapon: 0
 --- !u!114 &103654966
@@ -2641,7 +2644,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 881811880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.21, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -59,6 +59,11 @@ public class PlayerShooting : MonoBehaviour
     public float m_TimeBetweenSpread = 0.2f;
     public float m_TimeSinceLastSpread = 0.0f;
 
+    //Melee Timers
+    public float m_TimeSinceMeleeHeld = 0.0f;
+    public float m_TimeMaxHoldMelee = 1.5f;
+    public bool m_IsHoldingMelee = false;
+
     //Animator ref
     public Animator animator;
 
@@ -102,10 +107,17 @@ public class PlayerShooting : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift)) //melee keybind and animations
         {
             animator.SetBool("isMelee", true);
+            m_TimeSinceMeleeHeld = m_TimeSinceMeleeHeld + 1.0f * Time.deltaTime;
+           
+            if (m_TimeSinceMeleeHeld >= m_TimeMaxHoldMelee)
+            {
+                Debug.Log("MAX DMG");
+            }
         }
         else
         {
             animator.SetBool("isMelee", false);
+           
         }
 
         if (Input.GetButtonDown("Reload")) // Not working need to fix 
@@ -146,7 +158,7 @@ public class PlayerShooting : MonoBehaviour
                 break;
 
             case Weapon.Weapon_Melee:
-                MeleeAttack();
+                //MeleeAttack();
                 break;
 
             default:
@@ -246,16 +258,38 @@ public class PlayerShooting : MonoBehaviour
 
         for (int i = 0; i < m_MeleeHits.Length; i++)
         {
-            
             EnemyDamageInterface iDamage = m_MeleeHits[i].collider.gameObject.GetComponent<EnemyDamageInterface>();
 
             if (iDamage != null)
             {
-                Debug.Log("Melee Hit");
-                iDamage.EnemyDamage(1);
+                if (m_TimeSinceMeleeHeld >= m_TimeMaxHoldMelee) //Setting the Damage to the Max Value if Charge time == max 
+                {
+                    m_TimeSinceMeleeHeld = m_TimeMaxHoldMelee + +0.5f;
+                    
+                }
+
+                if (m_TimeSinceMeleeHeld <= 0.8f)
+                {
+                    m_TimeSinceMeleeHeld = 0.5f;
+                }
+                else if (m_TimeSinceMeleeHeld >= 0.81f && m_TimeSinceMeleeHeld <= 1.4f)
+                {
+                    m_TimeSinceMeleeHeld = 1.0f;
+                }
+                else if (m_TimeSinceMeleeHeld >= 1.41f && m_TimeSinceMeleeHeld < 2.0f)
+                {
+                    m_TimeSinceMeleeHeld = 1.5f;
+                }
+
+                Debug.Log(m_TimeSinceMeleeHeld);
+                iDamage.EnemyDamage(m_TimeSinceMeleeHeld);
+                
             }
 
         }
+
+        m_TimeSinceMeleeHeld = 0.0f;
+        Debug.Log(m_TimeSinceMeleeHeld);
     }
 
     private void OnDrawGizmosSelected()

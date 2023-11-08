@@ -141,7 +141,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
 
     public void EnemyDamage(float _dmg)
     {
-        health = health - 0.5f;
+        health = health - _dmg;
 
         if (health <= 0 )
         {
