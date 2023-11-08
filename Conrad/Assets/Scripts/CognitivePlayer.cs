@@ -153,8 +153,8 @@ public class CognitivePlayer : MonoBehaviour
 
     void CommitingActions() //Handles all instances where the player is 'committing' to the action (Heal/Teleport)
     {
-        //Heal is done with 'E'. Priortized over Teleport.
-        if (Input.GetKey(KeyCode.E) && playerController.m_CognitiveWorldResetting == false && m_health < 4)
+        //Heal is done with 'F'. Priortized over Teleport.
+        if (Input.GetKey(KeyCode.F) && playerController.m_CognitiveWorldResetting == false && m_health < 4 && m_CurrentHealthKits > 0)
         {
             m_CurrentlyComitting = true;
             m_CommitActionTime += Time.deltaTime;
@@ -162,7 +162,8 @@ public class CognitivePlayer : MonoBehaviour
             {
                 Debug.Log("Healed!");
                 m_CurrentlyComitting = false;
-                m_health++;
+                m_health = 4;
+                m_CurrentHealthKits--;
                 m_CommitActionTime = 0.0f;
             }
         }

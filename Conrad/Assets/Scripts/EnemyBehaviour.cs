@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
 {
+    [SerializeField] private GameObject Corpse;
     public float moveSpeed = 1.0f;
     public float minimumDistance = 0.5f;
     float health = 2;
@@ -17,11 +18,14 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     private Transform[] patrolPoints;
 
     private PlayerController playerController;
-
+    private SpriteRenderer spriteRenderer; //Resize
+    public float spriteSizeMultiplier = 2.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         playerController = FindObjectOfType<PlayerController>();
 
         GameObject[] patrolPointGameObjects = GameObject.FindGameObjectsWithTag("Enemy Patrol Point");
@@ -90,6 +94,10 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
             else
             {
                 //Enemy Attack when in range
+
+                //Add Animation here? or toggle something else?
+
+
             }
         }
         else if (enemyTargets.Length > 0 && Vector2.Distance(transform.position, enemyTargets[0].transform.position) <= targetTargetZone)
@@ -115,7 +123,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
                 Vector2 deathLocation = transform.position;
                 Quaternion spawnRotation = transform.rotation;
                 //Make Corpse at location (when Corpse set up)
-                //Instantiate(yourCorpsePrefab, deathLocation, spawnRotation);
+                Instantiate(Corpse, deathLocation, spawnRotation);
 
                 //Die.
                 Destroy(gameObject);
