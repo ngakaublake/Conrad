@@ -8,7 +8,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
 {
     [SerializeField] private GameObject Corpse;
     public float moveSpeed = 1.0f;
-    public float minimumDistance = 0.5f;
+    public float minimumDistance = 1.7f;
     float health = 2;
     float invulnerableCooldown = 0.0f;
 
@@ -24,6 +24,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     private float AttackTime;
 
     private PlayerController playerController;
+    public CognitivePlayer cognitivePlayer;
     private SpriteRenderer spriteRenderer; //Resize
     public float spriteSizeMultiplier = 2.0f;
 
@@ -31,6 +32,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        cognitivePlayer = FindObjectOfType<CognitivePlayer>();
 
         playerController = FindObjectOfType<PlayerController>();
 
@@ -93,15 +95,20 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
         //Attacking whilst in range
         if (PerformingAttack)
         {
-            UnityEngine.Debug.Log("Engage!");
+            UnityEngine.Debug.Log("prep");
             AttackTime -= 1.0f * Time.deltaTime;
             if (AttackTime < 0.0f)
             {
                 //Charged up, now perform attack!
+                float distanceToPlayer = Vector2.Distance(transform.position, cognitivePlayer.transform.position);
+                if (distanceToPlayer <= minimumDistance)
+                {
+                    cognitivePlayer.LoseHealth();
+                    UnityEngine.Debug.Log("attackhits!");
+                }
                 currentMinDistance = 0.1f;
                 AttackDamages = true;
-                UnityEngine.Debug.Log("attackhits!");
-                if (AttackTime < -8.0f)
+                if (AttackTime < -1.0f)
                 {
                     currentMinDistance = minimumDistance;
                     AttackDamages = false;
@@ -149,7 +156,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
                 Vector2 deathLocation = transform.position;
                 Quaternion spawnRotation = transform.rotation;
                 //Make Corpse at location (when Corpse set up)
-                Instantiate(Corpse, deathLocation, spawnRotation);
+                //Instantiate(Corpse, deathLocation, spawnRotation);
 
                 //Die.
                 Destroy(gameObject);
