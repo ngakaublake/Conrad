@@ -16227,6 +16227,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 103654961}
+    - target: {fileID: 2577017176201975094, guid: 6b7243578465e5f4181c88108e36c26d, type: 3}
+      propertyPath: AttackChargeTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2577017176201975095, guid: 6b7243578465e5f4181c88108e36c26d, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

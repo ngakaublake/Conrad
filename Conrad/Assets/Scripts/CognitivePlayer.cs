@@ -141,13 +141,18 @@ public class CognitivePlayer : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy") && m_invulnerableCooldown == 0.0f)
         {
-            m_health = m_health - 1;
-            if (m_health <= 0)
+            EnemyBehaviour enemyController = collision.gameObject.GetComponent<EnemyBehaviour>();
+
+            if (enemyController != null && enemyController.AttackDamages)
             {
-                //Enter Restart mode.
-                ResetCognitivePlayer();
+                m_health = m_health - 1;
+                if (m_health <= 0)
+                {
+                    //Enter Restart mode.
+                    ResetCognitivePlayer();
+                }
+                m_invulnerableCooldown = 2.0f;
             }
-            m_invulnerableCooldown = 2.0f;
         }
     }
 
@@ -192,8 +197,6 @@ public class CognitivePlayer : MonoBehaviour
     private void ResetCognitivePlayer()
     {
         //Reset Variables
-        m_RifleCurrentAmmo = m_RifleMaxAmmo;
-        m_ShotgunCurrentAmmo = m_ShotgunMaxAmmo;
         m_health = m_maxHealth;
 
         playerController.transform.position = playerController.m_IntialCognitiveWorldPosition;

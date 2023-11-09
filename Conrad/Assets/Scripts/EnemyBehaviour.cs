@@ -17,6 +17,12 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     private float switchPatrolPoint = 0.0f; //How long it will take until it looks for patrolling again
     private Transform[] patrolPoints;
 
+    private float currentMinDistance = 0.5f;
+    private bool PerformingAttack;
+    public bool AttackDamages;
+    public float AttackChargeTime;
+    private float AttackTime;
+
     private PlayerController playerController;
     private SpriteRenderer spriteRenderer; //Resize
     public float spriteSizeMultiplier = 2.0f;
@@ -28,6 +34,8 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
 
         playerController = FindObjectOfType<PlayerController>();
 
+        AttackTime = AttackChargeTime;
+        currentMinDistance = minimumDistance;
         GameObject[] patrolPointGameObjects = GameObject.FindGameObjectsWithTag("Enemy Patrol Point");
         patrolPoints = new Transform[patrolPointGameObjects.Length];
 
@@ -82,6 +90,27 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
             }
         }
 
+        //Attacking whilst in range
+        if (PerformingAttack)
+        {
+            UnityEngine.Debug.Log("Engage!");
+            AttackTime -= 1.0f * Time.deltaTime;
+            if (AttackTime < 0.0f)
+            {
+                //Charged up, now perform attack!
+                currentMinDistance = 0.1f;
+                AttackDamages = true;
+                UnityEngine.Debug.Log("attackhits!");
+                if (AttackTime < -8.0f)
+                {
+                    currentMinDistance = minimumDistance;
+                    AttackDamages = false;
+                    PerformingAttack = false;
+                    AttackTime = AttackChargeTime;
+                }
+            }
+        }
+
 
         //Target Selection
         if (Vector2.Distance(transform.position, playerController.m_CognitiveWorldPosition) <= playerTargetZone)
@@ -94,10 +123,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
             else
             {
                 //Enemy Attack when in range
-
-                //Add Animation here? or toggle something else?
-
-
+                PerformingAttack = true;
             }
         }
         else if (enemyTargets.Length > 0 && Vector2.Distance(transform.position, enemyTargets[0].transform.position) <= targetTargetZone)
