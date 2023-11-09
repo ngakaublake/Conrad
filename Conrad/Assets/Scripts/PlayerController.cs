@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     public bool m_CognitiveWorldResetting = false;
     public float m_CognitiveWorldResetCooldown = 1.0f;
     public bool b_ForceTeleport = false;
+    public bool b_beginTeleport;
+    private bool b_currentlyTeleporting;
+    public SpriteRenderer s_overlaysprite;
 
     //public Animator animator;
 
@@ -54,9 +57,10 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q) && m_IsPlayerinCognitiveWorld == false)
         {
             float distanceToDoggo = Vector2.Distance(transform.position, dog.position);
-            if (distanceToDoggo <= 0.8f)
+            if (distanceToDoggo <= 0.8f && !b_beginTeleport)
             {
-                Teleport();
+                b_beginTeleport = true;
+                StartCoroutine(TeleportAfterDelay(3f));
             }
         }
 
@@ -85,8 +89,15 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    IEnumerator TeleportAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Teleport();
+    }
+
     public void Teleport()
     {
+        b_beginTeleport = false;
         //Check the current location of the player.
         if (m_IsPlayerinCognitiveWorld == true)
         {
@@ -174,6 +185,37 @@ public class PlayerController : MonoBehaviour
                 m_CognitiveWorldResetting = false;
               m_CognitiveWorldResetCooldown = 1.0f; // Reset
             }
+        }
+
+        //Overlay for Teleporting
+        if (b_beginTeleport && !b_currentlyTeleporting)
+        {
+            StartCoroutine(TeleportVisuals(3f));
+        }
+        else if (!b_beginTeleport)
+        {
+            StopCoroutine("TeleportVisuals");
+            Color transparentColour = new Color(s_overlaysprite.color.r, s_overlaysprite.color.g, s_overlaysprite.color.b, 0f);
+            s_overlaysprite.color = transparentColour;
+            b_currentlyTeleporting = false;
+        }
+
+        IEnumerator TeleportVisuals(float TeleportTime)
+        {
+            b_currentlyTeleporting = true;
+            float elapsedTime = 0f;
+            Color transparentColour = new Color(s_overlaysprite.color.r, s_overlaysprite.color.g, s_overlaysprite.color.b, 0f);
+            Color VisibleColour = new Color(transparentColour.r, transparentColour.g, transparentColour.b, 0.8f); //Opaque
+            yield return new WaitForSeconds(1f);
+            while (elapsedTime < TeleportTime && b_beginTeleport)
+            {
+                //Colour
+                s_overlaysprite.color = Color.Lerp(transparentColour, VisibleColour, elapsedTime / TeleportTime);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            s_overlaysprite.color = VisibleColour; // Ensure it reaches the fully opaque state
+            s_overlaysprite.color = transparentColour;
         }
     }
 

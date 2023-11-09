@@ -12,6 +12,7 @@ TagManager:
   - Good Boy
   - PlayerReach
   - ConradIII
+  - PlayerCanHit
   layers:
   - Default
   - TransparentFX

@@ -38,6 +38,7 @@ public class CognitivePlayer : MonoBehaviour
 
     //Actions
     private float m_invulnerableCooldown;
+    public float m_NoWarpCooldown;
     public float m_TimeToCommitAction = 2.0f;
     public bool m_CurrentlyComitting = false;
     public float m_CommitActionTime = 0.0f;
@@ -147,6 +148,17 @@ public class CognitivePlayer : MonoBehaviour
                 m_invulnerableCooldown = 0.0f; // Prevent Negative
             }
         }
+        //Decrease NoWarp Cooldown
+        if (m_NoWarpCooldown > 0.0f)
+        {
+            m_NoWarpCooldown -= 1*Time.deltaTime;
+
+            if (m_NoWarpCooldown <= 0.0f)
+            {
+                UnityEngine.Debug.Log("Can Warp Again");
+                m_NoWarpCooldown = 0.0f; // Prevent Negative
+            }
+        }
     }
 
     public void LoseHealth()
@@ -155,12 +167,13 @@ public class CognitivePlayer : MonoBehaviour
         {
             //Whatever funky effect here
             m_health = m_health - 1;
+            m_NoWarpCooldown = 3.0f;
             if (m_health <= 0)
             {
                 //Enter Restart mode.
                 ResetCognitivePlayer();
             }
-            m_invulnerableCooldown = 2.0f;
+            m_invulnerableCooldown = 10.0f;
         }
     }
 
@@ -188,13 +201,15 @@ public class CognitivePlayer : MonoBehaviour
                 }
             }
         }
-        else if (Input.GetKey(KeyCode.Q) && playerController.m_CognitiveWorldResetting == false)
+        else if (Input.GetKey(KeyCode.Q) && playerController.m_CognitiveWorldResetting == false && m_NoWarpCooldown == 0)
         {
             m_CurrentlyComitting = true;
+            playerController.b_beginTeleport = true;
             m_CommitActionTime += Time.deltaTime;
             if (m_CommitActionTime >= m_TimeToCommitAction)
             {
                 m_CurrentlyComitting = false;
+                playerController.b_beginTeleport = false;
                 Debug.Log("Vwoop!");
                 playerController.Teleport();
                 m_CommitActionTime = 0.0f;
@@ -205,6 +220,7 @@ public class CognitivePlayer : MonoBehaviour
         {
             //Not Commiting to an action currently.
             m_CommitActionTime = 0.0f;
+            playerController.b_beginTeleport = false;
         }
 
     }
