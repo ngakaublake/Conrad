@@ -21,6 +21,16 @@ public class PlayerProjectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.collider.CompareTag("PlayerCanHit"))
+        {
+            DestroyablePlayerObject hitScript = collision.collider.GetComponent<DestroyablePlayerObject>();
+            if (hitScript != null)
+            {
+                // Bullet hits Object
+                hitScript.GetHit();
+            }
+        }
+
         //collision.collider.
         //Destroys bullet on collision/
         Destroy(gameObject);
