@@ -84,6 +84,12 @@ public class CognitivePlayer : MonoBehaviour
             playerController.m_VerticalVelocity = 0.5f;
         }
 
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            playerController.m_HorizontalVelocity = 1f;
+            playerController.m_VerticalVelocity = 1f;
+        }
+
 
         if (Input.GetMouseButtonUp(1))
         {
