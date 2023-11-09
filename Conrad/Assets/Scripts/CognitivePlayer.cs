@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Permissions;
 using UnityEditor.Rendering;
 using UnityEngine;
 
@@ -11,8 +12,7 @@ public class CognitivePlayer : MonoBehaviour
     [SerializeField] private PlayerVision FOV;
 
     private PlayerController playerController;
-   
-
+    private GameObject ConradIII;
 
     //Combat 
     public bool m_IsPlayerAiming;
@@ -27,7 +27,6 @@ public class CognitivePlayer : MonoBehaviour
     public int m_ShotgunCurrentAmmo;
 
     public Text ammoCounter; //ammocounter UI
-
 
     //Health
     public int m_health;
@@ -101,7 +100,7 @@ public class CognitivePlayer : MonoBehaviour
         m_ShotgunCurrentAmmo = m_ShotgunMaxAmmo;
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
         m_health = m_maxHealth;
-
+        ConradIII = GameObject.FindGameObjectWithTag("ConradIII"); //Makes sure I know where Conrad is for Act III
     }
 
     void Update()
@@ -137,10 +136,11 @@ public class CognitivePlayer : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    public void LoseHealth()
     {
-        if (collision.gameObject.CompareTag("Enemy") && m_invulnerableCooldown == 0.0f)
+        if (m_invulnerableCooldown == 0.0f) 
         {
+            //Whatever funky effect here
             m_health = m_health - 1;
             if (m_health <= 0)
             {
@@ -151,19 +151,28 @@ public class CognitivePlayer : MonoBehaviour
         }
     }
 
+
     void CommitingActions() //Handles all instances where the player is 'committing' to the action (Heal/Teleport)
     {
-        //Heal is done with 'E'. Priortized over Teleport.
-        if (Input.GetKey(KeyCode.E) && playerController.m_CognitiveWorldResetting == false && m_health < 4)
+        //Heal is done with 'Space'. Priortized over Teleport.
+        if (Input.GetKey(KeyCode.Space) && playerController.m_CognitiveWorldResetting == false && m_health < 4 && m_CurrentHealthKits > 0)
         {
             m_CurrentlyComitting = true;
             m_CommitActionTime += Time.deltaTime;
             if (m_CommitActionTime >= m_TimeToCommitAction)
             {
-                Debug.Log("Healed!");
-                m_CurrentlyComitting = false;
-                m_health++;
-                m_CommitActionTime = 0.0f;
+                if (ConradIII != null && Vector2.Distance(transform.position, ConradIII.transform.position) <= 4f)
+                {
+                    // Heal
+                    ConradIII.GetComponent<ConradHealScript>().IncreaseHealth();
+                }
+                else
+                {
+                    m_CurrentlyComitting = false;
+                    m_health = 4;
+                    m_CurrentHealthKits--;
+                    m_CommitActionTime = 0.0f;
+                }
             }
         }
         else if (Input.GetKey(KeyCode.Q) && playerController.m_CognitiveWorldResetting == false)
@@ -191,8 +200,6 @@ public class CognitivePlayer : MonoBehaviour
     private void ResetCognitivePlayer()
     {
         //Reset Variables
-        m_RifleCurrentAmmo = m_RifleMaxAmmo;
-        m_ShotgunCurrentAmmo = m_ShotgunMaxAmmo;
         m_health = m_maxHealth;
 
         playerController.transform.position = playerController.m_IntialCognitiveWorldPosition;

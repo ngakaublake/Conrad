@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
 {
+    [SerializeField] private GameObject Corpse;
     public float moveSpeed = 1.0f;
-    public float minimumDistance = 0.5f;
+    public float minimumDistance = 1.7f;
     float health = 2;
     float invulnerableCooldown = 0.0f;
 
@@ -16,14 +17,27 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     private float switchPatrolPoint = 0.0f; //How long it will take until it looks for patrolling again
     private Transform[] patrolPoints;
 
-    private PlayerController playerController;
+    private float currentMinDistance = 0.5f;
+    private bool PerformingAttack;
+    public bool AttackDamages;
+    public float AttackChargeTime;
+    private float AttackTime;
 
+    private PlayerController playerController;
+    public CognitivePlayer cognitivePlayer;
+    private SpriteRenderer spriteRenderer; //Resize
+    public float spriteSizeMultiplier = 2.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        cognitivePlayer = FindObjectOfType<CognitivePlayer>();
+
         playerController = FindObjectOfType<PlayerController>();
 
+        AttackTime = AttackChargeTime;
+        currentMinDistance = minimumDistance;
         GameObject[] patrolPointGameObjects = GameObject.FindGameObjectsWithTag("Enemy Patrol Point");
         patrolPoints = new Transform[patrolPointGameObjects.Length];
 
@@ -78,6 +92,32 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
             }
         }
 
+        //Attacking whilst in range
+        if (PerformingAttack)
+        {
+            UnityEngine.Debug.Log("prep");
+            AttackTime -= 1.0f * Time.deltaTime;
+            if (AttackTime < 0.0f)
+            {
+                //Charged up, now perform attack!
+                float distanceToPlayer = Vector2.Distance(transform.position, cognitivePlayer.transform.position);
+                if (distanceToPlayer <= minimumDistance)
+                {
+                    cognitivePlayer.LoseHealth();
+                    UnityEngine.Debug.Log("attackhits!");
+                }
+                currentMinDistance = 0.1f;
+                AttackDamages = true;
+                if (AttackTime < -1.0f)
+                {
+                    currentMinDistance = minimumDistance;
+                    AttackDamages = false;
+                    PerformingAttack = false;
+                    AttackTime = AttackChargeTime;
+                }
+            }
+        }
+
 
         //Target Selection
         if (Vector2.Distance(transform.position, playerController.m_CognitiveWorldPosition) <= playerTargetZone)
@@ -90,6 +130,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
             else
             {
                 //Enemy Attack when in range
+                PerformingAttack = true;
             }
         }
         else if (enemyTargets.Length > 0 && Vector2.Distance(transform.position, enemyTargets[0].transform.position) <= targetTargetZone)
@@ -115,7 +156,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
                 Vector2 deathLocation = transform.position;
                 Quaternion spawnRotation = transform.rotation;
                 //Make Corpse at location (when Corpse set up)
-                //Instantiate(yourCorpsePrefab, deathLocation, spawnRotation);
+                //Instantiate(Corpse, deathLocation, spawnRotation);
 
                 //Die.
                 Destroy(gameObject);
