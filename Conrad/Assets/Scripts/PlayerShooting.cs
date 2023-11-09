@@ -212,6 +212,9 @@ public class PlayerShooting : MonoBehaviour
 
         m_firePoint.transform.Rotate(0, 0, (-1 * m_CurrentSpread), Space.Self); //Reseting the Projectile Spawn Angle to 0 
 
+        //Player cannot teleport whilst in this state
+        PlayerMove.m_NoWarpCooldown = 10.0f;
+
     }
 
     void FireShotgun()
@@ -249,6 +252,9 @@ public class PlayerShooting : MonoBehaviour
             //rbMask.AddForce(m_firePoint.up * m_projectileForce, ForceMode2D.Impulse);
 
             m_firePoint.transform.Rotate(0, 0, (-1 * ShotGunSpread), Space.Self); //Reseting the Projectile Spawn Angle to 0 
+            
+            //Player cannot teleport whilst in this state
+            PlayerMove.m_NoWarpCooldown = 10.0f;
         }
     }
 

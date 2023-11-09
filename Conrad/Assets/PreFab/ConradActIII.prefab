@@ -12,10 +12,8 @@ GameObject:
   - component: {fileID: 547198761716045408}
   - component: {fileID: 547198761716045343}
   - component: {fileID: 547198761716045342}
-  - component: {fileID: 547198761716045341}
   - component: {fileID: 547198761716045340}
-  - component: {fileID: 547198761716045409}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: ConradActIII
   m_TagString: ConradIII
   m_Icon: {fileID: 0}
@@ -131,18 +129,6 @@ CircleCollider2D:
   m_Offset: {x: 0.014780045, y: -0.008060455}
   serializedVersion: 2
   m_Radius: 0.14392853
---- !u!114 &547198761716045341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547198761716045338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09d22500024eac940a072dbe4f5ccf6a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &547198761716045340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,18 +141,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c72e5809610f08d4e97ae88aeb3343f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &547198761716045409
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547198761716045338}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2967a93c36d05334497d6a43e8e2ea39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DragMode: 0
-  Player: {fileID: 0}
-  RandomDrop: 6
