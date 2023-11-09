@@ -140,7 +140,11 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
         else
         {
             //Goes towards current Patrol point (patrolpoint[0]).
-            transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].transform.position, moveSpeed * Time.deltaTime);
+            if (patrolPoints.Length >= 2)
+            {
+
+                transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].transform.position, moveSpeed * Time.deltaTime);
+            }
         }
     }
 

@@ -42,17 +42,7 @@ public class InteractionHitbox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (m_AutoShow)
-        {
-            if (Vector2.Distance(transform.position, playerController.transform.position) < 1f)
-            {
-                ShowInteractionText();
-            }
-        }
-        else if (Input.GetKeyDown(KeyCode.G) && Vector2.Distance(transform.position, playerController.transform.position) < 1f)
-        {
-            ShowInteractionText();
-        }
+        ProcessInteraction();
     }
     void ShowInteractionText()
     {
@@ -64,5 +54,38 @@ public class InteractionHitbox : MonoBehaviour
     void HideInteractionText()
     {
         interactionText.gameObject.SetActive(false);
+    }
+
+    void ProcessInteraction()
+    {
+        if (m_AutoShow)
+        {
+            if (Vector2.Distance(transform.position, playerController.transform.position) < 1f)
+            {
+                ShowInteractionText();
+                CustomEvent();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.G) && Vector2.Distance(transform.position, playerController.transform.position) < 1f)
+        {
+            ShowInteractionText();
+            CustomEvent();
+        }
+    }
+
+    void CustomEvent()
+    {
+        //Some IDs refer to a custom event. When the player either enters the range or whatever, the event should trigger.
+        switch (m_ID)
+        {
+            case 1001:
+                break;
+            case 1002:
+                break;
+            case 6:
+                break;
+            default:
+                break;
+        }
     }
 }
