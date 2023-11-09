@@ -78,6 +78,13 @@ public class CognitivePlayer : MonoBehaviour
             playerController.m_VerticalVelocity = 0.5f;
         }
 
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            playerController.m_HorizontalVelocity = 0.5f;
+            playerController.m_VerticalVelocity = 0.5f;
+        }
+
+
         if (Input.GetMouseButtonUp(1))
         {
             FOV.UpdateFOV(); //Swaps FOV between 'Explore' & 'Combat' 
