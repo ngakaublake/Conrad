@@ -7,8 +7,8 @@ public class DestroyablePlayerObject : MonoBehaviour
     public Sprite[] sprites; //An Array!
     private SpriteRenderer spriteRenderer;
     private Vector2 m_InitalPosition;
-    public int m_initialHealth = 6;
-    public int m_health = 6;
+    public int m_initialHealth = 4;
+    public int m_health = 4;
     private PlayerController playerController;
     public int currentSpriteIndex = 0;
 
@@ -33,6 +33,11 @@ public class DestroyablePlayerObject : MonoBehaviour
         if (playerController.m_CognitiveWorldResetting)
         {
             //Respawn!
+            Collider2D collider = GetComponent<Collider2D>();
+            if (collider != null)
+            {
+                collider.enabled = true;
+            }
             m_health = m_initialHealth;
             transform.position = m_InitalPosition;
         }
@@ -46,8 +51,11 @@ public class DestroyablePlayerObject : MonoBehaviour
         m_health = m_health - 1;
         if (m_health <= 0)
         {
-        //Get Banished to the ShadowRealm, Jimbo
-         transform.position = new Vector2(-60, -60);
+            Collider2D collider = GetComponent<Collider2D>();
+            if (collider != null)
+            {
+                collider.enabled = false;
+            }
         }
     }
 }
