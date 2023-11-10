@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
 {
     [SerializeField] private GameObject Corpse;
+    public bool b_enemyrespawns;
     public float moveSpeed = 1.0f;
     public float minimumDistance = 1.7f;
     float health = 2;
@@ -17,6 +18,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     private float switchPatrolPoint = 0.0f; //How long it will take until it looks for patrolling again
     private Transform[] patrolPoints;
 
+    private Vector2 spawnpoint;
     private float currentMinDistance = 0.5f;
     private bool PerformingAttack;
     public bool AttackDamages;
@@ -33,6 +35,9 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         cognitivePlayer = FindObjectOfType<CognitivePlayer>();
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
+        spawnpoint = rb.position;
 
         playerController = FindObjectOfType<PlayerController>();
 
@@ -68,8 +73,16 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
 
         if (playerController.m_CognitiveWorldResetting)
         {
-            //Dies.
-            Destroy(gameObject);
+            if (b_enemyrespawns)
+            {
+                //Respawn!
+                health = 2;
+                transform.position = spawnpoint;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -190,7 +203,15 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
 
         if (health <= 0 )
         {
-            Destroy(gameObject);
+            if (b_enemyrespawns)
+            {
+                //Get Banished to the ShadowRealm, Jimbo
+                transform.position = new Vector2(-60, -60);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

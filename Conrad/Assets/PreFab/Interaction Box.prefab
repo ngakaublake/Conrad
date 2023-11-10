@@ -101,8 +101,10 @@ MonoBehaviour:
   m_InteractionText: Fridge
   m_ID: 5
   m_AutoShow: 1
-  m_textPosition: {x: 21, y: 38}
+  m_isInRange: 0
+  m_textPosition: {x: 0.7, y: -0.6}
   interactionText: {fileID: 0}
+  CogDog: {fileID: 0}
 --- !u!61 &6725319368280650806
 BoxCollider2D:
   m_ObjectHideFlags: 0
