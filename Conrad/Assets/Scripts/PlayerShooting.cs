@@ -83,6 +83,8 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
+        animator.SetInteger("ammoSupply", PlayerMove.m_ShotgunAmmoSupply);
+        animator.SetInteger("shellCount", PlayerMove.m_ShotgunCurrentAmmo);
         WeaponCheck(); //What weapon is being used for animations)
 
         WeaponBloom();
@@ -120,15 +122,9 @@ public class PlayerShooting : MonoBehaviour
            
         }
 
-        if (Input.GetButtonDown("Reload")) // Not working need to fix 
-        {
-            Reload();
-        }
-
         if (Input.GetKeyDown(KeyCode.R)) //Reload && PlayerMove.m_CurrentAmmo != PlayerMove.m_MaxAmmo
         {
             animator.SetTrigger("reload"); //set shared player animation trigger to reload
-            Reload();
         }
     }
 
@@ -344,10 +340,13 @@ public class PlayerShooting : MonoBehaviour
     {
         if (PlayerMove.m_ShotgunAmmoSupply > 0 && PlayerMove.m_ShotgunCurrentAmmo <= PlayerMove.m_ShotgunMaxAmmo)
         {
+            animator.SetInteger("ammoSupply", PlayerMove.m_ShotgunAmmoSupply);
+            animator.SetInteger("shellCount", PlayerMove.m_ShotgunCurrentAmmo);
             PlayerMove.m_ShotgunCurrentAmmo++;
             PlayerMove.m_ShotgunAmmoSupply--;
-            animator.SetInteger("shellCount", PlayerMove.m_ShotgunCurrentAmmo);
-            animator.SetInteger("ammoSupply", PlayerMove.m_ShotgunAmmoSupply);
+            
+
+
         }
     }
 

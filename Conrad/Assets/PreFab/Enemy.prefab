@@ -143,12 +143,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Corpse: {fileID: 3306259655652628505, guid: 55103538ccf743a41a690693b4541808, type: 3}
+  b_enemyrespawns: 0
   moveSpeed: 0.8
   minimumDistance: 0.6
   AttackDamages: 0
   AttackChargeTime: 5
   cognitivePlayer: {fileID: 0}
   spriteSizeMultiplier: 2
+  animator: {fileID: 5308599085096966388}
 --- !u!95 &5308599085096966388
 Animator:
   serializedVersion: 4

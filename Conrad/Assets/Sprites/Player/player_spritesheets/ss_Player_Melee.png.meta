@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 243f016d4c9595541b6684037de161a6
+guid: cb7bb3585e15f6c47bae7631caf9c7b8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -69,7 +69,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 8192
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -117,12 +117,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ss_Player_Real_0
+      name: ss_Player_Melee_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 96
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -131,19 +131,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00a8189ef527fb7499263fac46bc3305
-      internalID: 628796710
+      spriteID: e2c4a307c2de26640a03369fd80d5dba
+      internalID: 560421351
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ss_Player_Real_1
+      name: ss_Player_Melee_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 96
         y: 0
-        width: 64
+        width: 96
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -152,40 +152,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d33ba5d7e9a5a804a88d5c7c51c25cee
-      internalID: -522780024
+      spriteID: 3d6561f8ed97b24458cd32b3ecc2efae
+      internalID: -811967650
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ss_Player_Real_2
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fc0ab766e25f9da48a5102a3966830a4
-      internalID: 1880900612
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ss_Player_Real_3
+      name: ss_Player_Melee_2
       rect:
         serializedVersion: 2
         x: 192
         y: 0
-        width: 64
+        width: 96
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -194,19 +173,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72f3076118848f74b8102d476b9ad0a7
-      internalID: -77995309
+      spriteID: 9abedec6cc59a7a4e8995cd79fef93dc
+      internalID: -1688119050
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ss_Player_Real_4
+      name: ss_Player_Melee_3
       rect:
         serializedVersion: 2
-        x: 256
+        x: 288
         y: 0
-        width: 64
+        width: 96
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -215,40 +194,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 546f9ab67a8ca004597ab3fa23139cbd
-      internalID: -947270899
+      spriteID: aeaf0170502f0e7408f8d9178c1505ac
+      internalID: 860858679
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ss_Player_Real_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da80bc14b8c6b144985783dee5a5346e
-      internalID: -428046359
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ss_Player_Real_6
+      name: ss_Player_Melee_4
       rect:
         serializedVersion: 2
         x: 384
         y: 0
-        width: 64
+        width: 96
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -257,8 +215,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0a56b0d4029f6af4ead0581c9841094b
-      internalID: -772308385
+      spriteID: a75ccba1aaa267748819458d4cf8f10a
+      internalID: 757415860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ss_Player_Melee_5
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a86740c0ff60e84b94abac33cd07949
+      internalID: 2070547661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ss_Player_Melee_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c19c868efa13ba74a9cf465910327c82
+      internalID: 1356951640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ss_Player_Melee_7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d768a20080ff7094290371d4479bebd5
+      internalID: -1264162633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ss_Player_Melee_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc7c919f5abd83a4ab1450eabef565b7
+      internalID: 1526898223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ss_Player_Melee_9
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 96
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88a57afd136dc7b4cbe19ab9d453d08a
+      internalID: 886044968
       vertices: []
       indices: 
       edges: []
@@ -274,13 +337,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ss_Player_Real_3: -77995309
-      ss_Player_Real_6: -772308385
-      ss_Player_Real_0: 628796710
-      ss_Player_Real_5: -428046359
-      ss_Player_Real_1: -522780024
-      ss_Player_Real_2: 1880900612
-      ss_Player_Real_4: -947270899
+      ss_Player_Melee_9: 886044968
+      ss_Player_Melee_7: -1264162633
+      ss_Player_Melee_5: 2070547661
+      ss_Player_Melee_2: -1688119050
+      ss_Player_Melee_1: -811967650
+      ss_Player_Melee_6: 1356951640
+      ss_Player_Melee_3: 860858679
+      ss_Player_Melee_0: 560421351
+      ss_Player_Melee_4: 757415860
+      ss_Player_Melee_8: 1526898223
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

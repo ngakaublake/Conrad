@@ -30,6 +30,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     private SpriteRenderer spriteRenderer; //Resize
     public float spriteSizeMultiplier = 2.0f;
 
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
@@ -132,6 +133,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
         }
 
 
+
         //Target Selection
         if (Vector2.Distance(transform.position, playerController.m_CognitiveWorldPosition) <= playerTargetZone)
         {
@@ -143,7 +145,8 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
             else
             {
                 //Enemy Attack when in range
-                PerformingAttack = true;
+                //performingAttack = true;
+                animator.SetTrigger("attack");
             }
         }
         else if (enemyTargets.Length > 0 && Vector2.Distance(transform.position, enemyTargets[0].transform.position) <= targetTargetZone)
@@ -161,6 +164,15 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
         }
     }
 
+    void Attack() //function called on enemy strike frame
+    {
+        float distanceToPlayer = Vector2.Distance(transform.position, cognitivePlayer.transform.position);
+        if (distanceToPlayer <= minimumDistance)
+        {
+            cognitivePlayer.LoseHealth();
+            UnityEngine.Debug.Log("attackhits!");
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -173,7 +185,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
                 Vector2 deathLocation = transform.position;
                 Quaternion spawnRotation = transform.rotation;
                 //Make Corpse at location (when Corpse set up)
-                //Instantiate(Corpse, deathLocation, spawnRotation);
+                Instantiate(Corpse, deathLocation, spawnRotation);
 
                 //Die.
                 Destroy(gameObject);
