@@ -37,6 +37,7 @@ public class InteractionHitbox : MonoBehaviour
         {
             m_isInRange = false;
         }
+        HideInteractionText();
     }
 
 
@@ -48,7 +49,6 @@ public class InteractionHitbox : MonoBehaviour
     void ShowInteractionText()
     {
         interactionText.text = m_InteractionText; // Set
-        interactionText.rectTransform.anchoredPosition = m_textPosition; // Move
         interactionText.gameObject.SetActive(true); // Show
         UnityEngine.Debug.Log("Interaction Text: " + m_InteractionText);
     }
@@ -63,12 +63,16 @@ public class InteractionHitbox : MonoBehaviour
         {
             if (Vector2.Distance(transform.position, playerController.transform.position) < 1f)
             {
+                Vector2 playerPosition = playerController.transform.position;
+                Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)playerPosition + new Vector3(m_textPosition.x, m_textPosition.y, 0f));
+                interactionText.rectTransform.position = screenPosition;
                 ShowInteractionText();
                 CustomEvent();
             }
         }
         else if (Input.GetKeyDown(KeyCode.Q) && Vector2.Distance(transform.position, playerController.transform.position) < 1f)
         {
+            StartCoroutine(MoveTextTowardsPlayer());
             ShowInteractionText();
             CustomEvent();
         }
@@ -87,7 +91,7 @@ public class InteractionHitbox : MonoBehaviour
                 {
                     CogDog.DogBooksItDownTheHallwayScriptedEvent();
                 }
-                    break;
+                break;
             case 2002:
                 //Destroy self after three seconds- text only appears once.
                 StartCoroutine(DestroyAfterDelay(3f));
@@ -104,5 +108,20 @@ public class InteractionHitbox : MonoBehaviour
         yield return new WaitForSeconds(delay);
         HideInteractionText();
         Destroy(gameObject);
+    }
+
+    IEnumerator MoveTextTowardsPlayer()
+    {
+        float elapsedTime = 0f;
+        float duration = 3f; // Adjust the duration as needed
+
+        while (elapsedTime < duration)
+        {
+            Vector2 playerPosition = playerController.transform.position;
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)playerPosition + new Vector3(m_textPosition.x, m_textPosition.y, 0f));
+            interactionText.rectTransform.position = screenPosition;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
     }
 }
