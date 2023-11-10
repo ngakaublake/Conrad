@@ -50,7 +50,6 @@ public class InteractionHitbox : MonoBehaviour
     {
         interactionText.text = m_InteractionText; // Set
         interactionText.gameObject.SetActive(true); // Show
-        UnityEngine.Debug.Log("Interaction Text: " + m_InteractionText);
     }
     void HideInteractionText()
     {
