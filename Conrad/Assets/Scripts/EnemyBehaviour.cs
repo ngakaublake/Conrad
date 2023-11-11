@@ -213,6 +213,8 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     {
         health = health - _dmg;
 
+        
+
         if (health <= 0 )
         {
             if (b_enemyrespawns)

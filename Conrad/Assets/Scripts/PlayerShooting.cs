@@ -118,6 +118,8 @@ public class PlayerShooting : MonoBehaviour
         }
         else
         {
+
+            //MeleeAttack();
             animator.SetBool("isMelee", false);
            
         }
@@ -256,14 +258,15 @@ public class PlayerShooting : MonoBehaviour
 
     public void MeleeAttack()
     {
-        m_MeleeHits = Physics2D.CircleCastAll(m_MeleePoint.position, m_MeleeAttackRange, transform.right, 0.0f, attackableLayer);
+        m_MeleeHits = Physics2D.CircleCastAll(m_MeleePoint.position, m_MeleeAttackRange, transform.right, 0.0f, attackableLayer); //Melee Arc (Circle Object)
 
-        for (int i = 0; i < m_MeleeHits.Length; i++)
+        for (int i = 0; i < m_MeleeHits.Length; i++) //Checking if the Circle Hits Antyhing 
         {
-            EnemyDamageInterface iDamage = m_MeleeHits[i].collider.gameObject.GetComponent<EnemyDamageInterface>();
+            EnemyDamageInterface iDamage = m_MeleeHits[i].collider.gameObject.GetComponent<EnemyDamageInterface>(); 
 
             if (iDamage != null)
             {
+                
                 if (m_TimeSinceMeleeHeld >= m_TimeMaxHoldMelee) //Setting the Damage to the Max Value if Charge time == max 
                 {
                     m_TimeSinceMeleeHeld = m_TimeMaxHoldMelee + +0.5f;
@@ -291,7 +294,7 @@ public class PlayerShooting : MonoBehaviour
         }
 
         m_TimeSinceMeleeHeld = 0.0f;
-        Debug.Log(m_TimeSinceMeleeHeld);
+        
     }
 
     private void OnDrawGizmosSelected()
