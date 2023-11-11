@@ -25,7 +25,7 @@ public class FogScript : MonoBehaviour
 
         if (transform.position.x > m_EndPosX)
         {
-            float YValue = Random.Range(5.5f, -5.2f);
+            float YValue = Random.Range(3, 0);
             transform.position = new Vector2(m_StartPosX, YValue);
         }
     }
