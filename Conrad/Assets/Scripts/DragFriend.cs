@@ -14,6 +14,7 @@ public class DragFriend : MonoBehaviour
     private bool isInRange; //Checks if player is in range of pickup
     public DragMode DragMode;
     public CognitivePlayer Player;
+    public PlayerController PlayerController;
     Vector3 DragOffset = new Vector3(0.0f, 0.2f, 0.0f);
     public int RandomDrop;
 
@@ -57,7 +58,8 @@ public class DragFriend : MonoBehaviour
             {
                 case DragMode.Mode_Drag:
                     transform.position = Player.transform.position - DragOffset;
-                    
+                    PlayerController.m_HorizontalVelocity = 0.5f;
+                    PlayerController.m_VerticalVelocity = 0.5f;
                     break;
                 case DragMode.Mode_Drop:
                    
