@@ -2768,7 +2768,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -21.55}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28.111, y: -8.917}
+  m_AnchoredPosition: {x: 28.498, y: -8.917}
   m_SizeDelta: {x: 2.15, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &708688916
@@ -4693,20 +4693,6 @@ MonoBehaviour:
   Conrad: {fileID: 2050187126}
   m_Line1: I say something at this point!
   m_Line2: 
-  m_Line3: 
-  m_Line4: 
-  m_Line5: 
-  m_Line6: 
-  m_Line7: 
-  m_Line8: 
-  m_Line9: 
-  m_Line10: 
-  m_Line11: 
-  m_Line12: 
-  m_Line13: 
-  m_Line14: 
-  m_Line15: 
-  m_Line16: 
 --- !u!4 &1101193525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7757710969794858175, guid: b45289e444dc5584c9d955c4514f1ed1, type: 3}
@@ -36918,6 +36904,7 @@ MonoBehaviour:
   Player: {fileID: 103654966}
   PlayerController: {fileID: 0}
   RandomDrop: 0
+  b_dragEnabled: 0
 --- !u!224 &2132595188 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1925800936097492848, guid: 249c7af283c55a048909095bcf8ec578, type: 3}
