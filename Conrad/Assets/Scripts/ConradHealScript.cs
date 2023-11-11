@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class ConradHealScript : MonoBehaviour
 {
-    private int m_Health;
+    [SerializeField] private PlayerController playerController;
+    public int m_health;
+    public int m_maxHealth;
     // Start is called before the first frame update
     void Start()
     {
-        m_Health = 4;
+        m_health = m_maxHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (playerController.m_CognitiveWorldResetting) //Respawn
+        {
+            m_health = m_maxHealth;
+        }
     }
     public void IncreaseHealth()
     {
-        m_Health = 4;
+        m_health = m_maxHealth;
     }
     public void LoseHealth()
     {
-        m_Health--;
+        m_health--;
     }
 }

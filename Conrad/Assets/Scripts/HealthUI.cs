@@ -8,11 +8,15 @@ public class HealthUI : MonoBehaviour
 {
     //Player Refrence 
     [SerializeField] private CognitivePlayer cognitivePlayer;
+    [SerializeField] private ConradHealScript conradActIII;
 
     //Health Bar
     public GameObject HeathBar;
     public Vector3 HealthBarPos;
     public Transform HealthBarSpawn;
+
+    //ConradBar
+    public GameObject ConradHP;
 
     //Health Kit 
     public Vector3 HealthKitPos;
@@ -33,7 +37,18 @@ public class HealthUI : MonoBehaviour
             GameObject newHealthBar = Instantiate(HeathBar, HealthBarPos, HealthBarSpawn.rotation, HealthBarSpawn); //Creating the Object 
             newHealthBar.name = "HealthBar" + i; //Setting the Object Name 
         }
-
+        if (conradActIII != null)
+        {
+            for (int i = 0; i != conradActIII.m_maxHealth; i++) //Spawn Conrad Health Bar
+            {
+                HealthBarSpawn.transform.Rotate(0, 0, 0, Space.Self);
+                Vector2 PosOffset = new Vector2(2.0f * i, 2.0f); //Offset between Sprites 
+                Vector2 conradPosition = conradActIII.transform.position;
+                HealthBarPos  = conradPosition + PosOffset;
+                GameObject newConradHP = Instantiate(ConradHP, HealthBarPos, HealthBarSpawn.rotation);
+                newConradHP.name = "ConradHP" + i;
+            }
+        }
         
         //Spawning the Health Kit to the UI 
         HealthKitSpawn.transform.Rotate(0, 0, 0, Space.Self);
@@ -56,6 +71,10 @@ public class HealthUI : MonoBehaviour
     {
         UpdateHealthBar();
         UpdateHealthKits();
+        if (conradActIII != null)
+        {
+            UpdateConradHealthBar();
+        }
     }
 
     void UpdateHealthBar()
@@ -83,6 +102,36 @@ public class HealthUI : MonoBehaviour
                     Vector3 PosOffset = new Vector3(76.0f * i, 0.0f, 0.0f); //Offset between Sprites 
 
                     CurrentHealthBar.transform.position = HealthBarSpawn.transform.position + PosOffset;
+                }
+            }
+        }
+    }
+
+    void UpdateConradHealthBar()
+    {
+        for (int i = 0; i != conradActIII.m_maxHealth; i++)
+        {
+            string counter = "ConradHP" + i;
+
+            if (conradActIII.m_health <= i)
+            {
+                if (GameObject.Find(counter) == true)
+                {
+                    GameObject CurrentHealthBar = GameObject.Find(counter);
+                    //CurrentShell.SetActive(false);
+                    CurrentHealthBar.transform.position = new Vector3(10000f, 10000.0f, 0.0f);
+                }
+            }
+            else
+            {
+                if (GameObject.Find(counter) == true)
+                {
+
+                    GameObject CurrentHealthBar = GameObject.Find(counter);
+                    //CurrentShell.SetActive(true);
+                    Vector2 PosOffset = new Vector2(-0.5f+(0.3f * i), 0.6f); //Offset between Sprites 
+                    Vector2 conradPosition = conradActIII.transform.position;
+                    CurrentHealthBar.transform.position = conradPosition + PosOffset;
                 }
             }
         }
