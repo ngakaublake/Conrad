@@ -119,7 +119,6 @@ public class PlayerShooting : MonoBehaviour
         else
         {
 
-            MeleeAttack();
             animator.SetBool("isMelee", false);
            
         }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FogRenderSettings : MonoBehaviour
 {
-    public GameObject m_FogRef;
+    public GameObject m_FogRef1;
+    public GameObject m_FogRef2;
     private bool isInRange; //Checks if player is in range of pickup
     // Start is called before the first frame update
     void Start()
@@ -33,11 +34,13 @@ public class FogRenderSettings : MonoBehaviour
     {
         if (isInRange == true)
         {
-            m_FogRef.GetComponent<SpriteRenderer>().enabled = false;
+            m_FogRef1.GetComponent<SpriteRenderer>().enabled = false;
+            m_FogRef2.GetComponent<SpriteRenderer>().enabled = false;
         }
         else
         {
-            m_FogRef.GetComponent<SpriteRenderer>().enabled = true;
+            m_FogRef1.GetComponent<SpriteRenderer>().enabled = true;
+            m_FogRef2.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 }
