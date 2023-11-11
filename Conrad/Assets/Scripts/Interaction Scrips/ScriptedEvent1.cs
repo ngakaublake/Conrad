@@ -15,6 +15,7 @@ public class ScriptedEvent1 : MonoBehaviour
     [SerializeField] private Text interactionText;
     [SerializeField] private DogBehaviour CogDog;
     [SerializeField] private DragFriend Conrad;
+    public FuseBox FuseRef;
 
 
     //Conversations in Act II
@@ -87,16 +88,17 @@ public class ScriptedEvent1 : MonoBehaviour
             Conrad.TriggerConradRunEvent();
         }
 
+        FuseRef.isFuseActive = !FuseRef.isFuseActive;
 
-        GameObject fuseDoorYellow = GameObject.Find("FuseDoorYellow#4");
-        if (fuseDoorYellow != null)
-        {
-            FuseDoor fuseDoorScript = fuseDoorYellow.GetComponent<FuseDoor>();
-            if (fuseDoorScript != null)
-            {
-                fuseDoorScript.Scripted1CloseDoor();
-            }
-        }
+        //GameObject fuseDoorYellow = GameObject.Find("FuseDoorYellow#4");
+        //if (fuseDoorYellow != null)
+        //{
+        //    FuseDoor fuseDoorScript = fuseDoorYellow.GetComponent<FuseDoor>();
+        //    if (fuseDoorScript != null)
+        //    {
+        //        fuseDoorScript.Scripted1CloseDoor();
+        //    }
+        //}
     }
 
     IEnumerator DestroyAfterDelay(float delay)
