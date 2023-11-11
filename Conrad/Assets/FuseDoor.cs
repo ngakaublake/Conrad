@@ -33,5 +33,11 @@ public class FuseDoor : MonoBehaviour
             m_IsDoorOpen = !m_IsDoorOpen; //Setting the Current State of the Door 
         }
       
+
+       
     }
+
+    
 }
+
+
