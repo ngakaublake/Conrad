@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public bool b_ForceTeleport = false;
     public bool b_beginTeleport;
     private bool b_currentlyTeleporting;
+    private bool b_canmove;
     public SpriteRenderer s_overlaysprite;
 
     //public Animator animator;
@@ -155,6 +156,7 @@ public class PlayerController : MonoBehaviour
         m_IsPlayerinCognitiveWorld = false;
         CognitivePlayer.SetActive(false);
         transform.position = m_RealWorldPosition;
+        b_canmove = true;
     }
 
     void Update()
@@ -162,7 +164,10 @@ public class PlayerController : MonoBehaviour
         if (!m_CognitiveWorldResetting)
         {
             FollowCursor();
-            MovePlayer();
+            if (b_canmove)
+            {
+                MovePlayer();
+            }
         }
         ResetCognitive(false); //Allows updating when reset is true
     }
@@ -217,6 +222,25 @@ public class PlayerController : MonoBehaviour
             s_overlaysprite.color = VisibleColour; // Ensure it reaches the fully opaque state
             s_overlaysprite.color = transparentColour;
         }
+    }
+
+
+
+    public void StopMoving(int _time)
+    {
+        if (b_canmove)
+        {
+            b_canmove = false;
+            RB.velocity = new Vector2 (0,0);
+            m_IsPlayerMoving = false;
+
+            StartCoroutine(StartMoving(_time));
+        }
+    }
+    private IEnumerator StartMoving(int _delay)
+    {
+        yield return new WaitForSeconds(_delay);
+        b_canmove = true;
     }
 
 }

@@ -173,7 +173,7 @@ public class CognitivePlayer : MonoBehaviour
                 //Enter Restart mode.
                 ResetCognitivePlayer();
             }
-            m_invulnerableCooldown = 10.0f;
+            m_invulnerableCooldown = 1.0f;
         }
     }
 

@@ -101,7 +101,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8417265555619130974}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   moveSpeed: 0.8
   minimumDistance: 0.6
   AttackDamages: 0
-  AttackChargeTime: 5
+  AttackChargeTime: 20
   cognitivePlayer: {fileID: 0}
   spriteSizeMultiplier: 2
   animator: {fileID: 5308599085096966388}
