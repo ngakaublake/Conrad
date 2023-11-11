@@ -6,7 +6,7 @@ public class FuseDoor : MonoBehaviour
 {
 
     public FuseBox m_FuseBoxRef; //Fuse Box Ref 
-    private bool m_IsDoorOpen;
+    public bool m_IsDoorOpen;
     public bool m_DoorDefaultState; //Sets the Doors Default State : TRUE = ACTIVE // FALSE = INACTIVE
 
     // Start is called before the first frame update
@@ -35,6 +35,12 @@ public class FuseDoor : MonoBehaviour
       
 
        
+    }
+
+    public void Scripted1CloseDoor()
+    {
+        m_DoorDefaultState = false;
+        m_IsDoorOpen = m_DoorDefaultState;
     }
 
     

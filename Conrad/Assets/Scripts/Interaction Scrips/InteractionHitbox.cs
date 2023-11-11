@@ -13,7 +13,6 @@ public class InteractionHitbox : MonoBehaviour
     private PlayerController playerController;
     [SerializeField] private Vector2 m_textPosition;
     [SerializeField] private Text interactionText;
-    [SerializeField] private DogBehaviour CogDog;
 
     // Start is called before the first frame update
     void Start()
@@ -84,13 +83,6 @@ public class InteractionHitbox : MonoBehaviour
         //20XX: One-Time Event
         switch (m_ID)
         {
-            case 1001:
-                //Dog Books it down Hallway, Friend Follows after a second or two
-                if (CogDog != null)
-                {
-                    CogDog.DogBooksItDownTheHallwayScriptedEvent();
-                }
-                break;
             case 2002:
                 //Destroy self after three seconds- text only appears once.
                 StartCoroutine(DestroyAfterDelay(3f));
@@ -112,7 +104,7 @@ public class InteractionHitbox : MonoBehaviour
     IEnumerator MoveTextTowardsPlayer()
     {
         float elapsedTime = 0f;
-        float duration = 3f; // Adjust the duration as needed
+        float duration = 3f; // How long Text lasts
 
         while (elapsedTime < duration)
         {
