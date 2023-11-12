@@ -26,9 +26,13 @@ public class PlayerShooting : MonoBehaviour
     
 
     private RaycastHit2D[] m_MeleeHits;
+   
     [SerializeField] private Transform meeleTransform;
     [SerializeField] private float meleeRange = 1.5f;
     [SerializeField] private LayerMask attackableLayer;
+
+    private RaycastHit2D[] m_WallHits;
+    [SerializeField] private LayerMask WallLayer;
 
     public float m_MeleeAttackRange = 1.5f;
 
@@ -257,14 +261,18 @@ public class PlayerShooting : MonoBehaviour
 
     public void MeleeAttack()
     {
-        m_MeleeHits = Physics2D.CircleCastAll(m_MeleePoint.position, m_MeleeAttackRange, transform.right, 0.0f, attackableLayer); //Melee Arc (Circle Object)
-
+        m_MeleeHits = Physics2D.CircleCastAll(m_MeleePoint.position, m_MeleeAttackRange, transform.right, 0.0f, attackableLayer); //Melee Arc Enemies
+        //m_WallHits = Physics2D.CircleCastAll(m_MeleePoint.position, m_MeleeAttackRange, transform.right, 0.0f, WallLayer); //Melee Arc Walls
+        Debug.Log(m_MeleeHits.Length);
         for (int i = 0; i < m_MeleeHits.Length; i++) //Checking if the Circle Hits Antyhing 
         {
             EnemyDamageInterface iDamage = m_MeleeHits[i].collider.gameObject.GetComponent<EnemyDamageInterface>(); 
 
+           
+
             if (iDamage != null)
             {
+
                 
                 if (m_TimeSinceMeleeHeld >= m_TimeMaxHoldMelee) //Setting the Damage to the Max Value if Charge time == max 
                 {
@@ -285,12 +293,23 @@ public class PlayerShooting : MonoBehaviour
                     m_TimeSinceMeleeHeld = 1.5f;
                 }
 
-                Debug.Log(m_TimeSinceMeleeHeld);
+                //Debug.Log(m_TimeSinceMeleeHeld);
                 iDamage.EnemyDamage(m_TimeSinceMeleeHeld);
                 
             }
 
+            if (m_MeleeHits[i].collider.gameObject.tag == "PlayerCanHit")
+            {
+                DestroyablePlayerObject hitScript = m_MeleeHits[i].collider.GetComponentInParent<DestroyablePlayerObject>();
+                if (hitScript != null)
+                {
+                    // mELEE hits Object
+                    hitScript.GetHit();
+                }
+            }
+
         }
+
 
         m_TimeSinceMeleeHeld = 0.0f;
         
