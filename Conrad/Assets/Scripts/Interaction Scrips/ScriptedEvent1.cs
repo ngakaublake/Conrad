@@ -87,18 +87,10 @@ public class ScriptedEvent1 : MonoBehaviour
         {
             Conrad.TriggerConradRunEvent();
         }
-
-        FuseRef.isFuseActive = !FuseRef.isFuseActive;
-
-        //GameObject fuseDoorYellow = GameObject.Find("FuseDoorYellow#4");
-        //if (fuseDoorYellow != null)
-        //{
-        //    FuseDoor fuseDoorScript = fuseDoorYellow.GetComponent<FuseDoor>();
-        //    if (fuseDoorScript != null)
-        //    {
-        //        fuseDoorScript.Scripted1CloseDoor();
-        //    }
-        //}
+        if (FuseRef != null)
+        {
+            FuseRef.isFuseActive = !FuseRef.isFuseActive;
+        }
     }
 
     IEnumerator DestroyAfterDelay(float delay)

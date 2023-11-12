@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
@@ -149,7 +148,6 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
         if (distanceToPlayer <= minimumDistance)
         {
             cognitivePlayer.LoseHealth();
-            UnityEngine.Debug.Log("attackhits!");
         }
     }
 

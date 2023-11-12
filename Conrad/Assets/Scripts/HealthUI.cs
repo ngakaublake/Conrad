@@ -117,9 +117,9 @@ public class HealthUI : MonoBehaviour
             {
                 if (GameObject.Find(counter) == true)
                 {
-                    GameObject CurrentHealthBar = GameObject.Find(counter);
+                    GameObject ConradBar = GameObject.Find(counter);
                     //CurrentShell.SetActive(false);
-                    CurrentHealthBar.transform.position = new Vector3(10000f, 10000.0f, 0.0f);
+                    ConradBar.transform.position = new Vector3(10000f, 10000.0f, 0.0f);
                 }
             }
             else
@@ -127,11 +127,11 @@ public class HealthUI : MonoBehaviour
                 if (GameObject.Find(counter) == true)
                 {
 
-                    GameObject CurrentHealthBar = GameObject.Find(counter);
+                    GameObject ConradBar = GameObject.Find(counter);
                     //CurrentShell.SetActive(true);
                     Vector2 PosOffset = new Vector2(-0.5f+(0.3f * i), 0.6f); //Offset between Sprites 
                     Vector2 conradPosition = conradActIII.transform.position;
-                    CurrentHealthBar.transform.position = conradPosition + PosOffset;
+                    ConradBar.transform.position = conradPosition + PosOffset;
                 }
             }
         }

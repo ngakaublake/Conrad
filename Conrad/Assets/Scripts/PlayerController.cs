@@ -9,7 +9,6 @@ using UnityEngine.UI; //unity ui for ammo counter
 public class PlayerController : MonoBehaviour
 {
 
-    //[SerializeField] private PlayerShooting playerShooting;
     public GameObject RealPlayer;
     public GameObject CognitivePlayer;
 
@@ -33,7 +32,13 @@ public class PlayerController : MonoBehaviour
     private bool b_canmove;
     public SpriteRenderer s_overlaysprite;
 
-    //public Animator animator;
+
+    //Main Key things
+    public bool m_key1Obtained;
+    public bool m_key2Obtained;
+    public bool m_key3Obtained;
+    public bool m_key4Obtained;
+
 
     private Transform dog;
         Rigidbody2D RB;
@@ -157,6 +162,7 @@ public class PlayerController : MonoBehaviour
         CognitivePlayer.SetActive(false);
         transform.position = m_RealWorldPosition;
         b_canmove = true;
+        CollectKey(0); //Set Keys to 0
     }
 
     void Update()
@@ -171,6 +177,33 @@ public class PlayerController : MonoBehaviour
         }
         ResetCognitive(false); //Allows updating when reset is true
     }
+
+
+    public void CollectKey(int key)
+    {
+        switch (key)
+        {
+            case 1:
+                m_key1Obtained = true;
+                break;
+                case 2:
+                m_key2Obtained = true;
+                break;
+            case 3:
+                m_key3Obtained = true;
+                break;
+                case 4:
+                m_key4Obtained = true;
+                break;
+            default:
+                m_key1Obtained = false;
+                m_key2Obtained = false;
+                m_key3Obtained = false;
+                m_key4Obtained = false;
+            break;
+        }
+    }
+
 
     public void ResetCognitive(bool resetConfirmation)
     {
