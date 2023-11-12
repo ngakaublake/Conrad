@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
     public bool m_key2Obtained;
     public bool m_key3Obtained;
     public bool m_key4Obtained;
+    public bool m_key5Obtained;
 
 
     private Transform dog;
@@ -93,6 +94,11 @@ public class PlayerController : MonoBehaviour
         }
 
 
+    }
+
+    public void CheckpointUpdater(Vector2 _NewSpawn)
+    {
+        m_IntialCognitiveWorldPosition = _NewSpawn;
     }
 
     IEnumerator TeleportAfterDelay(float delay)

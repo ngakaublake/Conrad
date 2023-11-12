@@ -70,15 +70,16 @@ public class ScriptedEvent1 : MonoBehaviour
         {
             StartCoroutine(ConradSpeaks());
             ShowInteractionText();
-            CustomEvent();
+            StartCoroutine(CustomEvent());
             b_triggered = true; //so we aren't locked here
         }
     }
 
-    void CustomEvent()
+    IEnumerator CustomEvent()
     {
         //Scripted Events
         playerController.StopMoving(5);
+        yield return new WaitForSeconds(1f);
         if (CogDog != null)
         {
             CogDog.DogBooksItDownTheHallwayScriptedEvent();
@@ -89,6 +90,7 @@ public class ScriptedEvent1 : MonoBehaviour
         }
         if (FuseRef != null)
         {
+            yield return new WaitForSeconds(2f);
             FuseRef.isFuseActive = !FuseRef.isFuseActive;
         }
     }
