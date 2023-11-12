@@ -37,11 +37,11 @@ public class FuseDoor : MonoBehaviour
        
     }
 
-    public void Scripted1CloseDoor()
-    {
-        m_DoorDefaultState = false;
-        m_IsDoorOpen = m_DoorDefaultState;
-    }
+    //public void Scripted1CloseDoor()
+    //{
+    //    m_DoorDefaultState = false;
+    //    m_IsDoorOpen = m_DoorDefaultState;
+    //}
 
     
 }
