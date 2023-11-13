@@ -37,7 +37,7 @@ public class Pickups : MonoBehaviour
     public CognitivePlayer Player;
     [SerializeField] private PlayerController playerController;
 
-    float m_TextMaxTime = 3.0f;
+    float m_TextMaxTime = 1.0f;
     float m_TextCurrentTime = 0.0f;
 
     // Start is called before the first frame update
@@ -75,7 +75,8 @@ public class Pickups : MonoBehaviour
     {
         if (isInRange == true && Input.GetKeyDown(KeyCode.E)) //Checking if the Player is in range of the Pickup & Checking for Player Input 
         {
-            
+
+            m_TextCurrentTime = m_TextMaxTime; 
 
             switch (PickupType) //Checking Item Type 
             {
@@ -146,7 +147,10 @@ public class Pickups : MonoBehaviour
                     playerController.CollectKey(4);
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f);
                     break;
+
+
             }
+
         }
 
         if (isPickedUp == true)
@@ -154,7 +158,7 @@ public class Pickups : MonoBehaviour
             Debug.Log("show text");
             ShowInteractionText();
 
-            DestroyAfterDelay(5.0f);
+            //DestroyAfterDelay(5.0f);
         }
     }
 
@@ -175,11 +179,24 @@ public class Pickups : MonoBehaviour
 
     void ShowInteractionText()
     {
-        Vector2 playerPosition = playerController.transform.position;
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)playerPosition + new Vector3(m_textPosition.x, m_textPosition.y, 0f));
-        UIText.rectTransform.position = screenPosition;
+        m_TextCurrentTime -= Time.deltaTime;
 
-        UIText.text = TextPopup; // Set
-        UIText.gameObject.SetActive(true); // Show
+        if (m_TextCurrentTime >= 0)
+        {
+            Vector2 playerPosition = playerController.transform.position;
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)playerPosition + new Vector3((m_textPosition.x * m_TextCurrentTime) , (m_textPosition.y * m_TextCurrentTime), 0f));
+            //Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)playerPosition + new Vector3(m_textPosition.x + , m_textPosition.y, 0f));
+            UIText.rectTransform.position = screenPosition;
+
+            UIText.text = TextPopup; // Set
+            UIText.gameObject.SetActive(true); // Show
+        }
+        else
+        {
+            Debug.Log("TEST DESTROY");
+            //gameObject.GetComponent<Pickups>().UIText.enabled = false;
+            UIText.text = "";
+        }
+       
     }
 }
