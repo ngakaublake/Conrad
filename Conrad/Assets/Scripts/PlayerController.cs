@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     public float m_CognitiveWorldResetCooldown = 1.0f;
     public bool b_ForceTeleport = false;
     public bool b_beginTeleport;
+    public bool CanTeleport;
     private bool b_currentlyTeleporting;
     private bool b_canmove;
     public SpriteRenderer s_overlaysprite;
@@ -91,7 +92,6 @@ public class PlayerController : MonoBehaviour
         {
             m_RealWorldPosition = transform.position;
         }
-
 
     }
 
