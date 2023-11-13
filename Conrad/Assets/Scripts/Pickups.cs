@@ -84,11 +84,6 @@ public class Pickups : MonoBehaviour
 
                     break;
                 case PickupType.Pickup_RifleAmmo:
-
-                    
-
-                    
-
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
                     for (int i = 0; i != 10; i++)
                     {
@@ -98,10 +93,6 @@ public class Pickups : MonoBehaviour
                             Player.m_RifleAmmoSupply++;
                         }
                     }
-
-                    
-
-                    
 
                     break;
                 case PickupType.Pickup_ShotgunAmmo:
@@ -119,6 +110,7 @@ public class Pickups : MonoBehaviour
                 case PickupType.Pickup_Shotgun:
                     //Bool goes here to activate shotgun 
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
+                    isPickedUp = true;
 
                     break;
                 case PickupType.Pickup_HealthKit:
