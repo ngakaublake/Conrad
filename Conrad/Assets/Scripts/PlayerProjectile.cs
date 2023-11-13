@@ -23,7 +23,8 @@ public class PlayerProjectile : MonoBehaviour
     {
         if (collision.collider.CompareTag("PlayerCanHit"))
         {
-            DestroyablePlayerObject hitScript = collision.collider.GetComponent<DestroyablePlayerObject>();
+            DestroyablePlayerObject hitScript = collision.collider.GetComponentInParent<DestroyablePlayerObject>();
+            //DestroyablePlayerObject hitScript = collision.collider.GetComponent<DestroyablePlayerObject>();
             if (hitScript != null)
             {
                 // Bullet hits Object

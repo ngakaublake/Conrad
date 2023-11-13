@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
@@ -19,20 +18,21 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     private Transform[] patrolPoints;
 
     private Vector2 spawnpoint;
-    private float currentMinDistance = 0.5f;
     private bool PerformingAttack;
     public bool AttackDamages;
     public float AttackChargeTime;
     private float AttackTime;
-
+    private Transform player;
     private PlayerController playerController;
     public CognitivePlayer cognitivePlayer;
     private SpriteRenderer spriteRenderer; //Resize
     public float spriteSizeMultiplier = 2.0f;
 
+    public Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
         cognitivePlayer = FindObjectOfType<CognitivePlayer>();
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -42,7 +42,6 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
         playerController = FindObjectOfType<PlayerController>();
 
         AttackTime = AttackChargeTime;
-        currentMinDistance = minimumDistance;
         GameObject[] patrolPointGameObjects = GameObject.FindGameObjectsWithTag("Enemy Patrol Point");
         patrolPoints = new Transform[patrolPointGameObjects.Length];
 
@@ -55,6 +54,15 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     // Update is called once per frame
     void Update()
     {
+        if (player != null)
+        {
+            //Look at Player
+            Vector2 direction = player.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+
+
         if (playerController.m_IsPlayerinCognitiveWorld)
         {
             //Decrease Invulnerability
@@ -104,34 +112,6 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
                 SortPatrolPoints();
             }
         }
-
-        //Attacking whilst in range
-        if (PerformingAttack)
-        {
-            UnityEngine.Debug.Log("prep");
-            AttackTime -= 1.0f * Time.deltaTime;
-            if (AttackTime < 0.0f)
-            {
-                //Charged up, now perform attack!
-                float distanceToPlayer = Vector2.Distance(transform.position, cognitivePlayer.transform.position);
-                if (distanceToPlayer <= minimumDistance)
-                {
-                    cognitivePlayer.LoseHealth();
-                    UnityEngine.Debug.Log("attackhits!");
-                }
-                currentMinDistance = 0.1f;
-                AttackDamages = true;
-                if (AttackTime < -1.0f)
-                {
-                    currentMinDistance = minimumDistance;
-                    AttackDamages = false;
-                    PerformingAttack = false;
-                    AttackTime = AttackChargeTime;
-                }
-            }
-        }
-
-
         //Target Selection
         if (Vector2.Distance(transform.position, playerController.m_CognitiveWorldPosition) <= playerTargetZone)
         {
@@ -143,7 +123,8 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
             else
             {
                 //Enemy Attack when in range
-                PerformingAttack = true;
+                //performingAttack = true;
+                animator.SetTrigger("attack");
             }
         }
         else if (enemyTargets.Length > 0 && Vector2.Distance(transform.position, enemyTargets[0].transform.position) <= targetTargetZone)
@@ -161,26 +142,16 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
         }
     }
 
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    void Attack() //function called on enemy strike frame
     {
-        if (collision.gameObject.CompareTag("Bullet") && invulnerableCooldown == 0.0f)
+        float distanceToPlayer = Vector2.Distance(transform.position, cognitivePlayer.transform.position);
+        if (distanceToPlayer <= minimumDistance)
         {
-            health = health - 1;
-            if (health <= 0)
-            {
-                //Create the Corpse.
-                Vector2 deathLocation = transform.position;
-                Quaternion spawnRotation = transform.rotation;
-                //Make Corpse at location (when Corpse set up)
-                //Instantiate(Corpse, deathLocation, spawnRotation);
-
-                //Die.
-                Destroy(gameObject);
-            }
-            invulnerableCooldown = 0.0f;
+            cognitivePlayer.LoseHealth();
         }
     }
+
+
 
     private void SortPatrolPoints()
     {
@@ -197,12 +168,36 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
         switchPatrolPoint = 12.0f; // Reset the timer.
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bullet") && invulnerableCooldown == 0.0f)
+        {
+            health = health - 1;
+            if (health <= 0)
+            {
+                //Create the Corpse.
+                Vector2 deathLocation = transform.position;
+                Quaternion spawnRotation = transform.rotation;
+                //Make Corpse at location (when Corpse set up)
+                Instantiate(Corpse, deathLocation, spawnRotation);
+
+                //Die.
+                Destroy(gameObject);
+            }
+            invulnerableCooldown = 0.0f;
+        }
+    }
+
     public void EnemyDamage(float _dmg)
     {
         health = health - _dmg;
-
         if (health <= 0 )
         {
+            //Create the Corpse.
+            Vector2 deathLocation = transform.position;
+            Quaternion spawnRotation = transform.rotation;
+            //Make Corpse at location (when Corpse set up)
+            Instantiate(Corpse, deathLocation, spawnRotation);
             if (b_enemyrespawns)
             {
                 //Get Banished to the ShadowRealm, Jimbo

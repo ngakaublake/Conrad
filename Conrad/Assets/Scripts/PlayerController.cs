@@ -9,7 +9,6 @@ using UnityEngine.UI; //unity ui for ammo counter
 public class PlayerController : MonoBehaviour
 {
 
-    //[SerializeField] private PlayerShooting playerShooting;
     public GameObject RealPlayer;
     public GameObject CognitivePlayer;
 
@@ -29,10 +28,18 @@ public class PlayerController : MonoBehaviour
     public float m_CognitiveWorldResetCooldown = 1.0f;
     public bool b_ForceTeleport = false;
     public bool b_beginTeleport;
+    public bool CanTeleport;
     private bool b_currentlyTeleporting;
+    private bool b_canmove;
     public SpriteRenderer s_overlaysprite;
 
-    //public Animator animator;
+
+    //Main Key things
+    public bool m_key1Obtained;
+    public bool m_key2Obtained;
+    public bool m_key3Obtained;
+    public bool m_key4Obtained;
+
 
     private Transform dog;
         Rigidbody2D RB;
@@ -85,7 +92,6 @@ public class PlayerController : MonoBehaviour
         {
             m_RealWorldPosition = transform.position;
         }
-
 
     }
 
@@ -155,6 +161,8 @@ public class PlayerController : MonoBehaviour
         m_IsPlayerinCognitiveWorld = false;
         CognitivePlayer.SetActive(false);
         transform.position = m_RealWorldPosition;
+        b_canmove = true;
+        CollectKey(0); //Set Keys to 0
     }
 
     void Update()
@@ -162,10 +170,40 @@ public class PlayerController : MonoBehaviour
         if (!m_CognitiveWorldResetting)
         {
             FollowCursor();
-            MovePlayer();
+            if (b_canmove)
+            {
+                MovePlayer();
+            }
         }
         ResetCognitive(false); //Allows updating when reset is true
     }
+
+
+    public void CollectKey(int key)
+    {
+        switch (key)
+        {
+            case 1:
+                m_key1Obtained = true;
+                break;
+                case 2:
+                m_key2Obtained = true;
+                break;
+            case 3:
+                m_key3Obtained = true;
+                break;
+                case 4:
+                m_key4Obtained = true;
+                break;
+            default:
+                m_key1Obtained = false;
+                m_key2Obtained = false;
+                m_key3Obtained = false;
+                m_key4Obtained = false;
+            break;
+        }
+    }
+
 
     public void ResetCognitive(bool resetConfirmation)
     {
@@ -217,6 +255,25 @@ public class PlayerController : MonoBehaviour
             s_overlaysprite.color = VisibleColour; // Ensure it reaches the fully opaque state
             s_overlaysprite.color = transparentColour;
         }
+    }
+
+
+
+    public void StopMoving(int _time)
+    {
+        if (b_canmove)
+        {
+            b_canmove = false;
+            RB.velocity = new Vector2 (0,0);
+            m_IsPlayerMoving = false;
+
+            StartCoroutine(StartMoving(_time));
+        }
+    }
+    private IEnumerator StartMoving(int _delay)
+    {
+        yield return new WaitForSeconds(_delay);
+        b_canmove = true;
     }
 
 }

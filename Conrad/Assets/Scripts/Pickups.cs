@@ -9,7 +9,11 @@ public enum PickupType
     Pickup_RifleAmmo,
     Pickup_ShotgunAmmo,
     Pickup_Shotgun,
-    Pickup_HealthKit
+    Pickup_HealthKit,
+    Pickup_Key1,
+    Pickup_Key2,
+    Pickup_Key3,
+    Pickup_Key4
 }
 
 public class Pickups : MonoBehaviour
@@ -17,9 +21,10 @@ public class Pickups : MonoBehaviour
     //UI Stuff 
     public string TextPopup = "Description";
     public Text UIText;
-    public GameObject TextObject;
-    public Transform TextTransform;
-    private GameObject rifleAmmoText;
+    [SerializeField] private Vector2 m_textPosition;
+    //public GameObject TextObject;
+    //public Transform TextTransform;
+    //private GameObject rifleAmmoText;
 
 
     public PickupType PickupType; //Item Type 
@@ -27,8 +32,10 @@ public class Pickups : MonoBehaviour
     private bool isInRange; //Checks if player is in range of pickup
     private bool isPickedUp = false; 
 
+
     //Object Refs 
     public CognitivePlayer Player;
+    [SerializeField] private PlayerController playerController;
 
     float m_TextMaxTime = 3.0f;
     float m_TextCurrentTime = 0.0f;
@@ -36,11 +43,12 @@ public class Pickups : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rifleAmmoText = Instantiate(TextObject, new Vector3(10000f, 10000.0f, 0.0f), transform.rotation, TextTransform);
-        //TextMesh theText = rifleAmmoText.GetComponent<TextMesh>();
-        Text theText = rifleAmmoText.GetComponent<Text>();
-        theText.text = TextPopup;
-        rifleAmmoText.name = TextPopup;
+        //rifleAmmoText = Instantiate(TextObject, new Vector3(10000f, 10000.0f, 0.0f), transform.rotation, TextTransform);
+        ////TextMesh theText = rifleAmmoText.GetComponent<TextMesh>();
+        //Text theText = rifleAmmoText.GetComponent<Text>();
+        //theText.text = TextPopup;
+        //rifleAmmoText.name = TextPopup;
+        //playerController = FindObjectOfType<PlayerController>();
 
     }
 
@@ -59,6 +67,8 @@ public class Pickups : MonoBehaviour
             isInRange = false;
         }
     }
+
+
 
     // Update is called once per frame
     void Update()
@@ -97,6 +107,7 @@ public class Pickups : MonoBehaviour
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
                     for (int i = 0; i != 4; i++)
                     {
+                        isPickedUp = true;
                         if (Player.m_ShotgunAmmoSupply < 12)
                         {
                             Player.m_ShotgunAmmoSupply++;
@@ -119,13 +130,29 @@ public class Pickups : MonoBehaviour
                     }
                     
                     break;
-                
+                case PickupType.Pickup_Key1:
+                    playerController.CollectKey(1);
+                    transform.position = new Vector3(10000f, 10000.0f, 0.0f);
+                    break;
+                case PickupType.Pickup_Key2:
+                    playerController.CollectKey(2);
+                    transform.position = new Vector3(10000f, 10000.0f, 0.0f);
+                    break;
+                case PickupType.Pickup_Key3:
+                    playerController.CollectKey(3);
+                    transform.position = new Vector3(10000f, 10000.0f, 0.0f);
+                    break;
+                case PickupType.Pickup_Key4:
+                    playerController.CollectKey(4);
+                    transform.position = new Vector3(10000f, 10000.0f, 0.0f);
+                    break;
             }
         }
 
         if (isPickedUp == true)
         {
-            TranslateText();
+            Debug.Log("show text");
+            ShowInteractionText();
 
             DestroyAfterDelay(5.0f);
         }
@@ -133,7 +160,7 @@ public class Pickups : MonoBehaviour
 
     private void TranslateText()
     {
-        rifleAmmoText.transform.Translate(Vector3.up * 10f * Time.deltaTime);
+        //rifleAmmoText.transform.Translate(Vector3.up * 10f * Time.deltaTime);
     }
 
     private IEnumerator DestroyAfterDelay(float delay)
@@ -141,6 +168,18 @@ public class Pickups : MonoBehaviour
         //Deletes object after 'delay' seconds.
         //Used to delete BulletMask as it doesn't collide
         yield return new WaitForSeconds(delay);
-        Destroy(rifleAmmoText);
+        //Destroy(UIText);
+        Debug.Log("TEST DESTROY");
+        gameObject.GetComponent<Pickups>().UIText.enabled = false;
+    }
+
+    void ShowInteractionText()
+    {
+        Vector2 playerPosition = playerController.transform.position;
+        Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)playerPosition + new Vector3(m_textPosition.x, m_textPosition.y, 0f));
+        UIText.rectTransform.position = screenPosition;
+
+        UIText.text = TextPopup; // Set
+        UIText.gameObject.SetActive(true); // Show
     }
 }

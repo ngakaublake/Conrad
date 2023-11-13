@@ -42,6 +42,7 @@ public class CognitivePlayer : MonoBehaviour
     public float m_TimeToCommitAction = 2.0f;
     public bool m_CurrentlyComitting = false;
     public float m_CommitActionTime = 0.0f;
+    public bool m_CanWarp;
    
 
     //Rigidbody2D RB;
@@ -108,6 +109,7 @@ public class CognitivePlayer : MonoBehaviour
 
     void Start()
     {
+        m_CanWarp = true;
         //RB = GetComponent<Rigidbody2D>();
         m_IsPlayerAiming = false;
         m_RifleCurrentAmmo = m_RifleMaxAmmo;
@@ -151,12 +153,14 @@ public class CognitivePlayer : MonoBehaviour
         //Decrease NoWarp Cooldown
         if (m_NoWarpCooldown > 0.0f)
         {
+            m_CanWarp = false;
             m_NoWarpCooldown -= 1*Time.deltaTime;
 
             if (m_NoWarpCooldown <= 0.0f)
             {
                 UnityEngine.Debug.Log("Can Warp Again");
                 m_NoWarpCooldown = 0.0f; // Prevent Negative
+                m_CanWarp = true;
             }
         }
     }
@@ -173,7 +177,7 @@ public class CognitivePlayer : MonoBehaviour
                 //Enter Restart mode.
                 ResetCognitivePlayer();
             }
-            m_invulnerableCooldown = 10.0f;
+            m_invulnerableCooldown = 1.0f;
         }
     }
 
