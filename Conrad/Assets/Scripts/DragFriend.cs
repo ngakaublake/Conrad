@@ -58,8 +58,8 @@ public class DragFriend : MonoBehaviour
                 {
                     case DragMode.Mode_Drag:
                         transform.position = Player.transform.position - DragOffset;
-                        PlayerController.m_HorizontalVelocity = 0.5f;
-                        PlayerController.m_VerticalVelocity = 0.5f;
+                        //PlayerController.m_HorizontalVelocity = 0.5f;
+                        //PlayerController.m_VerticalVelocity = 0.5f;
                         break;
                     case DragMode.Mode_Drop:
 
