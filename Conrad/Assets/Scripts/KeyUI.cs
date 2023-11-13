@@ -143,6 +143,7 @@ public class KeyUI : MonoBehaviour
         if (showwholekey) 
         { 
             Key5.transform.position = KeyPlacePos5;
+            playerController.m_key5Obtained = true;
         }
         else
         {

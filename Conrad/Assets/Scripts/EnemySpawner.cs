@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -52,6 +51,7 @@ public class EnemySpawner : MonoBehaviour
         }
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
         m_spawnCounter = m_spawnCount;
+        SetTimeUntilSpawn();
     }
 
     // Update is called once per frame
@@ -122,6 +122,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
+        Debug.Log("Spawned!");
         if (m_spawnInRange)
         {
             // Get random location to spawn!
