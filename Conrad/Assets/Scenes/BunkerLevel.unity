@@ -7444,6 +7444,10 @@ MonoBehaviour:
   m_IsHoldingMelee: 0
   animator: {fileID: 103654967}
   CurrentWeapon: 0
+  isMeleeActive: 0
+  isRifleActive: 0
+  isShotgunActive: 0
+  isCombatActive: 0
 --- !u!114 &103654966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7784,6 +7788,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 103654966}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: UIText
+      value: 
+      objectReference: {fileID: 1215283820}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: TextPopup
       value: + 10 Rounds
       objectReference: {fileID: 0}
@@ -7792,9 +7800,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: playerWeapon
+      value: 
+      objectReference: {fileID: 103654965}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1149861902}
     - target: {fileID: 7859056557778082316, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -10947,6 +10963,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: playerWeapon
+      value: 
+      objectReference: {fileID: 103654965}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
@@ -11533,6 +11553,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 103654966}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: UIText
+      value: 
+      objectReference: {fileID: 1215283820}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: TextPopup
       value: + 4 Shells
       objectReference: {fileID: 0}
@@ -11541,9 +11565,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: playerWeapon
+      value: 
+      objectReference: {fileID: 103654965}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1149861902}
     - target: {fileID: 7765776956640003226, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -11882,6 +11914,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2783516253087919852, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: Player
       value: 
@@ -11902,6 +11938,10 @@ PrefabInstance:
       propertyPath: TextObject
       value: 
       objectReference: {fileID: 978191056}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: playerWeapon
+      value: 
+      objectReference: {fileID: 103654965}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: TextTransform
       value: 
@@ -12437,9 +12477,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1215283818}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: playerWeapon
+      value: 
+      objectReference: {fileID: 103654965}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 1215283819}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1149861902}
     - target: {fileID: 7859056557778082316, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -33047,6 +33095,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 103654966}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: UIText
+      value: 
+      objectReference: {fileID: 1215283820}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: TextPopup
       value: + 4 Shells
       objectReference: {fileID: 0}
@@ -33055,9 +33107,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: playerWeapon
+      value: 
+      objectReference: {fileID: 103654965}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1149861902}
     - target: {fileID: 7765776956640003226, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -33575,6 +33635,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: playerWeapon
+      value: 
+      objectReference: {fileID: 103654965}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
@@ -33665,6 +33729,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 103654966}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: UIText
+      value: 
+      objectReference: {fileID: 1215283820}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: TextPopup
       value: + 10 Rounds
       objectReference: {fileID: 0}
@@ -33673,9 +33741,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: playerWeapon
+      value: 
+      objectReference: {fileID: 103654965}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1149861902}
     - target: {fileID: 7859056557778082316, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -44098,6 +44174,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 103654966}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: UIText
+      value: 
+      objectReference: {fileID: 1215283820}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: TextPopup
       value: + 10 Rounds
       objectReference: {fileID: 0}
@@ -44106,9 +44186,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: playerWeapon
+      value: 
+      objectReference: {fileID: 103654965}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1149861902}
     - target: {fileID: 7859056557778082316, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -48372,13 +48460,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 103654966}
     - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: UIText
+      value: 
+      objectReference: {fileID: 1215283820}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
       propertyPath: TextObject
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: playerWeapon
+      value: 
+      objectReference: {fileID: 103654965}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 1149861902}
     - target: {fileID: 3417887378622313734, guid: f984d4412782c324d958167f27f24d11, type: 3}
       propertyPath: m_RootOrder
       value: 2

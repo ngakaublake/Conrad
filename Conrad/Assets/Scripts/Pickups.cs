@@ -36,6 +36,7 @@ public class Pickups : MonoBehaviour
     //Object Refs 
     public CognitivePlayer Player;
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private PlayerShooting playerWeapon;
 
     float m_TextMaxTime = 1.0f;
     float m_TextCurrentTime = 0.0f;
@@ -111,6 +112,8 @@ public class Pickups : MonoBehaviour
                     //Bool goes here to activate shotgun 
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
                     isPickedUp = true;
+
+                    playerWeapon.isShotgunActive = true;
 
                     break;
                 case PickupType.Pickup_HealthKit:

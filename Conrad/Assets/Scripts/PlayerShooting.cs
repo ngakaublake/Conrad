@@ -74,6 +74,13 @@ public class PlayerShooting : MonoBehaviour
     //Enum for Weapon
     public Weapon CurrentWeapon;
 
+    //Active Weapons 
+    public bool isMeleeActive;
+    public bool isRifleActive;
+    public bool isShotgunActive;
+    public bool isCombatActive;
+
+
     private void Start()
     {
         //Setting Default Values on Start up 
@@ -83,6 +90,11 @@ public class PlayerShooting : MonoBehaviour
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
         //CurrentWeapon = Weapon.Weapon_Shotgun;
         CurrentWeapon = Weapon.Weapon_Rifle;
+
+        isMeleeActive = true;
+        isRifleActive = true;
+        isShotgunActive = false;
+        isCombatActive = true;
     }
 
     void Update()
@@ -91,46 +103,51 @@ public class PlayerShooting : MonoBehaviour
         animator.SetInteger("shellCount", PlayerMove.m_ShotgunCurrentAmmo);
         WeaponCheck(); //What weapon is being used for animations)
 
-        WeaponBloom();
 
-        if (Input.GetButtonDown("Fire1") && PlayerMove.m_IsPlayerAiming == true) //Fire Weapon
+        if (isCombatActive == true)
         {
-            Fire();
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Alpha1)) //Swap To Rifle
-        {
-            CurrentWeapon =  Weapon.Weapon_Rifle;
-            weaponUI.DisableShotgunCount();
-        }
+            WeaponBloom();
 
-        if (Input.GetKeyDown(KeyCode.Alpha2)) //Swap to Shotgun
-        {
-            CurrentWeapon = Weapon.Weapon_Shotgun;
-            weaponUI.DisableRifleCount();
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift)) //melee keybind and animations
-        {
-            animator.SetBool("isMelee", true);
-            m_TimeSinceMeleeHeld = m_TimeSinceMeleeHeld + 1.0f * Time.deltaTime;
-           
-            if (m_TimeSinceMeleeHeld >= m_TimeMaxHoldMelee)
+            if (Input.GetButtonDown("Fire1") && PlayerMove.m_IsPlayerAiming == true) //Fire Weapon
             {
-                Debug.Log("MAX DMG");
+                Fire();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1) && isRifleActive == true) //Swap To Rifle
+            {
+                CurrentWeapon = Weapon.Weapon_Rifle;
+                weaponUI.DisableShotgunCount();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha2) && isShotgunActive == true) //Swap to Shotgun
+            {
+                CurrentWeapon = Weapon.Weapon_Shotgun;
+                weaponUI.DisableRifleCount();
+            }
+
+            if (Input.GetKey(KeyCode.LeftShift) && isMeleeActive == true) //melee keybind and animations
+            {
+                animator.SetBool("isMelee", true);
+                m_TimeSinceMeleeHeld = m_TimeSinceMeleeHeld + 1.0f * Time.deltaTime;
+
+                if (m_TimeSinceMeleeHeld >= m_TimeMaxHoldMelee)
+                {
+                    Debug.Log("MAX DMG");
+                }
+            }
+            else
+            {
+
+                animator.SetBool("isMelee", false);
+
+            }
+
+            if (Input.GetKeyDown(KeyCode.R)) //Reload && PlayerMove.m_CurrentAmmo != PlayerMove.m_MaxAmmo
+            {
+                animator.SetTrigger("reload"); //set shared player animation trigger to reload
             }
         }
-        else
-        {
-
-            animator.SetBool("isMelee", false);
-           
-        }
-
-        if (Input.GetKeyDown(KeyCode.R)) //Reload && PlayerMove.m_CurrentAmmo != PlayerMove.m_MaxAmmo
-        {
-            animator.SetTrigger("reload"); //set shared player animation trigger to reload
-        }
+        
     }
 
     void Fire() //Fires the Weapon 
