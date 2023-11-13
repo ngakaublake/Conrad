@@ -8396,6 +8396,7 @@ GameObject:
   - component: {fileID: 328913581}
   - component: {fileID: 328913580}
   - component: {fileID: 328913583}
+  - component: {fileID: 328913584}
   m_Layer: 11
   m_Name: KeyDoor
   m_TagString: Untagged
@@ -8525,6 +8526,24 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.32
+--- !u!114 &328913584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328913578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 614c163e4d1fe614b9871c44b723166b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_InteractionText: It Looks Like a Key Could Fit This Lock...
+  m_ID: 0
+  m_AutoShow: 0
+  m_isInRange: 0
+  m_textPosition: {x: 0, y: 0}
+  interactionText: {fileID: 13004327}
 --- !u!4 &360598046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4606058545124414758, guid: 13276048186e0c448a5afd146dbb998b, type: 3}
