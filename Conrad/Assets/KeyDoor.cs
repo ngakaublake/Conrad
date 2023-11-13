@@ -39,6 +39,7 @@ public class KeyDoor : MonoBehaviour
         {
             if (m_PlayerControllerRef.m_key1Obtained && m_PlayerControllerRef.m_key2Obtained & m_PlayerControllerRef.m_key3Obtained && m_PlayerControllerRef.m_key4Obtained)
             {
+                gameObject.GetComponent<InteractionHitbox>().enabled = false;
                 gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
             }
