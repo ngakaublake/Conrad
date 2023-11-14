@@ -11,7 +11,7 @@ public class CircleVision : MonoBehaviour
     private Vector3 m_Origin;
     private float m_StartingAngle;
     private float m_FOV = 360; //Vision Cone FOV 
-    int m_RayCount = 180; //How Many Triangles in the Vision Cone - More = Smoother 
+    int m_RayCount = 1000; //How Many Triangles in the Vision Cone - More = Smoother 
     float m_ViewDistance = 5000.0f; //View Distance for the Vision Cone 
     bool isStartUp = false;
 
@@ -45,6 +45,9 @@ public class CircleVision : MonoBehaviour
     void LateUpdate() //Ill add comments later - Patrick 
     {
         //SetOrigin(m_Origin);
+
+        mesh = new Mesh();
+        GetComponent<MeshFilter>().mesh = mesh;
 
         if (Input.GetKey(KeyCode.Q))
         {
