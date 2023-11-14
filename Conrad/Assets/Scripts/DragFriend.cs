@@ -15,14 +15,19 @@ public class DragFriend : MonoBehaviour
     public DragMode DragMode;
     public CognitivePlayer Player;
     public PlayerController PlayerController;
+    [SerializeField] private PlayerShooting PlayerWeapons;
     Vector3 DragOffset = new Vector3(0.0f, 0.2f, 0.0f);
     public int RandomDrop;
     public bool b_dragEnabled;
+
+    public float m_TimeBetweenDrag = 0.5f;
+    public float m_CurrentTimeDrag = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         DragMode = DragMode.Mode_Drag;
+        m_CurrentTimeDrag = 0f;
         isInRange = false;
         b_dragEnabled = false;
     }
@@ -48,30 +53,46 @@ public class DragFriend : MonoBehaviour
     {
         if (b_dragEnabled)
         {
-            if (DragMode == DragMode.Mode_Drop)
+
+            m_CurrentTimeDrag -= Time.deltaTime;
+            Debug.Log(m_CurrentTimeDrag);
+
+            //if (DragMode == DragMode.Mode_Drop)
+            //{
+            //    DragMode = DragMode.Mode_Drag;
+            //}
+
+            if (isInRange == true && Input.GetKey(KeyCode.E)) //Checking if the Player is in range of the Pickup & Checking for Player Input 
             {
-                DragMode = DragMode.Mode_Drag;
-            }
-            if (isInRange == true && Input.GetKey(KeyCode.E) && RandomDrop != 1) //Checking if the Player is in range of the Pickup & Checking for Player Input 
-            {
-                switch (DragMode) //Checking Item Type 
+                if (RandomDrop != 1 && m_CurrentTimeDrag <= 0)
                 {
-                    case DragMode.Mode_Drag:
-                        transform.position = Player.transform.position - DragOffset;
-                        //PlayerController.m_HorizontalVelocity = 0.5f;
-                        //PlayerController.m_VerticalVelocity = 0.5f;
-                        break;
-                    case DragMode.Mode_Drop:
+                    PlayerWeapons.isCombatActive = false;
+                    switch (DragMode) //Checking Item Type 
+                    {
+                        case DragMode.Mode_Drag:
+                            transform.position = Player.transform.position - DragOffset;
+                            //PlayerController.m_HorizontalVelocity = 0.5f;
+                            //PlayerController.m_VerticalVelocity = 0.5f;
+                            break;
+                        case DragMode.Mode_Drop:
 
-
-                        break;
+                            break;
+                    }
                 }
             }
-            RandomDrop = Random.Range(10, 0);
+            else
+            {
+                PlayerWeapons.isCombatActive = true;
+            }
+
+            RandomDrop = Random.Range(1000, 0);
+
             if (RandomDrop == 1)
             {
-                DragMode = DragMode.Mode_Drop;
+                //DragMode = DragMode.Mode_Drop;
+                m_CurrentTimeDrag = m_TimeBetweenDrag;
             }
+
         }
     }
 

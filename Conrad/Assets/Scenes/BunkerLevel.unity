@@ -47073,8 +47073,11 @@ MonoBehaviour:
   DragMode: 0
   Player: {fileID: 103654966}
   PlayerController: {fileID: 1149861902}
+  PlayerWeapons: {fileID: 103654965}
   RandomDrop: 0
   b_dragEnabled: 0
+  m_TimeBetweenDrag: 1
+  m_CurrentTimeDrag: 0
 --- !u!224 &2132595188 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1925800936097492848, guid: 249c7af283c55a048909095bcf8ec578, type: 3}
