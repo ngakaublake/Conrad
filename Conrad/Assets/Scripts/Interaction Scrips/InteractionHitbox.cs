@@ -87,6 +87,24 @@ public class InteractionHitbox : MonoBehaviour
                 //Destroy self after three seconds- text only appears once.
                 StartCoroutine(DestroyAfterDelay(3f));
                 break;
+            case 2001:
+                //Destroy self after three seconds- text only appears once.
+                if (playerController.m_key2Obtained == true || playerController.m_key1Obtained == true || playerController.m_key4Obtained == true)
+                {
+                    m_InteractionText = "This is another part of that key.";
+                }
+                playerController.CollectKey(3);
+                StartCoroutine(DestroyAfterDelay(3f));
+                break;
+            case 2003:
+                //Destroy self after three seconds- text only appears once.
+                if (playerController.m_key2Obtained == true || playerController.m_key1Obtained ==true || playerController.m_key3Obtained == true)
+                {
+                    m_InteractionText = "This is another part of that key.";
+                }
+                playerController.CollectKey(4);
+                StartCoroutine(DestroyAfterDelay(3f));
+                break;
             case 6:
                 break;
             default:
