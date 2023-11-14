@@ -152,7 +152,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         RB = GetComponent<Rigidbody2D>();
-        dog = GameObject.FindGameObjectWithTag("Good Boy").transform;
+        dog = GameObject.FindWithTag("Good Boy").transform;
         m_IsPlayerMoving = false;
         m_HorizontalVelocity = m_VelocityDefault;
         m_VerticalVelocity = m_VelocityDefault;

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
@@ -22,8 +21,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     public bool AttackDamages;
     public float AttackChargeTime;
     private float AttackTime;
-    private Transform player;
-    private PlayerController playerController;
+    public PlayerController playerController;
     public CognitivePlayer cognitivePlayer;
     private SpriteRenderer spriteRenderer; //Resize
     public float spriteSizeMultiplier = 2.0f;
@@ -32,7 +30,6 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
         cognitivePlayer = FindObjectOfType<CognitivePlayer>();
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
@@ -40,7 +37,6 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
         spawnpoint = rb.position;
 
         playerController = FindObjectOfType<PlayerController>();
-
         AttackTime = AttackChargeTime;
         GameObject[] patrolPointGameObjects = GameObject.FindGameObjectsWithTag("Enemy Patrol Point");
         patrolPoints = new Transform[patrolPointGameObjects.Length];
@@ -54,12 +50,12 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     // Update is called once per frame
     void Update()
     {
-        if (player != null)
+        if (playerController != null)
         {
             //Look at Player
-            Vector2 direction = player.position - transform.position;
+            Vector2 direction = playerController.transform.position - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+            transform.rotation = Quaternion.Euler(0, 0, angle + 90);
         }
 
 

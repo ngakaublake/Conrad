@@ -13,6 +13,7 @@ TagManager:
   - PlayerReach
   - ConradIII
   - PlayerCanHit
+  - RealWorldPlayer
   layers:
   - Default
   - TransparentFX

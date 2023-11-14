@@ -69,7 +69,7 @@ public class TVScript : MonoBehaviour
     }
     void HideInteractionText()
     {
-        interactionText.gameObject.SetActive(false);
+        interactionText.gameObject.SetActive(false); //bro
     }
 
     void ProcessInteraction()
