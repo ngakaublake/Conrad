@@ -40,12 +40,13 @@ public class DogBehaviour : MonoBehaviour
     {
         //Run Down the Hall!!!
         b_bookingitdownthehallway = true;
-        StartCoroutine(RuntoPosition1(transform, new Vector2(0f, -9.67f), 3f));
+        transform.rotation = Quaternion.Euler(0, 0, 90);
+        StartCoroutine(RuntoPosition1(transform, new Vector2(0f, -9.67f), 4.5f));
     }
 
     IEnumerator RuntoPosition1(Transform unitTransform, Vector2 targetPosition, float duration)
     {
-        transform.rotation = Quaternion.Euler(0, 0, 180);
+        transform.rotation = Quaternion.Euler(0, 0, 90);
         float elapsedTime = 0.0f;
         Vector2 startPosition = unitTransform.position;
         while (elapsedTime < duration)
@@ -54,9 +55,10 @@ public class DogBehaviour : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        yield return new WaitForSeconds(0.5f);
         //Move to second Location
         unitTransform.position = targetPosition;
-       StartCoroutine(RuntoPosition1(transform, new Vector2(1f, 0f), 3f));
+       StartCoroutine(RuntoPosition2(transform, new Vector2(1f, 0f), 4f));
     }
 
     IEnumerator RuntoPosition2(Transform unitTransform, Vector2 targetPosition, float duration)

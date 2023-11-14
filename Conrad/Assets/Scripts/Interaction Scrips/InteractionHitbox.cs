@@ -68,7 +68,7 @@ public class InteractionHitbox : MonoBehaviour
                 CustomEvent();
             }
         }
-        else if (Input.GetKeyDown(KeyCode.Q) && Vector2.Distance(transform.position, playerController.transform.position) < 1f)
+        else if (Input.GetKeyDown(KeyCode.E) && Vector2.Distance(transform.position, playerController.transform.position) < 1f)
         {
             StartCoroutine(MoveTextTowardsPlayer());
             ShowInteractionText();
