@@ -13,6 +13,7 @@ public class CognitivePlayer : MonoBehaviour
 
     private PlayerController playerController;
     private GameObject ConradIII;
+    [SerializeField] CircleVision CircleFOV;
 
     //Combat 
     public bool m_IsPlayerAiming;
@@ -57,7 +58,7 @@ public class CognitivePlayer : MonoBehaviour
         if (playerController.m_IsPlayerinCognitiveWorld == true)
         {
             FOV.SetOrigin(transform.position); //Setting the Origin Position for the Vision Cone
-
+            CircleFOV.SetOrigin(transform.position);
         }
     }
 

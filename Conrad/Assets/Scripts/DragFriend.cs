@@ -55,12 +55,7 @@ public class DragFriend : MonoBehaviour
         {
 
             m_CurrentTimeDrag -= Time.deltaTime;
-            Debug.Log(m_CurrentTimeDrag);
-
-            //if (DragMode == DragMode.Mode_Drop)
-            //{
-            //    DragMode = DragMode.Mode_Drag;
-            //}
+          
 
             if (isInRange == true && Input.GetKey(KeyCode.E)) //Checking if the Player is in range of the Pickup & Checking for Player Input 
             {
