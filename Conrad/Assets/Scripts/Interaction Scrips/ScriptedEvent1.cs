@@ -30,25 +30,6 @@ public class ScriptedEvent1 : MonoBehaviour
         b_triggered = false;
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            m_isInRange = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            m_isInRange = false;
-        }
-        HideInteractionText();
-    }
-
-
     // Update is called once per frame
     void Update()
     {
@@ -68,36 +49,22 @@ public class ScriptedEvent1 : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, playerController.transform.position) < 1f && b_triggered == false)
         {
-            StartCoroutine(ConradSpeaks());
-            ShowInteractionText();
-            CustomEvent();
+            StartCoroutine(Scripted1());
             b_triggered = true; //so we aren't locked here
         }
     }
 
-    void CustomEvent()
-    {
-        //Scripted Events
-        playerController.StopMoving(5);
-        if (CogDog != null)
-        {
-            CogDog.DogBooksItDownTheHallwayScriptedEvent();
-        }
-        if (Conrad != null)
-        {
-            Conrad.TriggerConradRunEvent();
-        }
-        if (FuseRef != null)
-        {
-            FuseRef.isFuseActive = !FuseRef.isFuseActive;
-        }
-    }
 
-    IEnumerator DestroyAfterDelay(float delay)
+    IEnumerator Scripted1()
     {
-        yield return new WaitForSeconds(delay);
-        HideInteractionText();
-        Destroy(gameObject);
+        CogDog.DogBooksItDownTheHallwayScriptedEvent();
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(ConradSpeaks());
+        ShowInteractionText();
+        yield return new WaitForSeconds(1f);
+        Conrad.TriggerConradRunEvent();
+        yield return new WaitForSeconds(2f);
+        FuseRef.isFuseActive = !FuseRef.isFuseActive;
     }
 
     IEnumerator ConradSpeaks()

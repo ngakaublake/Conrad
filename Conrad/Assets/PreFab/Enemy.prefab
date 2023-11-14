@@ -28,7 +28,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8417265555619130974}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.4, y: 1.4, z: 1}
   m_ConstrainProportionsScale: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   minimumDistance: 0.6
   AttackDamages: 0
   AttackChargeTime: 20
+  playerController: {fileID: 0}
   cognitivePlayer: {fileID: 0}
   spriteSizeMultiplier: 2
   animator: {fileID: 5308599085096966388}
