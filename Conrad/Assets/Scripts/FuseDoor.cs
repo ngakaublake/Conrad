@@ -17,6 +17,7 @@ public class FuseDoor : MonoBehaviour
     {
         m_IsDoorOpen = m_DoorDefaultState; //Setting the Doors Current State to the Default 
         gameObject.GetComponent<Animator>().SetBool("IsOpen", m_IsDoorOpen);
+        m_IsFirstTime = false;
     }
 
     // Update is called once per frame
@@ -38,6 +39,7 @@ public class FuseDoor : MonoBehaviour
                     Debug.Log("DOOR IS OPEN");
                 //gameObject.GetComponent<Animator>().SetTrigger("DoorOpen");
                     m_FuseBoxRef.m_FuseState = FuseState.State_Active; //Setting the Fuse State 
+
                     gameObject.GetComponent<BoxCollider2D>().enabled = !m_DoorDefaultState; //Setting the Collider to the Oppisite of the Default State
 
                     gameObject.GetComponent<Animator>().SetBool("IsOpen", m_IsDoorOpen);
