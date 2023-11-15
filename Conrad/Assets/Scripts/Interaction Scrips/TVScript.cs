@@ -38,6 +38,7 @@ public class TVScript : MonoBehaviour
         if (m_switchchannel)
         {
             m_channel = Random.Range(1, 6);
+            spriteRenderer.sprite = sprites[m_channel];
             m_switchchannel = false;
         }
         ProcessInteraction();
@@ -80,6 +81,11 @@ public class TVScript : MonoBehaviour
             StartCoroutine(MoveTextTowardsPlayer());
             ShowInteractionText(m_channel);
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        HideInteractionText();
     }
 
     void CustomEvent()
