@@ -147,7 +147,7 @@ MonoBehaviour:
   moveSpeed: 0.8
   minimumDistance: 0.6
   AttackDamages: 0
-  AttackChargeTime: 20
+  AttackChargeTime: 5
   playerController: {fileID: 0}
   cognitivePlayer: {fileID: 0}
   spriteSizeMultiplier: 2

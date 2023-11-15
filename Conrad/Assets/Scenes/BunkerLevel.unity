@@ -8308,7 +8308,7 @@ MonoBehaviour:
   m_Channel2Text: ...discount on all electric...
   m_Channel3Text: ...has hit a home run!....
   m_Channel4Text: ...buy one free! only 11.99!...
-  m_Channel5Text: .............
+  m_Channel5Text: ...Same old, same old...
   m_ID: 0
   m_textPosition: {x: 0.7, y: -0.6}
   interactionText: {fileID: 13004327}
@@ -38824,7 +38824,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6725319368280650811, guid: d523b130833dd47438b1918ed1563d72, type: 3}
       propertyPath: m_InteractionText
-      value: 'My trusty Shotgun. '
+      value: I found you in the most peculiar place.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d523b130833dd47438b1918ed1563d72, type: 3}
@@ -45558,7 +45558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6725319368280650811, guid: d523b130833dd47438b1918ed1563d72, type: 3}
       propertyPath: m_InteractionText
-      value: Dirty clothes.
+      value: I should really clean that up.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d523b130833dd47438b1918ed1563d72, type: 3}
@@ -54073,7 +54073,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6725319368280650811, guid: d523b130833dd47438b1918ed1563d72, type: 3}
       propertyPath: m_InteractionText
-      value: It's my  kitchen.
+      value: It's my kitchen.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d523b130833dd47438b1918ed1563d72, type: 3}
