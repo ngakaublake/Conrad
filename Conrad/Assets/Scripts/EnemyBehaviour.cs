@@ -12,7 +12,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     float invulnerableCooldown = 0.0f;
 
     private float playerTargetZone = 4.0f;
-    private float targetTargetZone = 3.0f;
+    private float targetTargetZone = 12.0f;
     private float switchPatrolPoint = 0.0f; //How long it will take until it looks for patrolling again
     private Transform[] patrolPoints;
 
