@@ -25,19 +25,11 @@ public class FuseDoor : MonoBehaviour
     {
         if (m_FuseBoxRef.isFuseActive == true ) //Checking if the Fuse is Active 
         {
-            
-            //if (gameObject.name == "FuseDoorYellow#1")
-            //{
-
-               
-                                                                                        //gameObject.GetComponent<SpriteRenderer>().enabled = !m_DoorDefaultState; //Temp remove the sprite 
-                //m_IsDoorOpen = !m_IsDoorOpen; //Setting the Current State of the Door 
-
                 if (m_IsFirstTime == true)
                 {
                     m_IsDoorOpen = !m_IsDoorOpen; //Setting the Current State of the Door 
                     Debug.Log("DOOR IS OPEN");
-                //gameObject.GetComponent<Animator>().SetTrigger("DoorOpen");
+              
                     m_FuseBoxRef.m_FuseState = FuseState.State_Active; //Setting the Fuse State 
 
                     gameObject.GetComponent<BoxCollider2D>().enabled = !m_DoorDefaultState; //Setting the Collider to the Oppisite of the Default State
@@ -46,7 +38,7 @@ public class FuseDoor : MonoBehaviour
                     m_IsFirstTime = false;
                 }
             
-            //}
+          
        
 
 
@@ -65,12 +57,9 @@ public class FuseDoor : MonoBehaviour
             }
 
 
-            //if (gameObject.name == "FuseDoorYellow#1")
-            //{
+            gameObject.GetComponent<Animator>().SetBool("IsOpen", m_IsDoorOpen);
 
-                gameObject.GetComponent<Animator>().SetBool("IsOpen", m_IsDoorOpen);
-
-            //}
+            
 
             
         }

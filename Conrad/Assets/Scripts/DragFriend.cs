@@ -77,12 +77,16 @@ public class DragFriend : MonoBehaviour
                         case DragMode.Mode_Drag:
 
 
-                            transform.position = Player.transform.position -DragOffset;
+                            //transform.position = Player.transform.position -DragOffset;
 
                             transform.rotation = Quaternion.Euler(0, 0, PlayerController.transform.rotation.eulerAngles.z + 90);
-                            float y = Mathf.Sin(PlayerController.transform.rotation.eulerAngles.z + 90) * 0.5f;
-                            
-                           
+
+                            float xpos = PlayerController.transform.position.x + 0.5f * Mathf.Cos((-PlayerController.transform.rotation.eulerAngles.z - 90) * Mathf.PI / 180);
+                            float ypos = PlayerController.transform.position.y - 0.5f * Mathf.Sin((-PlayerController.transform.rotation.eulerAngles.z - 90) * Mathf.PI / 180);
+                            transform.position = new Vector3(xpos, ypos, 0);
+                            //float y = Mathf.Sin(PlayerController.transform.rotation.eulerAngles.z + 90) * 0.5f;
+
+
                             break;
                         case DragMode.Mode_Drop:
 
