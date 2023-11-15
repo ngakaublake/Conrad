@@ -81,9 +81,13 @@ public class PlayerShooting : MonoBehaviour
     public bool isShotgunActive;
     public bool isCombatActive;
 
+    //Particle Systems
+    [SerializeField] ParticleSystem CasingEmit;
+    [SerializeField] ParticleSystem ShellEmit;
 
     private void Start()
     {
+        
         //Setting Default Values on Start up 
         m_CurrentPosSpread = m_MaxPosSpread;
         m_CurrentNegSpread = m_MaxNegSpread;
@@ -438,6 +442,19 @@ public class PlayerShooting : MonoBehaviour
                 
         }
        
+    }
+
+    void AmmoParticle()
+    {
+        switch (CurrentWeapon)
+        {
+            case Weapon.Weapon_Shotgun:
+                ShellEmit.Play();
+                break;
+            case Weapon.Weapon_Rifle:
+                CasingEmit.Play();
+                break;
+        }
     }
 
 }
