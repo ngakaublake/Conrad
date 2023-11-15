@@ -31449,7 +31449,7 @@ MonoBehaviour:
   CanTeleport: 0
   b_Keydoorisopen: 0
   s_overlaysprite: {fileID: 327651573}
-  b_IsInLastStand: 1
+  b_IsInLastStand: 0
   m_key1Obtained: 0
   m_key2Obtained: 0
   m_key3Obtained: 0
