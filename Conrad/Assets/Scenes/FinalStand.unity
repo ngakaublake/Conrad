@@ -1635,6 +1635,8 @@ MonoBehaviour:
   isRifleActive: 0
   isShotgunActive: 0
   isCombatActive: 0
+  CasingEmit: {fileID: 0}
+  ShellEmit: {fileID: 0}
 --- !u!114 &103654966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31429,6 +31431,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RealPlayer: {fileID: 1782536926}
   CognitivePlayer: {fileID: 103654960}
+  visioncone: {fileID: 0}
+  regularsight: {fileID: 0}
   m_HorizontalVelocity: 0
   m_VerticalVelocity: 0
   m_VelocityDefault: 1
@@ -31445,6 +31449,7 @@ MonoBehaviour:
   CanTeleport: 0
   b_Keydoorisopen: 0
   s_overlaysprite: {fileID: 327651573}
+  b_IsInLastStand: 1
   m_key1Obtained: 0
   m_key2Obtained: 0
   m_key3Obtained: 0
