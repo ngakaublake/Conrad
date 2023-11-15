@@ -42467,6 +42467,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RealPlayer: {fileID: 1782536926}
   CognitivePlayer: {fileID: 103654960}
+  visioncone: {fileID: 447496651}
+  regularsight: {fileID: 492101101}
   m_HorizontalVelocity: 0
   m_VerticalVelocity: 0
   m_VelocityDefault: 1
@@ -42483,6 +42485,7 @@ MonoBehaviour:
   CanTeleport: 0
   b_Keydoorisopen: 0
   s_overlaysprite: {fileID: 327651573}
+  b_IsInLastStand: 1
   m_key1Obtained: 0
   m_key2Obtained: 0
   m_key3Obtained: 0
