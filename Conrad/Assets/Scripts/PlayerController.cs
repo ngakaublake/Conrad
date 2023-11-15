@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 
     public GameObject RealPlayer;
     public GameObject CognitivePlayer;
+    [SerializeField] private PlayerVision visioncone;
+    [SerializeField] private CircleVision regularsight;
 
     public float m_HorizontalVelocity;
     public float m_VerticalVelocity;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private bool b_canmove;
     public bool b_Keydoorisopen;
     public SpriteRenderer s_overlaysprite;
+    public bool b_IsInLastStand;
 
 
     //Main Key things
@@ -112,7 +115,7 @@ public class PlayerController : MonoBehaviour
     {
         b_beginTeleport = false;
         //Check the current location of the player.
-        if (m_IsPlayerinCognitiveWorld == true)
+        if (m_IsPlayerinCognitiveWorld == true && !b_IsInLastStand)
         {
             //Disable the current player in the Cognitive World and enable the player in the Real World
             CognitivePlayer.SetActive(false);
@@ -170,6 +173,13 @@ public class PlayerController : MonoBehaviour
         transform.position = m_RealWorldPosition;
         b_canmove = true;
         CollectKey(0); //Set Keys to 0
+
+        if (b_IsInLastStand)
+        {
+            ScriptedTeleport(true);
+            visioncone.DontAskMeWhatThisIs();
+            regularsight.DontAskMeWhatThisIs();
+        }
     }
 
     void Update()
@@ -225,15 +235,18 @@ public class PlayerController : MonoBehaviour
             m_CognitiveWorldResetting = resetConfirmation;
             m_RealWorldPosition = m_IntialRealWorldPosition;
             m_CognitiveWorldPosition = m_IntialCognitiveWorldPosition;
-            ScriptedTeleport(true); //Move to real world
+            if (!b_IsInLastStand)
+            {
+                ScriptedTeleport(true); //Move to real world
+            }
         }
         if (m_CognitiveWorldResetting)
         {
-            m_CognitiveWorldResetCooldown -= Time.deltaTime* 2;
+            m_CognitiveWorldResetCooldown -= Time.deltaTime * 2;
             if (m_CognitiveWorldResetCooldown <= 0.0f)
             {
                 m_CognitiveWorldResetting = false;
-              m_CognitiveWorldResetCooldown = 1.0f; // Reset
+                m_CognitiveWorldResetCooldown = 1.0f; // Reset
             }
         }
 
@@ -249,6 +262,7 @@ public class PlayerController : MonoBehaviour
             s_overlaysprite.color = transparentColour;
             b_currentlyTeleporting = false;
         }
+    }
 
         IEnumerator TeleportVisuals(float TeleportTime)
         {
@@ -267,9 +281,6 @@ public class PlayerController : MonoBehaviour
             s_overlaysprite.color = VisibleColour; // Ensure it reaches the fully opaque state
             s_overlaysprite.color = transparentColour;
         }
-    }
-
-
 
     public void StopMoving(int _time)
     {
