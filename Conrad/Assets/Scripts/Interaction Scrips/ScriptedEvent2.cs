@@ -10,10 +10,12 @@ public class ScriptedEvent2 : MonoBehaviour
     public bool m_isInRange;
     private bool b_triggered;
     private PlayerController playerController;
+    [SerializeField] private CognitivePlayer cognitivePlayer;
     [SerializeField] private Vector2 m_textPosition;
     [SerializeField] private Text interactionText;
     [SerializeField] private EnemySpawner Spawner;
     [SerializeField] private EnemySpawner Spawner2;
+    [SerializeField] private EnemySpawner Spawner3;
     [SerializeField] private DragFriend Conrad;
 
 
@@ -49,7 +51,12 @@ public class ScriptedEvent2 : MonoBehaviour
         if (Vector2.Distance(transform.position, playerController.transform.position) < 1f && b_triggered == false && playerController.b_Keydoorisopen)
         {
             StartCoroutine(Scripted1());
+            Debug.Log("PLEASE");
             b_triggered = true; //so we aren't locked here
+        }
+        if (b_triggered)
+        {
+            cognitivePlayer.m_NoWarpCooldown = 3.0f;
         }
     }
 
@@ -58,6 +65,9 @@ public class ScriptedEvent2 : MonoBehaviour
     {
         Spawner.ManualTurnOn();
         Spawner2.ManualTurnOn();
+        Spawner3.ManualTurnOn();
+        StartCoroutine(ConradSpeaks());
+        ShowInteractionText();
         yield return new WaitForSeconds(5f);
     }
 

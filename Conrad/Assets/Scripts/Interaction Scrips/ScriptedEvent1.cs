@@ -49,6 +49,7 @@ public class ScriptedEvent1 : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, playerController.transform.position) < 1f && b_triggered == false)
         {
+            playerController.StopMoving(9);
             StartCoroutine(Scripted1());
             b_triggered = true; //so we aren't locked here
         }

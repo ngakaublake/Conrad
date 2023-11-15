@@ -3279,6 +3279,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6580674856885275006, guid: d829638b2f737e844961afe6ec82ee1c, type: 3}
+      propertyPath: cognitivePlayer
+      value: 
+      objectReference: {fileID: 103654960}
+    - target: {fileID: 6580674856885275006, guid: d829638b2f737e844961afe6ec82ee1c, type: 3}
       propertyPath: m_maximumSpawnTime
       value: 15
       objectReference: {fileID: 0}
@@ -3673,6 +3677,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6580674856885275006, guid: d829638b2f737e844961afe6ec82ee1c, type: 3}
+      propertyPath: cognitivePlayer
+      value: 
+      objectReference: {fileID: 103654960}
+    - target: {fileID: 6580674856885275006, guid: d829638b2f737e844961afe6ec82ee1c, type: 3}
       propertyPath: m_maximumSpawnTime
       value: 10
       objectReference: {fileID: 0}
@@ -3970,6 +3978,10 @@ PrefabInstance:
       propertyPath: m_spawnInRange
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6580674856885275006, guid: d829638b2f737e844961afe6ec82ee1c, type: 3}
+      propertyPath: cognitivePlayer
+      value: 
+      objectReference: {fileID: 103654960}
     - target: {fileID: 6580674856885275006, guid: d829638b2f737e844961afe6ec82ee1c, type: 3}
       propertyPath: m_maximumSpawnTime
       value: 5
@@ -5658,6 +5670,10 @@ PrefabInstance:
       propertyPath: m_spawnInRange
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6580674856885275006, guid: d829638b2f737e844961afe6ec82ee1c, type: 3}
+      propertyPath: cognitivePlayer
+      value: 
+      objectReference: {fileID: 103654960}
     - target: {fileID: 6580674856885275006, guid: d829638b2f737e844961afe6ec82ee1c, type: 3}
       propertyPath: m_maximumSpawnTime
       value: 10
@@ -31561,6 +31577,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6580674856885275006, guid: d829638b2f737e844961afe6ec82ee1c, type: 3}
+      propertyPath: cognitivePlayer
+      value: 
+      objectReference: {fileID: 103654960}
+    - target: {fileID: 6580674856885275006, guid: d829638b2f737e844961afe6ec82ee1c, type: 3}
       propertyPath: m_maximumSpawnTime
       value: 15
       objectReference: {fileID: 0}
@@ -32370,6 +32390,10 @@ PrefabInstance:
       propertyPath: m_spawnInRange
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6580674856885275006, guid: d829638b2f737e844961afe6ec82ee1c, type: 3}
+      propertyPath: cognitivePlayer
+      value: 
+      objectReference: {fileID: 103654960}
     - target: {fileID: 6580674856885275006, guid: d829638b2f737e844961afe6ec82ee1c, type: 3}
       propertyPath: m_maximumSpawnTime
       value: 10
