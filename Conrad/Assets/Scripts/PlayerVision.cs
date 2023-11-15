@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerVision : MonoBehaviour
 {
     [SerializeField] private LayerMask layerMask; //Controls the Objects that Block the RayCast
+    public CognitivePlayer PlayerRef;
 
     private Mesh mesh;
 
@@ -119,26 +120,61 @@ public class PlayerVision : MonoBehaviour
    public void UpdateFOV() //Temp testing function for swapping FOV - Looking to animate slowly bewtween max FOV and combat FOV - Patrick
     {
         //this is not staying in the final build 
-        if (m_FOV != 25 )
+        //if (m_FOV != 25 )
+        //{
+
+        //    m_FOV = 25;
+        //    m_ViewDistance = 5.0f;
+
+        //}
+        //else
+        //{
+        //   m_FOV = 90;
+        //   m_ViewDistance = 3.0f;
+        //}
+
+
+        if (PlayerRef.m_IsPlayerAiming == true)
         {
-          
             m_FOV = 25;
             m_ViewDistance = 5.0f;
-            
+
         }
-        else
+        else 
         {
-           m_FOV = 90;
-           m_ViewDistance = 3.0f;
+            m_FOV = 90;
+            m_ViewDistance = 3.0f;
         }
         
+
+
     }
 
     public void DontAskMeWhatThisIs()
     {
-
-     
         m_ViewDistance = 3.0f;
         m_FOV = 90f;
+    }
+
+    public void UpdateFOVHealing()
+    {
+        m_ViewDistance = 0.0f;
+    }
+
+    public void ResetHealFOV()
+    {
+        if (m_FOV == 25)
+        {
+            m_ViewDistance = 5.0f;
+        }
+        else if (m_FOV == 90)
+        {
+            m_ViewDistance = 3.0f;
+        }
+        else
+        {
+            m_ViewDistance = 5.0f;
+        }
+
     }
 }
