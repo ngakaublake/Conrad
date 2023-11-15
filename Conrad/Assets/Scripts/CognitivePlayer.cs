@@ -126,7 +126,10 @@ public class CognitivePlayer : MonoBehaviour
 
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            animator.SetTrigger("activate");
+        }
         
         m_CurrentFeedbackTime -= Time.deltaTime;
 
@@ -208,14 +211,14 @@ public class CognitivePlayer : MonoBehaviour
                 if (ConradIII != null && Vector2.Distance(transform.position, ConradIII.transform.position) <= 4f)
                 {
                     // Heal
-                    ConradIII.GetComponent<ConradHealScript>().IncreaseHealth();
+                    animator.SetTrigger("healOther");
                 }
                 else
                 {
                     m_CurrentlyComitting = false;
-                    m_health = 4;
-                    m_CurrentHealthKits--;
                     m_CommitActionTime = 0.0f;
+                    m_CurrentHealthKits--;
+                    animator.SetTrigger("heal");
                 }
             }
         }
@@ -242,8 +245,15 @@ public class CognitivePlayer : MonoBehaviour
         }
 
     }
-
-
+    public void HealOther()
+    {
+        ConradIII.GetComponent<ConradHealScript>().IncreaseHealth();
+    }
+    
+    public void HealSelf()
+    {
+        m_health = 4;
+    }
     public void ResetCognitivePlayer()
     {
         //Reset Variables

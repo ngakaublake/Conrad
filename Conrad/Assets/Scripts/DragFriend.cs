@@ -10,6 +10,8 @@ public enum DragMode
 
 public class DragFriend : MonoBehaviour
 {
+    public Animator playerAnimator; //player animator
+    Animator friendAnimator; //draggable friend animator
 
     private bool isInRange; //Checks if player is in range of pickup
     public DragMode DragMode;
@@ -26,6 +28,8 @@ public class DragFriend : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        friendAnimator = gameObject.GetComponent<Animator>(); //get animator componant on draggablefriend object
+
         DragMode = DragMode.Mode_Drag;
         m_CurrentTimeDrag = 0f;
         isInRange = false;
@@ -51,6 +55,8 @@ public class DragFriend : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        friendAnimator.SetBool("isWalk", !b_dragEnabled); //if freind is draggable will swap to hurt sprite, otherwise will stay standing
+
         if (b_dragEnabled)
         {
 
@@ -61,6 +67,9 @@ public class DragFriend : MonoBehaviour
             {
                 if (RandomDrop != 1 && m_CurrentTimeDrag <= 0)
                 {
+                    friendAnimator.SetBool("isDragged", true);
+                    playerAnimator.SetBool("isDragging", true); //set dragging and dragged sprites for both player and friend
+
                     PlayerWeapons.isCombatActive = false;
                     switch (DragMode) //Checking Item Type 
                     {
@@ -74,9 +83,13 @@ public class DragFriend : MonoBehaviour
                             break;
                     }
                 }
+
             }
             else
             {
+                friendAnimator.SetBool("isDragged", false);
+                playerAnimator.SetBool("isDragging", false); //turn draggin and dragged sprites off
+
                 PlayerWeapons.isCombatActive = true;
             }
 
@@ -107,11 +120,13 @@ public class DragFriend : MonoBehaviour
     }
     IEnumerator MoveUnitOverTime(Transform unitTransform, Vector2 targetPosition, float duration)
     {
-        transform.rotation = Quaternion.Euler(0, 0, 180);
+        transform.rotation = Quaternion.Euler(0, 0, 90);
         float elapsedTime = 0.0f;
         Vector2 startPosition = unitTransform.position;
         while (elapsedTime < duration)
         {
+            friendAnimator.SetFloat("moveSpeed", 1f); //friend walks while moving
+
             unitTransform.position = Vector2.Lerp(startPosition, targetPosition, elapsedTime / duration);
             elapsedTime += Time.deltaTime;
             yield return null;
@@ -119,6 +134,7 @@ public class DragFriend : MonoBehaviour
         //Stop at Position, then teleport to next position CODE IN LATER
         unitTransform.position = new Vector2 (0.53f, 1.36f);
         b_dragEnabled = true;
+        
     }
 
 }
