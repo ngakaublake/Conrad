@@ -17,6 +17,8 @@ public class PlayerSound : MonoBehaviour
     public AudioClip ShotgunReload01;
     public AudioClip ShotgunReload02;
 
+    public AudioClip NoAmmo;
+
     void Awake()
     {
         source = GetComponent<AudioSource>();
@@ -81,5 +83,10 @@ public class PlayerSound : MonoBehaviour
     void playShellSound()
     {
         source.PlayOneShot(ShotgunReload02);
+    }
+
+    public void playEmptySound()
+    {
+        source.PlayOneShot(NoAmmo);
     }
 }

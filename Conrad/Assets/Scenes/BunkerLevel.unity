@@ -7781,6 +7781,7 @@ MonoBehaviour:
   Crosshair: {fileID: 398748529}
   playerController: {fileID: 0}
   weaponUI: {fileID: 843508737}
+  Sound: {fileID: 103654969}
   m_firePoint: {fileID: 1025692923}
   m_MeleePoint: {fileID: 881811881}
   meeleTransform: {fileID: 881811881}
@@ -7943,6 +7944,7 @@ MonoBehaviour:
   RifleReload: {fileID: 8300000, guid: 53f17c6d3f475304fbf2a49de686b5e1, type: 3}
   ShotgunReload01: {fileID: 8300000, guid: b88c885a99a8fe340a4b4bce04198b20, type: 3}
   ShotgunReload02: {fileID: 8300000, guid: 3727e5696999ffe4f91b66ee0e48b550, type: 3}
+  NoAmmo: {fileID: 8300000, guid: f680ae315d96a80498a57f4f2a5e0582, type: 3}
 --- !u!82 &103654970
 AudioSource:
   m_ObjectHideFlags: 0
