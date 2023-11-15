@@ -17,6 +17,7 @@ public class HealthUI : MonoBehaviour
 
     //ConradBar
     public GameObject ConradHP;
+    private bool Healthshown;
 
     //Health Kit 
     public Vector3 HealthKitPos;
@@ -39,6 +40,7 @@ public class HealthUI : MonoBehaviour
         }
         if (conradActIII != null)
         {
+            Healthshown = false;
             for (int i = 0; i != conradActIII.m_maxHealth; i++) //Spawn Conrad Health Bar
             {
                 HealthBarSpawn.transform.Rotate(0, 0, 0, Space.Self);
@@ -113,7 +115,7 @@ public class HealthUI : MonoBehaviour
         {
             string counter = "ConradHP" + i;
 
-            if (conradActIII.m_health <= i)
+            if (conradActIII.m_health <= i || !Healthshown)
             {
                 if (GameObject.Find(counter) == true)
                 {
@@ -165,6 +167,11 @@ public class HealthUI : MonoBehaviour
     void DisableHealthBar()
     {
 
+    }
+
+    public void ShowConradHealth()
+    {
+        Healthshown = true;
     }
 }
 

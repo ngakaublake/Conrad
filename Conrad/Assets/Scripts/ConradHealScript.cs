@@ -13,6 +13,7 @@ public class ConradHealScript : MonoBehaviour
     private float deathPercent = 0f;
     public float maxlifetime;
     public float minlifetime;
+    private bool m_Startdying;
 
     // Start is called before the first frame update
     void Start()
@@ -27,19 +28,21 @@ public class ConradHealScript : MonoBehaviour
         {
             m_health = m_maxHealth;
         }
-
-        deathPercent += Time.deltaTime;
-        if (deathPercent >= dyingRate)
+        if (m_Startdying)
         {
-            m_health--;
-            if (m_health <= 0)
+            deathPercent += Time.deltaTime;
+            if (deathPercent >= dyingRate)
             {
-                cognitivePlayer.ResetCognitivePlayer();
-                playerController.ResetCognitive(true);
+                m_health--;
+                if (m_health <= 0)
+                {
+                    cognitivePlayer.ResetCognitivePlayer();
+                    playerController.ResetCognitive(true);
+                }
+                deathPercent = 0;
+                maxlifetime--;
+                dyingRate = Random.Range(minlifetime, maxlifetime);
             }
-            deathPercent = 0;
-            maxlifetime--;
-            dyingRate = Random.Range(minlifetime, maxlifetime);
         }
     }
     public void IncreaseHealth()
@@ -49,5 +52,9 @@ public class ConradHealScript : MonoBehaviour
     public void LoseHealth()
     {
         m_health--;
+    }
+    public void StubToe()
+    {
+        m_Startdying = true;
     }
 }
