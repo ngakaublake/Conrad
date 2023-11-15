@@ -146,5 +146,4 @@ public class DragFriend : MonoBehaviour
         b_dragEnabled = true;
         
     }
-
 }
