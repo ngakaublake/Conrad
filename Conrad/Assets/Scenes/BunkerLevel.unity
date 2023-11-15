@@ -7846,6 +7846,8 @@ MonoBehaviour:
   m_CurrentHealthKits: 0
   m_BloodFeedbackTimer: 0.5
   m_CurrentFeedbackTime: 0
+  m_isHealingActive: 0
+  m_isHoldingSpace: 0
   m_NoWarpCooldown: 0
   m_TimeToCommitAction: 2
   m_CurrentlyComitting: 0
@@ -10092,6 +10094,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
+  PlayerRef: {fileID: 103654966}
 --- !u!224 &447496652
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40847,7 +40850,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438514592}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!4 &1438514596
 Transform:
   m_ObjectHideFlags: 0

@@ -25,8 +25,9 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     public CognitivePlayer cognitivePlayer;
     private SpriteRenderer spriteRenderer; //Resize
     public float spriteSizeMultiplier = 2.0f;
-
+    [SerializeField] ParticleSystem BloodSpurt;
     public Animator animator;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -171,9 +172,13 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     {
         if (collision.gameObject.CompareTag("Bullet") && invulnerableCooldown == 0.0f)
         {
+            
+            BloodSpurt.Play();
+
             health = health - 1;
             if (health <= 0)
             {
+                BloodSpurt.Play();
                 //Create the Corpse.
                 Vector2 deathLocation = transform.position;
                 Quaternion spawnRotation = transform.rotation;
@@ -189,9 +194,13 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
 
     public void EnemyDamage(float _dmg)
     {
+        
+        BloodSpurt.Play();
+
         health = health - _dmg;
         if (health <= 0 )
         {
+            BloodSpurt.Play();
             //Create the Corpse.
             Vector2 deathLocation = transform.position;
             Quaternion spawnRotation = transform.rotation;
