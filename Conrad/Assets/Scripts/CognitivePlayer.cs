@@ -24,7 +24,7 @@ public class CognitivePlayer : MonoBehaviour
     public int m_RifleMaxAmmo = 5;
     public int m_ShotgunMaxAmmo = 6;
     public int m_RifleAmmoSupply = 30;
-    public int m_ShotgunAmmoSupply = 69;
+    public int m_ShotgunAmmoSupply = 12;
     public int m_RifleCurrentAmmo;
     public int m_ShotgunCurrentAmmo;
 
@@ -37,7 +37,8 @@ public class CognitivePlayer : MonoBehaviour
     public int m_CurrentHealthKits = 0;
     public float m_BloodFeedbackTimer = 0.5f;
     public float m_CurrentFeedbackTime = 0f;
-
+    public bool m_isHealingActive = false;
+    public bool m_isHoldingSpace = false;
 
     //Actions
     private float m_invulnerableCooldown;
@@ -46,7 +47,7 @@ public class CognitivePlayer : MonoBehaviour
     public bool m_CurrentlyComitting = false;
     public float m_CommitActionTime = 0.0f;
     public bool m_CanWarp;
-
+   
 
    
 
@@ -73,10 +74,11 @@ public class CognitivePlayer : MonoBehaviour
         FOV.SetAimDirection(aimDir);
 
         // Checking if the right mouse button is being held down 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && m_isHealingActive == false)
         {
-            FOV.UpdateFOV(); //Swaps FOV between 'Explore' & 'Combat' 
             m_IsPlayerAiming = true;
+            FOV.UpdateFOV(); //Swaps FOV between 'Explore' & 'Combat' 
+            
 
             animator.SetBool("isAiming", true); //swap to player aim sprite
 
@@ -100,8 +102,9 @@ public class CognitivePlayer : MonoBehaviour
 
         if (Input.GetMouseButtonUp(1))
         {
-            FOV.UpdateFOV(); //Swaps FOV between 'Explore' & 'Combat' 
             m_IsPlayerAiming = false;
+            FOV.UpdateFOV(); //Swaps FOV between 'Explore' & 'Combat' 
+            
 
             animator.SetBool("isAiming", false); //return to walking sprite
 
@@ -204,20 +207,26 @@ public class CognitivePlayer : MonoBehaviour
         //Heal is done with 'Space'. Priortized over Teleport.
         if (Input.GetKey(KeyCode.Space) && playerController.m_CognitiveWorldResetting == false && m_health < 4 && m_CurrentHealthKits > 0)
         {
+            Debug.Log(m_health);
             m_CurrentlyComitting = true;
             m_CommitActionTime += Time.deltaTime;
+            
             if (m_CommitActionTime >= m_TimeToCommitAction)
             {
+                FOV.UpdateFOVHealing();
+                m_isHealingActive = true;
                 if (ConradIII != null && Vector2.Distance(transform.position, ConradIII.transform.position) <= 4f)
                 {
                     // Heal
                     animator.SetTrigger("healOther");
                 }
-                else
+                else if (m_health != m_maxHealth && m_isHoldingSpace == false)
                 {
+                    m_isHoldingSpace = true;
                     m_CurrentlyComitting = false;
                     m_CommitActionTime = 0.0f;
                     m_CurrentHealthKits--;
+                    Debug.Log("Current health kit " + m_CurrentHealthKits);
                     animator.SetTrigger("heal");
                 }
             }
@@ -242,6 +251,7 @@ public class CognitivePlayer : MonoBehaviour
             //Not Commiting to an action currently.
             m_CommitActionTime = 0.0f;
             playerController.b_beginTeleport = false;
+            
         }
 
     }
@@ -252,7 +262,12 @@ public class CognitivePlayer : MonoBehaviour
     
     public void HealSelf()
     {
+        Debug.Log("Heal Function" + m_CurrentHealthKits);
+        m_isHealingActive = false;
+        
         m_health = 4;
+        FOV.ResetHealFOV();
+        m_isHoldingSpace = false;
     }
     public void ResetCognitivePlayer()
     {

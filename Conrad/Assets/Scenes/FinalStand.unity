@@ -1599,6 +1599,7 @@ MonoBehaviour:
   Crosshair: {fileID: 398748529}
   playerController: {fileID: 1149861902}
   weaponUI: {fileID: 843508737}
+  Sound: {fileID: 0}
   m_firePoint: {fileID: 1025692923}
   m_MeleePoint: {fileID: 881811881}
   meeleTransform: {fileID: 881811881}
@@ -1663,6 +1664,8 @@ MonoBehaviour:
   m_CurrentHealthKits: 0
   m_BloodFeedbackTimer: 0.3
   m_CurrentFeedbackTime: 0
+  m_isHealingActive: 0
+  m_isHoldingSpace: 0
   m_NoWarpCooldown: 0
   m_TimeToCommitAction: 2
   m_CurrentlyComitting: 0
@@ -1761,6 +1764,7 @@ MonoBehaviour:
   RifleReload: {fileID: 8300000, guid: 53f17c6d3f475304fbf2a49de686b5e1, type: 3}
   ShotgunReload01: {fileID: 8300000, guid: b88c885a99a8fe340a4b4bce04198b20, type: 3}
   ShotgunReload02: {fileID: 8300000, guid: 3727e5696999ffe4f91b66ee0e48b550, type: 3}
+  NoAmmo: {fileID: 0}
 --- !u!82 &103654970
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3198,6 +3202,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 8
+  PlayerRef: {fileID: 103654966}
 --- !u!224 &447496652
 RectTransform:
   m_ObjectHideFlags: 0
@@ -31424,8 +31429,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RealPlayer: {fileID: 1782536926}
   CognitivePlayer: {fileID: 103654960}
-  visioncone: {fileID: 447496651}
-  regularsight: {fileID: 413659495}
   m_HorizontalVelocity: 0
   m_VerticalVelocity: 0
   m_VelocityDefault: 1
@@ -31437,12 +31440,11 @@ MonoBehaviour:
   m_IsPlayerMoving: 0
   m_CognitiveWorldResetting: 0
   m_CognitiveWorldResetCooldown: 2
-  b_ForceTeleport: 1
+  b_ForceTeleport: 0
   b_beginTeleport: 0
   CanTeleport: 0
   b_Keydoorisopen: 0
   s_overlaysprite: {fileID: 327651573}
-  b_IsInLastStand: 1
   m_key1Obtained: 0
   m_key2Obtained: 0
   m_key3Obtained: 0
@@ -39845,6 +39847,7 @@ GameObject:
   - component: {fileID: 2050187124}
   - component: {fileID: 2050187126}
   - component: {fileID: 2050187127}
+  - component: {fileID: 2050187128}
   m_Layer: 9
   m_Name: DragableFriend
   m_TagString: Untagged
@@ -39957,7 +39960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2967a93c36d05334497d6a43e8e2ea39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnimator: {fileID: 0}
+  playerAnimator: {fileID: 103654967}
   DragMode: 0
   Player: {fileID: 103654966}
   PlayerController: {fileID: 1149861902}
@@ -39984,6 +39987,26 @@ MonoBehaviour:
   m_maxHealth: 4
   maxlifetime: 25
   minlifetime: 15
+--- !u!95 &2050187128
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050187122}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bffffcbe98b7a3741a2a790838c8c176, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2088954101
 GameObject:
   m_ObjectHideFlags: 0
