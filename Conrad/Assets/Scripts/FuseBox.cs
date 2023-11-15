@@ -31,7 +31,8 @@ public class FuseBox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        //gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -65,6 +66,8 @@ public class FuseBox : MonoBehaviour
                         case FuseColour.Fuse_Yellow:
                             Debug.Log("Fuse Yellow Works");
                             isFuseActive = false;
+                            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                            gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
                             break;
                         case FuseColour.Fuse_Purple:
                             break;
@@ -75,7 +78,9 @@ public class FuseBox : MonoBehaviour
                     switch (m_FuseColour) //Checking Item Type 
                     {
                         case FuseColour.Fuse_Yellow:
-                            Debug.Log("Fuse Yellow Works");
+                            Debug.Log("Fuse Yellow Works off");
+                            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                            gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
                             isFuseActive = true;
                             break;
                         case FuseColour.Fuse_Purple:
