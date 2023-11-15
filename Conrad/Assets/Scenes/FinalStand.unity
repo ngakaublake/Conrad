@@ -31431,8 +31431,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RealPlayer: {fileID: 1782536926}
   CognitivePlayer: {fileID: 103654960}
-  visioncone: {fileID: 0}
-  regularsight: {fileID: 0}
+  visioncone: {fileID: 447496651}
+  regularsight: {fileID: 413659495}
   m_HorizontalVelocity: 0
   m_VerticalVelocity: 0
   m_VelocityDefault: 1
@@ -39853,6 +39853,7 @@ GameObject:
   - component: {fileID: 2050187126}
   - component: {fileID: 2050187127}
   - component: {fileID: 2050187128}
+  - component: {fileID: 2050187129}
   m_Layer: 9
   m_Name: DragableFriend
   m_TagString: Untagged
@@ -39869,7 +39870,7 @@ Transform:
   m_GameObject: {fileID: 2050187122}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.83, y: -2.83, z: 0}
-  m_LocalScale: {x: 0.26345, y: 0.2582, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -39892,7 +39893,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.5, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -39942,7 +39943,7 @@ SpriteRenderer:
   m_SortingLayerID: -456181251
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: e59f8c5b64abf7d4ebc63e92a5b9f1a2, type: 3}
+  m_Sprite: {fileID: -1614651333, guid: de568d77624c7ee41bc501d360c3510c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -40012,6 +40013,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!58 &2050187129
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050187122}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.2
 --- !u!1 &2088954101
 GameObject:
   m_ObjectHideFlags: 0
