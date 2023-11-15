@@ -12,13 +12,14 @@ public class DragFriend : MonoBehaviour
 {
     public Animator playerAnimator; //player animator
     Animator friendAnimator; //draggable friend animator
+   
 
     private bool isInRange; //Checks if player is in range of pickup
     public DragMode DragMode;
     public CognitivePlayer Player;
     public PlayerController PlayerController;
     [SerializeField] private PlayerShooting PlayerWeapons;
-    Vector3 DragOffset = new Vector3(0.0f, 0.2f, 0.0f);
+    Vector3 DragOffset = new Vector3(0.0f, 0.5f, 0.0f);
     public int RandomDrop;
     public bool b_dragEnabled;
 
@@ -74,7 +75,21 @@ public class DragFriend : MonoBehaviour
                     switch (DragMode) //Checking Item Type 
                     {
                         case DragMode.Mode_Drag:
-                            transform.position = Player.transform.position - DragOffset;
+                            //transform.position = Player.transform.position - DragOffset;
+                            //transform.position = Player.transform.position;
+                            //transform.rotation = PlayerController.transform.rotation + 180;
+
+                            Vector2 direction = PlayerController.transform.position - transform.position;
+                            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+                            DragOffset = new Vector3(direction.x, direction.y, 0.0f);
+                            transform.position = DragOffset;
+
+                            transform.rotation = Quaternion.Euler(0, 0, PlayerController.transform.rotation.eulerAngles.z + 90);
+                            //transform.rotation = PlayerController.transform.rotation;
+                            //transform.rotation = Quaternion.Euler(0, 0, angle + 180);
+
+
                             //PlayerController.m_HorizontalVelocity = 0.5f;
                             //PlayerController.m_VerticalVelocity = 0.5f;
                             break;

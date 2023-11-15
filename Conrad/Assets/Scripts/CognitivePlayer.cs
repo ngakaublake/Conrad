@@ -24,7 +24,7 @@ public class CognitivePlayer : MonoBehaviour
     public int m_RifleMaxAmmo = 5;
     public int m_ShotgunMaxAmmo = 6;
     public int m_RifleAmmoSupply = 30;
-    public int m_ShotgunAmmoSupply = 69;
+    public int m_ShotgunAmmoSupply = 12;
     public int m_RifleCurrentAmmo;
     public int m_ShotgunCurrentAmmo;
 

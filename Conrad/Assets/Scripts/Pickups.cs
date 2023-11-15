@@ -88,7 +88,7 @@ public class Pickups : MonoBehaviour
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
                     for (int i = 0; i != 10; i++)
                     {
-                        if (Player.m_RifleAmmoSupply < 45) 
+                        if (Player.m_RifleAmmoSupply < 25) 
                         {
                             isPickedUp = true;
                             Player.m_RifleAmmoSupply++;
@@ -101,7 +101,7 @@ public class Pickups : MonoBehaviour
                     for (int i = 0; i != 4; i++)
                     {
                         isPickedUp = true;
-                        if (Player.m_ShotgunAmmoSupply < 12)
+                        if (Player.m_ShotgunAmmoSupply < 6)
                         {
                             Player.m_ShotgunAmmoSupply++;
                         }
