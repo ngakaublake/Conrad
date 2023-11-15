@@ -11,7 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TestScene.unity
     guid: d002bb586781bc4479550dbe158c5398
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BunkerLevel.unity
     guid: 0c04f69bb24febe4491a0b4b996f138c
+  - enabled: 1
+    path: Assets/Scenes/Settings Menu.unity
+    guid: a6d87ec6ee23e5c4283e3ac73a8f61ed
   m_configObjects: {}
