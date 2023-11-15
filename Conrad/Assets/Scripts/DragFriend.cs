@@ -75,12 +75,15 @@ public class DragFriend : MonoBehaviour
                     switch (DragMode) //Checking Item Type 
                     {
                         case DragMode.Mode_Drag:
-                            transform.position = Player.transform.position - DragOffset;
+                            //transform.position = Player.transform.position - DragOffset;
+                            //transform.position = Player.transform.position;
                             //transform.rotation = PlayerController.transform.rotation + 180;
 
                             Vector2 direction = PlayerController.transform.position - transform.position;
                             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
+                            DragOffset = new Vector3(direction.x, direction.y, 0.0f);
+                            transform.position = DragOffset;
 
                             transform.rotation = Quaternion.Euler(0, 0, PlayerController.transform.rotation.eulerAngles.z + 90);
                             //transform.rotation = PlayerController.transform.rotation;
