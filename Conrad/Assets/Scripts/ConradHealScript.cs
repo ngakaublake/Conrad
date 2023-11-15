@@ -5,6 +5,7 @@ using UnityEngine;
 public class ConradHealScript : MonoBehaviour
 {
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private CognitivePlayer cognitivePlayer;
     public int m_health;
     public int m_maxHealth;
 
@@ -31,6 +32,11 @@ public class ConradHealScript : MonoBehaviour
         if (deathPercent >= dyingRate)
         {
             m_health--;
+            if (m_health <= 0)
+            {
+                cognitivePlayer.ResetCognitivePlayer();
+                playerController.ResetCognitive(true);
+            }
             deathPercent = 0;
             maxlifetime--;
             dyingRate = Random.Range(minlifetime, maxlifetime);
