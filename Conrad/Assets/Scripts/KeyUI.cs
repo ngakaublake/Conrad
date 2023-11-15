@@ -90,6 +90,7 @@ public class KeyUI : MonoBehaviour
         {
             showkey1 = false; showkey2 = false; showkey3 = false; showkey4 = false;
             showwholekey = true;
+            playerController.CollectKey(5);
         }
         else
         {

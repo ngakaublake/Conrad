@@ -105,7 +105,34 @@ public class InteractionHitbox : MonoBehaviour
                 playerController.CollectKey(4);
                 StartCoroutine(DestroyAfterDelay(3f));
                 break;
-            case 6:
+            case 2004:
+                //Set inital spawnpoint
+                playerController.NewCheckpoint(new Vector2(0.57f, -0.31f));
+                StartCoroutine(DestroyAfterDelay(1f));
+                break;
+            case 2005:
+                if (playerController.m_key5Obtained)
+                {
+                    //Set spawnpoint after reaching all keys
+                    playerController.NewCheckpoint(new Vector2(0.57f, -0.31f));
+                    StartCoroutine(DestroyAfterDelay(1f));
+                }
+                break;
+            case 2006:
+                if (playerController.m_key1Obtained)
+                {
+                    //Set spawnpoint after getting first key
+                    playerController.NewCheckpoint(new Vector2(-6.61f, 8.5f));
+                    StartCoroutine(DestroyAfterDelay(1f));
+                }
+                break;
+            case 2007:
+                if (playerController.m_key2Obtained)
+                {
+                    //Set spawnpoint after reaching second
+                    playerController.NewCheckpoint(new Vector2(15.51f, 2.9f));
+                    StartCoroutine(DestroyAfterDelay(1f));
+                }
                 break;
             default:
                 break;

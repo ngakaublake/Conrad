@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
     public bool m_key2Obtained;
     public bool m_key3Obtained;
     public bool m_key4Obtained;
+    public bool m_key5Obtained;
 
 
     private Transform dog;
@@ -93,6 +94,11 @@ public class PlayerController : MonoBehaviour
             m_RealWorldPosition = transform.position;
         }
 
+    }
+
+    public void NewCheckpoint(Vector2 NewPoint)
+    {
+        m_IntialCognitiveWorldPosition = NewPoint;
     }
 
     IEnumerator TeleportAfterDelay(float delay)
@@ -195,11 +201,15 @@ public class PlayerController : MonoBehaviour
                 case 4:
                 m_key4Obtained = true;
                 break;
+            case 5:
+                m_key5Obtained = true;
+                break;
             default:
                 m_key1Obtained = false;
                 m_key2Obtained = false;
                 m_key3Obtained = false;
                 m_key4Obtained = false;
+                m_key5Obtained = false;
             break;
         }
     }
