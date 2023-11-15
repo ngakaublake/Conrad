@@ -15,6 +15,7 @@ public class CognitivePlayer : MonoBehaviour
     private GameObject ConradIII;
     [SerializeField] CircleVision CircleFOV;
 
+    public Image BloodSplatter;
     //Combat 
     public bool m_IsPlayerAiming;
 
@@ -34,8 +35,9 @@ public class CognitivePlayer : MonoBehaviour
     public int m_maxHealth = 4;
     public int m_MaxHealthKits = 4;
     public int m_CurrentHealthKits = 0;
+    public float m_BloodFeedbackTimer = 0.5f;
+    public float m_CurrentFeedbackTime = 0f;
 
-   
 
     //Actions
     private float m_invulnerableCooldown;
@@ -44,6 +46,8 @@ public class CognitivePlayer : MonoBehaviour
     public bool m_CurrentlyComitting = false;
     public float m_CommitActionTime = 0.0f;
     public bool m_CanWarp;
+
+
    
 
     //Rigidbody2D RB;
@@ -123,6 +127,13 @@ public class CognitivePlayer : MonoBehaviour
     void Update()
     {
 
+        
+        m_CurrentFeedbackTime -= Time.deltaTime;
+
+        if (m_CurrentFeedbackTime <= 0)
+        {
+            BloodSplatter.enabled = false;
+        }
 
         if (playerController != null && playerController.m_IsPlayerinCognitiveWorld == true)
         {
@@ -170,6 +181,8 @@ public class CognitivePlayer : MonoBehaviour
     {
         if (m_invulnerableCooldown == 0.0f) 
         {
+            BloodSplatter.enabled = true;
+            m_CurrentFeedbackTime = m_BloodFeedbackTimer;
             //Whatever funky effect here
             m_health = m_health - 1;
             m_NoWarpCooldown = 3.0f;
