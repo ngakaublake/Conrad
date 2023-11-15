@@ -142,7 +142,7 @@ public class DragFriend : MonoBehaviour
             yield return null;
         }
         //Stop at Position, then teleport to next position CODE IN LATER
-        unitTransform.position = new Vector2 (0.53f, 1.36f);
+        unitTransform.position = new Vector2 (0.53f, 1.76f);
         b_dragEnabled = true;
         
     }

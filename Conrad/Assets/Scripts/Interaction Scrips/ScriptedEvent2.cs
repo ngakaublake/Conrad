@@ -51,12 +51,15 @@ public class ScriptedEvent2 : MonoBehaviour
         if (Vector2.Distance(transform.position, playerController.transform.position) < 1f && b_triggered == false && playerController.b_Keydoorisopen)
         {
             StartCoroutine(Scripted1());
-            Debug.Log("PLEASE");
             b_triggered = true; //so we aren't locked here
         }
         if (b_triggered)
         {
             cognitivePlayer.m_NoWarpCooldown = 3.0f;
+        }
+        if (playerController.m_CognitiveWorldResetting)
+        {
+            b_triggered = false;
         }
     }
 
