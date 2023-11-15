@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0f0260bfab7c7144da84248bae2c47ef
+guid: 99c821045620f1d48aaa3c6355b1edec
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: s_dog_act1_0
+      name: s_dog_run_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2742ad8e05d63fa40b65ffcd5ff0d3d8
-      internalID: -2144590065
+      spriteID: 750b0a6c43450b64cbf075c332ec1c45
+      internalID: 1626461696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: s_dog_act1_1
+      name: s_dog_run_1
       rect:
         serializedVersion: 2
         x: 64
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dca3bdbc7c638ca4489609a7e555fe81
-      internalID: -836389900
+      spriteID: 81667a1fc9572454490c8a0e2f6e1767
+      internalID: -478248142
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: s_dog_act1_2
+      name: s_dog_run_2
       rect:
         serializedVersion: 2
         x: 128
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f2d6d21fb84b46c438aed9fa5469c098
-      internalID: -1448618870
+      spriteID: 86dbe103b1dc2c247a67ee513c1ff47a
+      internalID: 1844314131
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: s_dog_act1_3
+      name: s_dog_run_3
       rect:
         serializedVersion: 2
         x: 192
@@ -182,92 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6343d5fcc76889c498406a7a6a0d7ecc
-      internalID: -230729455
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: s_dog_act1_4
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 571c663ef91aa2d4a836d451e6346c3b
-      internalID: 2069058434
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: s_dog_act1_5
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 84f50dacbd63652428303069da0d3a95
-      internalID: 1416039420
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: s_dog_act1_6
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fbbe516923cfe574287a73f9c7f85271
-      internalID: -1376481985
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: s_dog_act1_7
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 0
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 70f95bd816aa6a2498e16fd91a509ca5
-      internalID: -678497378
+      spriteID: 4a4f918814b0a4445a0a8d11d67aec45
+      internalID: -593590583
       vertices: []
       indices: 
       edges: []
@@ -283,14 +199,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      s_dog_act1_2: -1448618870
-      s_dog_act1_4: 2069058434
-      s_dog_act1_0: -2144590065
-      s_dog_act1_5: 1416039420
-      s_dog_act1_1: -836389900
-      s_dog_act1_6: -1376481985
-      s_dog_act1_7: -678497378
-      s_dog_act1_3: -230729455
+      s_dog_run_1: -478248142
+      s_dog_run_0: 1626461696
+      s_dog_run_2: 1844314131
+      s_dog_run_3: -593590583
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
