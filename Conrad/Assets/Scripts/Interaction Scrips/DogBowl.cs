@@ -53,11 +53,11 @@ public class DogBowl : MonoBehaviour
     
     void ProcessEatOverTime()
     {
-        if (playerController.m_IsPlayerinCognitiveWorld && currentSpriteIndex == 3)
+        if (playerController.m_IsPlayerinCognitiveWorld)
         {
             UpdateBowl(2);
         }
-        else if (playerController.m_IsPlayerinCognitiveWorld && currentSpriteIndex == 2)
+        if (playerController.m_CognitiveWorldResetting)
         {
             UpdateBowl(1);
         }
