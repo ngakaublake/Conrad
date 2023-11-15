@@ -31424,6 +31424,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RealPlayer: {fileID: 1782536926}
   CognitivePlayer: {fileID: 103654960}
+  visioncone: {fileID: 447496651}
+  regularsight: {fileID: 413659495}
   m_HorizontalVelocity: 0
   m_VerticalVelocity: 0
   m_VelocityDefault: 1
@@ -31435,11 +31437,12 @@ MonoBehaviour:
   m_IsPlayerMoving: 0
   m_CognitiveWorldResetting: 0
   m_CognitiveWorldResetCooldown: 2
-  b_ForceTeleport: 0
+  b_ForceTeleport: 1
   b_beginTeleport: 0
   CanTeleport: 0
   b_Keydoorisopen: 0
   s_overlaysprite: {fileID: 327651573}
+  b_IsInLastStand: 1
   m_key1Obtained: 0
   m_key2Obtained: 0
   m_key3Obtained: 0
@@ -39954,6 +39957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2967a93c36d05334497d6a43e8e2ea39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 0}
   DragMode: 0
   Player: {fileID: 103654966}
   PlayerController: {fileID: 1149861902}
