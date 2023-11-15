@@ -39579,8 +39579,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DragMode: 0
   Player: {fileID: 103654966}
-  PlayerController: {fileID: 0}
-  PlayerWeapons: {fileID: 0}
+  PlayerController: {fileID: 1149861902}
+  PlayerWeapons: {fileID: 103654965}
   RandomDrop: 0
   b_dragEnabled: 0
   m_TimeBetweenDrag: 0.5
@@ -39598,6 +39598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerController: {fileID: 1149861902}
+  cognitivePlayer: {fileID: 103654966}
   m_health: 4
   m_maxHealth: 4
   maxlifetime: 25

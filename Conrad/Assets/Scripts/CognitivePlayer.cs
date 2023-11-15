@@ -231,7 +231,7 @@ public class CognitivePlayer : MonoBehaviour
     }
 
 
-    private void ResetCognitivePlayer()
+    public void ResetCognitivePlayer()
     {
         //Reset Variables
         m_health = m_maxHealth;
