@@ -54786,6 +54786,7 @@ GameObject:
   - component: {fileID: 2050187125}
   - component: {fileID: 2050187124}
   - component: {fileID: 2050187126}
+  - component: {fileID: 2050187127}
   m_Layer: 9
   m_Name: DragableFriend
   m_TagString: Untagged
@@ -54800,14 +54801,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050187122}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.8583, y: -8.9191, z: 0}
-  m_LocalScale: {x: 0.26345, y: 0.2582, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!61 &2050187124
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54898,6 +54899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2967a93c36d05334497d6a43e8e2ea39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 103654967}
   DragMode: 0
   Player: {fileID: 103654966}
   PlayerController: {fileID: 1149861902}
@@ -54906,6 +54908,26 @@ MonoBehaviour:
   b_dragEnabled: 0
   m_TimeBetweenDrag: 1
   m_CurrentTimeDrag: 0
+--- !u!95 &2050187127
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050187122}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bffffcbe98b7a3741a2a790838c8c176, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2056351291
 PrefabInstance:
   m_ObjectHideFlags: 0
