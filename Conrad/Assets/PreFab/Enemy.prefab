@@ -30,7 +30,7 @@ RectTransform:
   m_GameObject: {fileID: 8417265555619130974}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.4, y: 1.4, z: 1}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -129,7 +129,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
+  m_Radius: 0.22
 --- !u!114 &8417265555619130964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +147,7 @@ MonoBehaviour:
   moveSpeed: 0.8
   minimumDistance: 0.6
   AttackDamages: 0
-  AttackChargeTime: 20
+  AttackChargeTime: 5
   playerController: {fileID: 0}
   cognitivePlayer: {fileID: 0}
   spriteSizeMultiplier: 2

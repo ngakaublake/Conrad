@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1ef3db14bb48da1479a196f82b127ec1
+guid: 7b75435487e0c2143b37d374cbbdc5e5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: s_recordplayer_0
+      name: s_BoxTv-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6df8c802b79b8b74183c8c91e32dcefd
-      internalID: 120675294
+      spriteID: 41edfa6aaf3a4174b878a9f490e8d352
+      internalID: 595588864
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: s_recordplayer_1
+      name: s_BoxTv-Sheet_1
       rect:
         serializedVersion: 2
         x: 64
@@ -140,8 +140,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d5f506ffdd406614692da43fa2b0dd4a
-      internalID: 1365242416
+      spriteID: 769c6b23c15c03c468b6305c497f4671
+      internalID: -1795747251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s_BoxTv-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3db37d30c913cd84d91d1da92288093c
+      internalID: 1710759208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s_BoxTv-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb5b604d6e53843499168c4b000f37eb
+      internalID: -1266925272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s_BoxTv-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 168c47ac1a557d94ab1f2ca2f6816d10
+      internalID: -389615935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s_BoxTv-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b498bb2dfb2c0bd43b331badd038a670
+      internalID: 237049898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s_BoxTv-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebfd95ace6ccf7c4aadc7bd121359879
+      internalID: 653605000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: s_BoxTv-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e95e74f1012e50e4f99066b843a5d88d
+      internalID: -810692295
       vertices: []
       indices: 
       edges: []
@@ -157,8 +283,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      s_recordplayer_1: 1365242416
-      s_recordplayer_0: 120675294
+      s_BoxTv-Sheet_6: 653605000
+      s_BoxTv-Sheet_7: -810692295
+      s_BoxTv-Sheet_0: 595588864
+      s_BoxTv-Sheet_1: -1795747251
+      s_BoxTv-Sheet_5: 237049898
+      s_BoxTv-Sheet_4: -389615935
+      s_BoxTv-Sheet_2: 1710759208
+      s_BoxTv-Sheet_3: -1266925272
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
