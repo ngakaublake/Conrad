@@ -52,6 +52,7 @@ public class EnemySpawner : MonoBehaviour
         }
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
         m_spawnCounter = m_spawnCount;
+        SetTimeUntilSpawn();
     }
 
     // Update is called once per frame
