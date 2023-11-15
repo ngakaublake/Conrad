@@ -37,7 +37,6 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
         spawnpoint = rb.position;
 
         playerController = FindObjectOfType<PlayerController>();
-        AttackTime = AttackChargeTime;
         GameObject[] patrolPointGameObjects = GameObject.FindGameObjectsWithTag("Enemy Patrol Point");
         patrolPoints = new Transform[patrolPointGameObjects.Length];
 
@@ -61,14 +60,14 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
 
         if (playerController.m_IsPlayerinCognitiveWorld)
         {
-            //Decrease Invulnerability
-            if (invulnerableCooldown > 0.0f)
+            //Decrease Cooldown
+            if (AttackChargeTime > 0.0f)
             {
-                invulnerableCooldown -= Time.deltaTime;
+                AttackChargeTime -= Time.deltaTime;
 
-                if (invulnerableCooldown <= 0.0f)
+                if (AttackChargeTime <= 0.0f)
                 {
-                    invulnerableCooldown = 0.0f; // Prevent Negative
+                    AttackChargeTime = 0.0f; // Prevent Negative
                 }
             }
 
@@ -120,7 +119,10 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
             {
                 //Enemy Attack when in range
                 //performingAttack = true;
-                animator.SetTrigger("attack");
+                if (AttackChargeTime == 0f)
+                {
+                    animator.SetTrigger("attack");
+                }
             }
         }
         else if (enemyTargets.Length > 0 && Vector2.Distance(transform.position, enemyTargets[0].transform.position) <= targetTargetZone)
@@ -145,6 +147,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
         {
             cognitivePlayer.LoseHealth();
         }
+        AttackChargeTime = 3f;
     }
 
 
