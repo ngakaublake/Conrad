@@ -19,6 +19,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private PlayerCrosshair Crosshair;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private AmmoCounter weaponUI;
+    [SerializeField] private PlayerSound Sound;
 
     //Transforms for FirePoint & MeleePoint World Object 
     public Transform m_firePoint;
@@ -162,6 +163,10 @@ public class PlayerShooting : MonoBehaviour
                     m_RifleTimeSinceLastShot = Time.time; //Reseting the Time since last shot 
                     PlayerMove.m_RifleCurrentAmmo--; //Adjusting Ammo Count 
                 }
+                else if (PlayerMove.m_RifleCurrentAmmo <= 0)
+                {
+                    Sound.playEmptySound();
+                }
                 break;
 
             case Weapon.Weapon_Shotgun:
@@ -172,7 +177,11 @@ public class PlayerShooting : MonoBehaviour
                     m_ShotgunTimeSinceLastShot = Time.time; //Reseting the Time since last shot 
                     PlayerMove.m_ShotgunCurrentAmmo--; //Adjusting Ammo Count 
                     animator.SetInteger("shellCount", PlayerMove.m_ShotgunCurrentAmmo);
-                }            
+                }
+                else if (PlayerMove.m_ShotgunCurrentAmmo <= 0)
+                {
+                    Sound.playEmptySound();
+                }
                 break;
 
             case Weapon.Weapon_Melee:
