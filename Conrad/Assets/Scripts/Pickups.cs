@@ -86,11 +86,11 @@ public class Pickups : MonoBehaviour
                     break;
                 case PickupType.Pickup_RifleAmmo:
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
-                    for (int i = 0; i != 10; i++)
+                    for (int i = 0; i != 5; i++)
                     {
+                        isPickedUp = true;
                         if (Player.m_RifleAmmoSupply < 25) 
                         {
-                            isPickedUp = true;
                             Player.m_RifleAmmoSupply++;
                         }
                     }
@@ -98,7 +98,7 @@ public class Pickups : MonoBehaviour
                     break;
                 case PickupType.Pickup_ShotgunAmmo:
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
-                    for (int i = 0; i != 4; i++)
+                    for (int i = 0; i != 3; i++)
                     {
                         isPickedUp = true;
                         if (Player.m_ShotgunAmmoSupply < 6)
@@ -118,7 +118,7 @@ public class Pickups : MonoBehaviour
                     break;
                 case PickupType.Pickup_HealthKit:
 
-                    
+                    isPickedUp = true;
                     if (Player.m_CurrentHealthKits < Player.m_MaxHealthKits)
                     {
                         transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
@@ -174,6 +174,7 @@ public class Pickups : MonoBehaviour
 
     void ShowInteractionText()
     {
+        Debug.Log("Pickup Test");
         m_TextCurrentTime -= Time.deltaTime;
 
         if (m_TextCurrentTime >= 0)
@@ -191,6 +192,8 @@ public class Pickups : MonoBehaviour
             Debug.Log("TEST DESTROY");
             //gameObject.GetComponent<Pickups>().UIText.enabled = false;
             UIText.text = "";
+            Destroy(gameObject);
+            
         }
        
     }

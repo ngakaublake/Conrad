@@ -8639,6 +8639,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191057}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: m_textPosition.y
+      value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1149861902}
@@ -13574,7 +13578,7 @@ PrefabInstance:
       objectReference: {fileID: 1215283820}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: TextPopup
-      value: + 4 Shells
+      value: + 3 Shells
       objectReference: {fileID: 0}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: TextObject
@@ -15808,7 +15812,7 @@ PrefabInstance:
       objectReference: {fileID: 1215283820}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: TextPopup
-      value: + 4 Shells
+      value: + 3 Shells
       objectReference: {fileID: 0}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: TextObject
@@ -15822,6 +15826,10 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_textPosition.y
+      value: -0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: playerController
       value: 
@@ -17979,6 +17987,10 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 1215283819}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: m_textPosition.y
+      value: -0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: playerController
       value: 
@@ -42485,7 +42497,7 @@ MonoBehaviour:
   CanTeleport: 0
   b_Keydoorisopen: 0
   s_overlaysprite: {fileID: 327651573}
-  b_IsInLastStand: 1
+  b_IsInLastStand: 0
   m_key1Obtained: 0
   m_key2Obtained: 0
   m_key3Obtained: 0
@@ -42585,7 +42597,7 @@ PrefabInstance:
       objectReference: {fileID: 1215283820}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: TextPopup
-      value: + 4 Shells
+      value: + 3 Shells
       objectReference: {fileID: 0}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: TextObject
@@ -42599,6 +42611,10 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: m_textPosition.y
+      value: -0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: playerController
       value: 
@@ -43140,6 +43156,10 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: m_textPosition.y
+      value: -0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: playerController
       value: 
@@ -57259,6 +57279,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191057}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: m_textPosition.y
+      value: -0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1149861902}
@@ -62263,6 +62287,10 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: m_textPosition.y
+      value: -0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
       propertyPath: playerController
       value: 
