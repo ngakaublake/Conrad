@@ -58,12 +58,12 @@ public class ScriptedEvent1 : MonoBehaviour
     IEnumerator Scripted1()
     {
         CogDog.DogBooksItDownTheHallwayScriptedEvent();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(5f);
         StartCoroutine(ConradSpeaks());
         ShowInteractionText();
         yield return new WaitForSeconds(1f);
         Conrad.TriggerConradRunEvent();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         FuseRef.isFuseActive = !FuseRef.isFuseActive;
     }
 
