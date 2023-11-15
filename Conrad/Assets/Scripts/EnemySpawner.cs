@@ -120,6 +120,11 @@ public class EnemySpawner : MonoBehaviour
         SetTimeUntilSpawn();
     }
 
+    public void ManualTurnOn()
+    {
+        m_spawnerTriggered = true;
+    }
+
     private void SpawnEnemy()
     {
         if (m_spawnInRange)

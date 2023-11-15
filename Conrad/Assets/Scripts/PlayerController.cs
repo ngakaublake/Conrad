@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public bool CanTeleport;
     private bool b_currentlyTeleporting;
     private bool b_canmove;
+    public bool b_Keydoorisopen;
     public SpriteRenderer s_overlaysprite;
 
 
@@ -210,7 +211,8 @@ public class PlayerController : MonoBehaviour
                 m_key3Obtained = false;
                 m_key4Obtained = false;
                 m_key5Obtained = false;
-            break;
+                b_Keydoorisopen = false;
+                break;
         }
     }
 

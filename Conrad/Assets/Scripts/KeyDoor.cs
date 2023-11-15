@@ -42,6 +42,7 @@ public class KeyDoor : MonoBehaviour
                 gameObject.GetComponent<InteractionHitbox>().enabled = false;
                 gameObject.GetComponent<SpriteRenderer>().enabled = false;
                 gameObject.GetComponent<BoxCollider2D>().enabled = false;
+                m_PlayerControllerRef.b_Keydoorisopen = true;
             }
         }
           
