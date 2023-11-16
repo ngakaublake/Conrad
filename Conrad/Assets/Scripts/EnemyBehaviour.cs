@@ -27,10 +27,12 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     public float spriteSizeMultiplier = 2.0f;
     [SerializeField] ParticleSystem BloodSpurt;
     public Animator animator;
-    
+    [SerializeField] AudioClip meleeSound;
+    [SerializeField] AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
@@ -187,7 +189,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     {
         if (collision.gameObject.CompareTag("Bullet") && invulnerableCooldown == 0.0f)
         {
-            
+            audioSource.PlayOneShot(meleeSound);
             BloodSpurt.Play();
 
             health = health - 1;
