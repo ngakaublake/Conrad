@@ -14,7 +14,7 @@ public class CognitivePlayer : MonoBehaviour
     private PlayerController playerController;
     private GameObject ConradIII;
     [SerializeField] CircleVision CircleFOV;
-
+    [SerializeField] CameraShake cameraShake;
     public Image BloodSplatter;
     //Combat 
     public bool m_IsPlayerAiming;
@@ -187,6 +187,7 @@ public class CognitivePlayer : MonoBehaviour
     {
         if (m_invulnerableCooldown == 0.0f) 
         {
+            cameraShake.start = true;
             BloodSplatter.enabled = true;
             m_CurrentFeedbackTime = m_BloodFeedbackTimer;
             //Whatever funky effect here

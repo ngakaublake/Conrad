@@ -8190,6 +8190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FOV: {fileID: 447496651}
   CircleFOV: {fileID: 492101101}
+  cameraShake: {fileID: 1317599940}
   BloodSplatter: {fileID: 1942336022}
   m_IsPlayerAiming: 0
   m_RifleMaxAmmo: 5
@@ -16464,7 +16465,7 @@ AudioSource:
   MinDistance: 1
   MaxDistance: 32
   Pan2D: 0
-  rolloffMode: 1
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -16472,7 +16473,7 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0.0018819273
+      time: 0.03125
       value: 1
       inSlope: 0
       outSlope: 0
@@ -16483,11 +16484,11 @@ AudioSource:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: -1.5
-      outSlope: -1.5
+      inSlope: 0.000019862699
+      outSlope: 0.000019862699
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.18276042
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
