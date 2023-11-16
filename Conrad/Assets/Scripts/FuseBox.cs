@@ -31,6 +31,8 @@ public class FuseBox : MonoBehaviour
 
     public CognitivePlayer Player;
 
+    public AudioSource audioSource;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -89,7 +91,7 @@ public class FuseBox : MonoBehaviour
                             m_ChildFuse.GetComponent<SpriteRenderer>().enabled = false;
                             gameObject.GetComponent<AudioSource>().Play();
                             //gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
-
+                            audioSource.Play();
 
                             gameObject.GetComponent<AudioSource>().Play();
 
@@ -101,6 +103,7 @@ public class FuseBox : MonoBehaviour
                     break;
 
                 case FuseState.State_Inactive:
+                    audioSource.Play();
                     switch (m_FuseColour) //Checking Item Type 
                     {
                         case FuseColour.Fuse_Yellow:
