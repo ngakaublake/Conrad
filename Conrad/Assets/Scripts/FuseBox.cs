@@ -23,6 +23,9 @@ public class FuseBox : MonoBehaviour
     public FuseColour m_FuseColour;
     public FuseState m_FuseState;
 
+    public string m_ChildObjectName;
+    GameObject m_ChildFuse;
+
     private bool isInRange; //Checks if player is in range of pickup
     public bool isFuseActive = false;
 
@@ -33,6 +36,8 @@ public class FuseBox : MonoBehaviour
     {
         //gameObject.GetComponent<SpriteRenderer>().enabled = true;
         //gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+
+        m_ChildFuse = GameObject.Find(m_ChildObjectName);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -77,10 +82,15 @@ public class FuseBox : MonoBehaviour
                             Debug.Log("Fuse Yellow Works");
 
                             isFuseActive = false;
-                            gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                            gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
-                            //gameObject.GetComponent<AudioSource>().Play();
-                            gameObject.GetComponentInChildren<AudioSource>().Play();
+                            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+                            m_ChildFuse.GetComponent<SpriteRenderer>().enabled = false;
+                            gameObject.GetComponent<AudioSource>().Play();
+                            //gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+
+
+                            gameObject.GetComponent<AudioSource>().Play();
+
+
                             break;
                         case FuseColour.Fuse_Purple:
                             break;
@@ -94,10 +104,11 @@ public class FuseBox : MonoBehaviour
                             isFuseActive = true;
                             Debug.Log("Fuse Yellow Works off");
                             
-                            gameObject.GetComponentInChildren<AudioSource>().Play();
+                           // gameObject.GetComponentInChildren<AudioSource>().Play();
+                            m_ChildFuse.GetComponent<AudioSource>().Play();
 
-                            gameObject.GetComponent<SpriteRenderer>().enabled = true;
-                            gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+                            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                            m_ChildFuse.GetComponent<SpriteRenderer>().enabled = true;
                             
                             
                             break;
