@@ -10,6 +10,7 @@ public class FinalStand : MonoBehaviour
     public GameObject Sunrise;
     public GameObject SunriseSprite;
     public GameObject Fog;
+    private PlayerController playerController;
     [SerializeField] private ScriptedEvent4 FinalPush;
 
     SpriteRenderer TestSunrise;
@@ -28,23 +29,32 @@ public class FinalStand : MonoBehaviour
         //m_TimeTillEnd = m_LevelTime;
         TestSunrise = SunriseSprite.GetComponent<SpriteRenderer>();
         TestFog = Fog.GetComponent<SpriteRenderer>();
-
+        playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
         TestSunrise.color = new Color(TestSunrise.color.r, TestSunrise.color.g, TestSunrise.color.b, 0);
         m_CurrentSunTime = m_TimeSunrise;
+        m_TimeTillEnd = 20f;
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        m_TimeTillEnd -= Time.deltaTime;
+        if (playerController.m_CognitiveWorldResetting)
+        {
+            TestSunrise.color = new Color(TestSunrise.color.r, TestSunrise.color.g, TestSunrise.color.b, 0);
+            m_CurrentSunTime = m_TimeSunrise;
+            m_TimeTillEnd = 16f;
+        }
+
+
+        m_TimeTillEnd -= Time.deltaTime/14;
        
 
         //Sunrise.transform.localScale = scaleChange;
         //scaleChange += new Vector3(0.1f * Time.deltaTime, 0.1f * Time.deltaTime, 0f);
 
        
-        if (Alpha < 0.32)
+        if (Alpha < 0.25)
         {
             Alpha += 0.1f * Time.deltaTime / 40;
         }
@@ -59,10 +69,10 @@ public class FinalStand : MonoBehaviour
         TestSunrise.color = new Color(TestSunrise.color.r, TestSunrise.color.g, TestSunrise.color.b, Alpha);
         TestFog.color = new Color(TestFog.color.r, TestFog.color.g, TestFog.color.b, FogAlpha);
 
-        //Debug.Log(m_TimeTillEnd);
+        Debug.Log(m_TimeTillEnd);
         if (m_TimeTillEnd <= 0)
         {
-            //FinalPush.ProcessInteraction();
+            FinalPush.ProcessInteraction();
         }
     }
 }
