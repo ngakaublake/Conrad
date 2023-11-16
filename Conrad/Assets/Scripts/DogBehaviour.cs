@@ -11,7 +11,7 @@ public class DogBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-     // player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         GameObject playerObject = GameObject.FindGameObjectWithTag("RealWorldPlayer");
 
         // Check if the playerObject is not null before accessing its transform
