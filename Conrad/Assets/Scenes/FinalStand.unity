@@ -41010,7 +41010,7 @@ SpriteRenderer:
   m_SortingLayerID: -456181251
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1614651333, guid: de568d77624c7ee41bc501d360c3510c, type: 3}
+  m_Sprite: {fileID: 1176554297, guid: de568d77624c7ee41bc501d360c3510c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -41068,7 +41068,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2050187122}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: bffffcbe98b7a3741a2a790838c8c176, type: 2}
   m_CullingMode: 0
