@@ -16,13 +16,16 @@ public class FadeToBlack : MonoBehaviour
             GameObject ImageGameObject = new GameObject("Fade");
             Image FadetoBlack = ImageGameObject.AddComponent<Image>();
             FadetoBlack.transform.SetParent(canvas.transform);
+
             RectTransform imageRectTransform = FadetoBlack.GetComponent<RectTransform>();
             imageRectTransform.anchorMin = Vector2.zero;
             imageRectTransform.anchorMax = Vector2.one;
+            imageRectTransform.anchoredPosition = Vector2.zero;
             imageRectTransform.sizeDelta = Vector2.zero;
 
             // Set Colour
             FadetoBlack.color = Color.black;
+            Canvas canvasComponent = canvas.GetComponent<Canvas>();
         }
     }
 

@@ -19,6 +19,7 @@ public class ScriptedEvent4 : MonoBehaviour
     [SerializeField] private DragFriend Conrad;
     [SerializeField] private ConradHealScript HealthConrad;
     [SerializeField] private HealthUI VisibleHealth;
+    [SerializeField] private DogBehaviour RealWorldDog;
 
     [SerializeField] private EnemySpawner Spawner;
     [SerializeField] private EnemySpawner Spawner2;
@@ -27,11 +28,16 @@ public class ScriptedEvent4 : MonoBehaviour
     [SerializeField] private EnemySpawner Spawner5;
     [SerializeField] private EnemySpawner Spawner6;
 
+    //UI Elements to delete
+    [SerializeField] private GameObject UI;
+
+
 
     //Conversations in Act II
     public string m_Line1;
     public string m_Line2;
     public string m_Line3;
+    public string m_Line4;
     public string m_Blank;
 
     // Start is called before the first frame update
@@ -71,6 +77,7 @@ public class ScriptedEvent4 : MonoBehaviour
     {
         //Final Scene
         HealthConrad.Stopscript();
+        UI.SetActive(false);
         playerController.ScriptedEventSunrise();
         yield return new WaitForSeconds(1f);
         //Player says 'conrad, we made it out'
@@ -86,6 +93,7 @@ public class ScriptedEvent4 : MonoBehaviour
         yield return new WaitForSeconds(3f);
         playerController.b_IsInLastStand = false;
         playerController.ScriptedTeleport(true);
+        StartCoroutine(DogSpeaks());
         yield return new WaitForSeconds(3f);
         StartCoroutine(ImsorryBuddy());
         yield return new WaitForSeconds(2f);
@@ -131,6 +139,22 @@ public class ScriptedEvent4 : MonoBehaviour
         while (elapsedTime < duration)
         {
             Vector2 playerPosition = playerController.transform.position;
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)playerPosition + new Vector3(m_textPosition.x, m_textPosition.y, 0f));
+            interactionText.rectTransform.position = screenPosition;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        interactionText.text = m_Blank;
+    }
+    IEnumerator DogSpeaks()
+    {
+        interactionText.text = m_Line4; // Set
+        float elapsedTime = 0f;
+        float duration = 3f; // How long Text lasts
+
+        while (elapsedTime < duration)
+        {
+            Vector2 playerPosition = RealWorldDog.transform.position;
             Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)playerPosition + new Vector3(m_textPosition.x, m_textPosition.y, 0f));
             interactionText.rectTransform.position = screenPosition;
             elapsedTime += Time.deltaTime;
