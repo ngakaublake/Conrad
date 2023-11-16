@@ -10,6 +10,7 @@ public class FinalStand : MonoBehaviour
     public GameObject Sunrise;
     public GameObject SunriseSprite;
     public GameObject Fog;
+    [SerializeField] private ScriptedEvent4 FinalPush;
 
     SpriteRenderer TestSunrise;
     SpriteRenderer TestFog;
@@ -55,8 +56,7 @@ public class FinalStand : MonoBehaviour
         //Debug.Log(m_TimeTillEnd);
         if (m_TimeTillEnd <= 0)
         {
-            //SCRIPTED EVENT GOES HERE
-            
+            //FinalPush.ProcessInteraction();
         }
     }
 }
