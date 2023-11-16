@@ -57,4 +57,10 @@ public class ConradHealScript : MonoBehaviour
     {
         m_Startdying = true;
     }
+    public void Stopscript()
+    {
+        m_Startdying = false;
+        m_health = m_maxHealth;
+        deathPercent = 0;
+    }
 }

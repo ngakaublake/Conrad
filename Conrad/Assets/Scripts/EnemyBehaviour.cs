@@ -77,6 +77,15 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
 
         if (playerController.m_CognitiveWorldResetting)
         {
+            if (playerController.b_EndingCutsceneTriggered)
+            {
+                BloodSpurt.Play();
+                //Create the Corpse.
+                Vector2 deathLocation = transform.position;
+                Quaternion spawnRotation = transform.rotation;
+                //Make Corpse at location (when Corpse set up)
+                Instantiate(Corpse, deathLocation, spawnRotation);
+            }
             if (b_enemyrespawns)
             {
                 //Respawn!

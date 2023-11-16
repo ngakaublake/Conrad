@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScriptedEvent3 : MonoBehaviour
+public class ScriptedEvent4 : MonoBehaviour
 {
     public int m_ID;
     public bool m_AutoShow;
     public bool m_isInRange;
     private bool b_triggered;
     private PlayerController playerController;
+    public GameObject RealPlayer;
+    public GameObject CognitivePlayer;
+
     [SerializeField] private Vector2 m_textPosition;
     [SerializeField] private Text interactionText;
+    [SerializeField] private Text finalText;
     [SerializeField] private DragFriend Conrad;
     [SerializeField] private ConradHealScript HealthConrad;
     [SerializeField] private HealthUI VisibleHealth;
@@ -56,7 +60,7 @@ public class ScriptedEvent3 : MonoBehaviour
     {
         if (Vector2.Distance(transform.position, playerController.transform.position) < 1f && b_triggered == false)
         {
-            playerController.StopMoving(9);
+            playerController.StopMoving(14);
             StartCoroutine(Scripted1());
             b_triggered = true; //so we aren't locked here
         }
@@ -65,24 +69,44 @@ public class ScriptedEvent3 : MonoBehaviour
 
     IEnumerator Scripted1()
     {
-        StartCoroutine(ConradSpeaks());
-        ShowInteractionText();
-        yield return new WaitForSeconds(5f);
-        StartCoroutine(ConradSpeaks2());
-        yield return new WaitForSeconds(30f);
+        //Final Scene
+        HealthConrad.Stopscript();
+        playerController.ScriptedEventSunrise();
+        yield return new WaitForSeconds(1f);
+        //Player says 'conrad, we made it out'
         StartCoroutine(PlayerSpeaks());
         yield return new WaitForSeconds(4f);
-        HealthConrad.StubToe();
-        VisibleHealth.ShowConradHealth();
-        Spawner.ManualTurnOn();
-        Spawner2.ManualTurnOn();
-        Spawner3.ManualTurnOn();
-        Spawner4.ManualTurnOn();
-        Spawner5.ManualTurnOn();
-        Spawner6.ManualTurnOn();
+        //Player says 'conrad?'
+        StartCoroutine(PlayerSpeaks2());
+        yield return new WaitForSeconds(2f);
+        //Fade to black, somehow
+        yield return new WaitForSeconds(2f);
+        //Words I'm sorry, buddy appear on screen
+        StartCoroutine(ImsorryBuddy());
+        yield return new WaitForSeconds(3f);
+        playerController.b_IsInLastStand = false;
+        playerController.ScriptedTeleport(true);
+        yield return new WaitForSeconds(3f);
+        StartCoroutine(ImsorryBuddy());
+        yield return new WaitForSeconds(2f);
     }
 
-    IEnumerator ConradSpeaks()
+    IEnumerator ImsorryBuddy()
+    {
+        finalText.text = m_Line3; // Set
+        float elapsedTime = 0f;
+        float duration = 3f; // How long Text lasts
+
+        while (elapsedTime < duration)
+        {
+            Vector3 screenCenter = new Vector3(Screen.width / 2f, Screen.height / 2f, 0f);
+            finalText.rectTransform.position = screenCenter;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        finalText.text = m_Blank;
+    }
+    IEnumerator PlayerSpeaks()
     {
         interactionText.text = m_Line1; // Set
         float elapsedTime = 0f;
@@ -90,33 +114,17 @@ public class ScriptedEvent3 : MonoBehaviour
 
         while (elapsedTime < duration)
         {
-            Vector2 ConradPosition = Conrad.transform.position;
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)ConradPosition + new Vector3(m_textPosition.x, m_textPosition.y, 0f));
+            Vector2 playerPosition = playerController.transform.position;
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)playerPosition + new Vector3(m_textPosition.x, m_textPosition.y, 0f));
             interactionText.rectTransform.position = screenPosition;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
         interactionText.text = m_Blank;
     }
-    IEnumerator ConradSpeaks2()
+    IEnumerator PlayerSpeaks2()
     {
         interactionText.text = m_Line2; // Set
-        float elapsedTime = 0f;
-        float duration = 3f; // How long Text lasts
-
-        while (elapsedTime < duration)
-        {
-            Vector2 ConradPosition = Conrad.transform.position;
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)ConradPosition + new Vector3(m_textPosition.x, m_textPosition.y, 0f));
-            interactionText.rectTransform.position = screenPosition;
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-        interactionText.text = m_Blank;
-    }
-    IEnumerator PlayerSpeaks()
-    {
-        interactionText.text = m_Line3; // Set
         float elapsedTime = 0f;
         float duration = 3f; // How long Text lasts
 
