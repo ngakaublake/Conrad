@@ -162,22 +162,22 @@ public class Pickups : MonoBehaviour
                     break;
 
                 case PickupType.Pickup_Key1:
-                    pickupSound.PlayOneShot(pickupKeySound);
+                    //pickupSound.PlayOneShot(pickupKeySound);
                     playerController.CollectKey(1);
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f);
                     break;
                 case PickupType.Pickup_Key2:
-                    pickupSound.PlayOneShot(pickupKeySound);
+                    //pickupSound.PlayOneShot(pickupKeySound);
                     playerController.CollectKey(2);
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f);
                     break;
                 case PickupType.Pickup_Key3:
-                    pickupSound.PlayOneShot(pickupKeySound);
+                    //pickupSound.PlayOneShot(pickupKeySound);
                     playerController.CollectKey(3);
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f);
                     break;
                 case PickupType.Pickup_Key4:
-                    pickupSound.PlayOneShot(pickupKeySound);
+                    //pickupSound.PlayOneShot(pickupKeySound);
                     playerController.CollectKey(4);
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f);
                     break;
