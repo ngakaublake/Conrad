@@ -6,7 +6,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
 {
     [SerializeField] private GameObject Corpse;
     public bool b_enemyrespawns;
-    public float moveSpeed = 1.0f;
+    public float moveSpeed = 1.2f;
     public float minimumDistance = 1.7f;
     float health = 2;
     float invulnerableCooldown = 0.0f;
