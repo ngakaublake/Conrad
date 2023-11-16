@@ -84,7 +84,7 @@ public class PlayerShooting : MonoBehaviour
     //Particle Systems
     [SerializeField] ParticleSystem CasingEmit;
     [SerializeField] ParticleSystem ShellEmit;
-    [SerializeField] ParticleSystem BANG;
+    [SerializeField] ParticleSystem MuzzleFlash;
 
     private void Start()
     {
@@ -178,6 +178,7 @@ public class PlayerShooting : MonoBehaviour
 
                 if (Time.time - m_ShotgunTimeSinceLastShot >= m_ShotgunTimeBetweenShots && PlayerMove.m_ShotgunCurrentAmmo > 0)
                 {
+                    
                     FireShotgun();
                     m_ShotgunTimeSinceLastShot = Time.time; //Reseting the Time since last shot 
                     PlayerMove.m_ShotgunCurrentAmmo--; //Adjusting Ammo Count 
@@ -457,6 +458,9 @@ public class PlayerShooting : MonoBehaviour
                 break;
         }
     }
-
+    void PlayMuzzleFlash()
+    {
+        MuzzleFlash.Play();
+    }
 }
 
