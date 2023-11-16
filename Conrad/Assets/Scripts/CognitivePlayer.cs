@@ -47,9 +47,13 @@ public class CognitivePlayer : MonoBehaviour
     public bool m_CurrentlyComitting = false;
     public float m_CommitActionTime = 0.0f;
     public bool m_CanWarp;
-   
 
-   
+    //Sounds
+    public int m_randomSound;
+    public AudioClip Foot;
+    public AudioClip Foots;
+    public AudioClip Feet;
+    public AudioClip Feets;
 
     //Rigidbody2D RB;
 
@@ -293,6 +297,23 @@ public class CognitivePlayer : MonoBehaviour
 
         playerController.transform.position = playerController.m_IntialCognitiveWorldPosition;
         playerController.ResetCognitive(true);
+    }
+
+    public void RandomFootstep()
+    {
+        m_randomSound = UnityEngine.Random.Range(1, 5);
+        switch (m_randomSound)
+        {
+            case 1:
+                break;
+            case 2:
+                break; 
+            case 3:
+                break;   
+            default:
+                break;
+
+        }
     }
 
 }

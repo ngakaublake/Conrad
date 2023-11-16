@@ -45,6 +45,13 @@ public class PlayerController : MonoBehaviour
     public bool m_key4Obtained;
     public bool m_key5Obtained;
 
+    //Sounds
+    public int m_randomSound;
+    public AudioClip OneFoot;
+    public AudioClip TwoFoot;
+    public AudioClip RedFoot;
+    public AudioClip BlueFoot;
+
 
     private Transform dog;
         Rigidbody2D RB;
@@ -311,5 +318,23 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(_delay);
         b_canmove = true;
     }
+
+    public void RandomFootstep()
+    {
+        m_randomSound = UnityEngine.Random.Range(1, 5);
+        switch (m_randomSound)
+        {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            default:
+                break;
+
+        }
+    }
+
 
 }
