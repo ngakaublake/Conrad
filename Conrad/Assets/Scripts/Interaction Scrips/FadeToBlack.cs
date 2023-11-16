@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class FadeToBlack : MonoBehaviour
 {
+    [SerializeField] public GameObject Parent;
+    private Image FadetoBlack;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,8 +16,8 @@ public class FadeToBlack : MonoBehaviour
         {
             //Make BlackScreen
             GameObject ImageGameObject = new GameObject("Fade");
-            Image FadetoBlack = ImageGameObject.AddComponent<Image>();
-            FadetoBlack.transform.SetParent(canvas.transform);
+            FadetoBlack = ImageGameObject.AddComponent<Image>();
+            FadetoBlack.transform.SetParent(Parent.transform);
 
             RectTransform imageRectTransform = FadetoBlack.GetComponent<RectTransform>();
             imageRectTransform.anchorMin = Vector2.zero;
@@ -26,6 +28,7 @@ public class FadeToBlack : MonoBehaviour
             // Set Colour
             FadetoBlack.color = Color.black;
             Canvas canvasComponent = canvas.GetComponent<Canvas>();
+            FadetoBlack.color = new Color(0, 0, 0, 0.0f);
         }
     }
 
@@ -34,4 +37,32 @@ public class FadeToBlack : MonoBehaviour
     {
         
     }
+
+    public void FadeIn()
+    {
+        StartCoroutine(Fade(1.0f, 0.0f, 2.0f));
+    }
+    public void FadeOut()
+    {
+        StartCoroutine(Fade(0.0f, 1.0f, 2.0f));
+    }
+
+
+    private IEnumerator Fade(float startAlpha, float targetAlpha, float duration)
+    {
+        float elapsedTime = 0f;
+        Color startColor = FadetoBlack.color;
+
+        Color targetColor = new Color(startColor.r, startColor.g, startColor.b, targetAlpha);
+
+        while (elapsedTime < duration)
+        {
+            FadetoBlack.color = Color.Lerp(startColor, targetColor, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        FadetoBlack.color = targetColor; // Ensure final color is set
+    }
+
 }

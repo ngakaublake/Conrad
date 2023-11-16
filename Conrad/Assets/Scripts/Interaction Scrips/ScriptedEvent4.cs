@@ -20,6 +20,7 @@ public class ScriptedEvent4 : MonoBehaviour
     [SerializeField] private ConradHealScript HealthConrad;
     [SerializeField] private HealthUI VisibleHealth;
     [SerializeField] private DogBehaviour RealWorldDog;
+    [SerializeField] private FadeToBlack FadeScreen;
 
     [SerializeField] private EnemySpawner Spawner;
     [SerializeField] private EnemySpawner Spawner2;
@@ -87,14 +88,18 @@ public class ScriptedEvent4 : MonoBehaviour
         StartCoroutine(PlayerSpeaks2());
         yield return new WaitForSeconds(2f);
         //Fade to black, somehow
+        FadeScreen.FadeOut();
         yield return new WaitForSeconds(2f);
         //Words I'm sorry, buddy appear on screen
         StartCoroutine(ImsorryBuddy());
         yield return new WaitForSeconds(3f);
         playerController.b_IsInLastStand = false;
         playerController.ScriptedTeleport(true);
+        FadeScreen.FadeIn();
         StartCoroutine(DogSpeaks());
         yield return new WaitForSeconds(3f);
+        FadeScreen.FadeOut();
+        yield return new WaitForSeconds(2f);
         StartCoroutine(ImsorryBuddy());
         yield return new WaitForSeconds(2f);
     }

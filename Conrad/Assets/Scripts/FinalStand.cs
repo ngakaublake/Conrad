@@ -52,7 +52,7 @@ public class FinalStand : MonoBehaviour
 
 
 
-        Debug.Log(m_TimeTillEnd);
+        //Debug.Log(m_TimeTillEnd);
         if (m_TimeTillEnd <= 0)
         {
             //SCRIPTED EVENT GOES HERE

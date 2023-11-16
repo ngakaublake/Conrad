@@ -3320,13 +3320,14 @@ MonoBehaviour:
   HealthConrad: {fileID: 2050187127}
   VisibleHealth: {fileID: 1712892981}
   RealWorldDog: {fileID: 1446860578}
+  FadeScreen: {fileID: 1926239466}
   Spawner: {fileID: 896899689}
   Spawner2: {fileID: 1211689041}
   Spawner3: {fileID: 1885355659}
   Spawner4: {fileID: 1472341484}
   Spawner5: {fileID: 1890053842}
   Spawner6: {fileID: 1336159688}
-  UI: {fileID: 888083120}
+  UI: {fileID: 1473653157}
   m_Line1: Conrad! they're gone! We made it!
   m_Line2: ...Conrad?
   m_Line3: I'm sorry, buddy.
@@ -37871,6 +37872,7 @@ GameObject:
   - component: {fileID: 1926239465}
   - component: {fileID: 1926239464}
   - component: {fileID: 1926239463}
+  - component: {fileID: 1926239466}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -37959,8 +37961,21 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
+--- !u!114 &1926239466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1926239461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04f51b6fcb7907043979d2f125291317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Parent: {fileID: 28850169}
 --- !u!1001 &1928993906
 PrefabInstance:
   m_ObjectHideFlags: 0
