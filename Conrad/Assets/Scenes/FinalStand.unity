@@ -3246,11 +3246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6725319368280650809, guid: d523b130833dd47438b1918ed1563d72, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.08
+      value: 6.89
       objectReference: {fileID: 0}
     - target: {fileID: 6725319368280650809, guid: d523b130833dd47438b1918ed1563d72, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.78
+      value: -12.3
       objectReference: {fileID: 0}
     - target: {fileID: 6725319368280650809, guid: d523b130833dd47438b1918ed1563d72, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3286,7 +3286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6725319368280650810, guid: d523b130833dd47438b1918ed1563d72, type: 3}
       propertyPath: m_Name
-      value: Scripted1 (1)
+      value: FinalSceneOperator
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6725319368280650811, guid: d523b130833dd47438b1918ed1563d72, type: 3}
@@ -5536,6 +5536,7 @@ MonoBehaviour:
   Sunrise: {fileID: 2088954101}
   SunriseSprite: {fileID: 843480790}
   Fog: {fileID: 706517429}
+  FinalPush: {fileID: 475967439}
   Alpha: 0
   FogAlpha: 1
 --- !u!4 &918955569
@@ -32840,43 +32841,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 913dfba43de28cb46a4c29f943921bae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Fadespeed: 1
-  fadeColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 1
-  FadeCurve:
-    m_Curve:
-    - time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - time: 0.5
-      value: 0.5
-      inSlope: -1.5
-      outSlope: -1.5
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  startFadedOut: 0
-  FinalText: {fileID: 498163884}
 --- !u!114 &1336159688 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6580674856885275006, guid: d829638b2f737e844961afe6ec82ee1c, type: 3}
@@ -33393,6 +33357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d22500024eac940a072dbe4f5ccf6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!4 &1462181370 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6725319368280650809, guid: d523b130833dd47438b1918ed1563d72, type: 3}
