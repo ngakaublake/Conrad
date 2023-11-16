@@ -211,7 +211,7 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
 
     public void EnemyDamage(float _dmg)
     {
-        
+        audioSource.PlayOneShot(meleeSound);
         BloodSpurt.Play();
 
         health = health - _dmg;
