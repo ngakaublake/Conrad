@@ -30,7 +30,8 @@ public class Pickups : MonoBehaviour
     public PickupType PickupType; //Item Type 
 
     private bool isInRange; //Checks if player is in range of pickup
-    private bool isPickedUp = false; 
+    private bool isPickedUp = false;
+    private bool isInvalidPickup = false;
 
 
     //Object Refs 
@@ -85,26 +86,46 @@ public class Pickups : MonoBehaviour
 
                     break;
                 case PickupType.Pickup_RifleAmmo:
-                    transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
-                    for (int i = 0; i != 5; i++)
+
+                    if (Player.m_RifleAmmoSupply < 25)
                     {
-                        isPickedUp = true;
-                        if (Player.m_RifleAmmoSupply < 25) 
+                        transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
+
+                        for (int i = 0; i != 5; i++)
                         {
-                            Player.m_RifleAmmoSupply++;
+                            isPickedUp = true;
+                            if (Player.m_RifleAmmoSupply < 25)
+                            {
+                                Player.m_RifleAmmoSupply++;
+                            }
                         }
                     }
-
-                    break;
-                case PickupType.Pickup_ShotgunAmmo:
-                    transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
-                    for (int i = 0; i != 3; i++)
+                    else
                     {
-                        isPickedUp = true;
-                        if (Player.m_ShotgunAmmoSupply < 6)
+                        isInvalidPickup = true;
+                    }
+                    break;
+
+
+
+                case PickupType.Pickup_ShotgunAmmo:
+                    
+
+                    if (Player.m_ShotgunAmmoSupply < 6)
+                    {
+                        transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
+                        for (int i = 0; i != 3; i++)
                         {
-                            Player.m_ShotgunAmmoSupply++;
+                            isPickedUp = true;
+                            if (Player.m_ShotgunAmmoSupply < 6)
+                            {
+                                Player.m_ShotgunAmmoSupply++;
+                            }
                         }
+                    }
+                    else
+                    {
+                        isInvalidPickup = true;
                     }
 
                     break;
@@ -117,15 +138,18 @@ public class Pickups : MonoBehaviour
 
                     break;
                 case PickupType.Pickup_HealthKit:
-
-                    isPickedUp = true;
                     if (Player.m_CurrentHealthKits < Player.m_MaxHealthKits)
                     {
+                        isPickedUp = true;
                         transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
                         Player.m_CurrentHealthKits++;
                     }
-                    
+                    else
+                    {
+                        isInvalidPickup = true;
+                    }
                     break;
+
                 case PickupType.Pickup_Key1:
                     playerController.CollectKey(1);
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f);
@@ -150,11 +174,15 @@ public class Pickups : MonoBehaviour
 
         if (isPickedUp == true)
         {
-            Debug.Log("show text");
             ShowInteractionText();
-
-            //DestroyAfterDelay(5.0f);
         }
+
+        if (isInvalidPickup == true)
+        {
+            ShowInvalidInteractionText();
+        }
+
+        
     }
 
     private void TranslateText()
@@ -196,5 +224,30 @@ public class Pickups : MonoBehaviour
             
         }
        
+    }
+
+    void ShowInvalidInteractionText()
+    {
+        Debug.Log("Pickup Test");
+        m_TextCurrentTime -= Time.deltaTime;
+
+        if (m_TextCurrentTime >= 0)
+        {
+            Vector2 playerPosition = playerController.transform.position;
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)playerPosition + new Vector3((m_textPosition.x * m_TextCurrentTime), (m_textPosition.y * m_TextCurrentTime), 0f));
+            //Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)playerPosition + new Vector3(m_textPosition.x + , m_textPosition.y, 0f));
+            UIText.rectTransform.position = screenPosition;
+
+            UIText.text = "Not Enough Room!"; // Set
+            UIText.gameObject.SetActive(true); // Show
+        }
+        else
+        {
+            isInvalidPickup = false;     
+            UIText.text = "";
+            
+
+        }
+
     }
 }
