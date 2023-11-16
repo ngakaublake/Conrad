@@ -12,7 +12,7 @@ public class CognitivePlayer : MonoBehaviour
     [SerializeField] private PlayerVision FOV;
 
     private PlayerController playerController;
-    private GameObject ConradIII;
+    [SerializeField] private GameObject ConradIII;
     [SerializeField] CircleVision CircleFOV;
     public Image BloodSplatter;
     //Combat 
@@ -22,8 +22,8 @@ public class CognitivePlayer : MonoBehaviour
     //Ammo
     public int m_RifleMaxAmmo = 5;
     public int m_ShotgunMaxAmmo = 6;
-    public int m_RifleAmmoSupply = 20;
-    public int m_ShotgunAmmoSupply = 0;
+    public int m_RifleAmmoSupply = 30;
+    public int m_ShotgunAmmoSupply = 12;
     public int m_RifleCurrentAmmo;
     public int m_ShotgunCurrentAmmo;
 
@@ -43,6 +43,7 @@ public class CognitivePlayer : MonoBehaviour
     private float m_invulnerableCooldown;
     public float m_NoWarpCooldown;
     public float m_TimeToCommitAction = 2.0f;
+    public float m_TimeToPerformHeal = 0.5f;
     public bool m_CurrentlyComitting = false;
     public float m_CommitActionTime = 0.0f;
     public bool m_CanWarp;
@@ -120,10 +121,9 @@ public class CognitivePlayer : MonoBehaviour
         //RB = GetComponent<Rigidbody2D>();
         m_IsPlayerAiming = false;
         m_RifleCurrentAmmo = m_RifleMaxAmmo;
-        m_ShotgunCurrentAmmo = 2;
+        m_ShotgunCurrentAmmo = m_ShotgunMaxAmmo;
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
-        m_health = 2;
-        ConradIII = GameObject.FindGameObjectWithTag("ConradIII"); //Makes sure I know where Conrad is for Act III
+        m_health = m_maxHealth;
     }
 
     void Update()
@@ -205,13 +205,12 @@ public class CognitivePlayer : MonoBehaviour
     void CommitingActions() //Handles all instances where the player is 'committing' to the action (Heal/Teleport)
     {
         //Heal is done with 'Space'. Priortized over Teleport.
-        if (Input.GetKey(KeyCode.Space) && playerController.m_CognitiveWorldResetting == false && m_health < 4 && m_CurrentHealthKits > 0)
+        if (Input.GetKey(KeyCode.Space) && playerController.m_CognitiveWorldResetting == false && ConradIII != null && Vector2.Distance(transform.position, ConradIII.transform.position) <= 1f)
         {
-            Debug.Log(m_health);
+            Debug.Log("AAAAAAA");
             m_CurrentlyComitting = true;
             m_CommitActionTime += Time.deltaTime;
-            
-            if (m_CommitActionTime >= m_TimeToCommitAction)
+            if (m_CommitActionTime >= m_TimeToPerformHeal)
             {
                 FOV.UpdateFOVHealing();
                 m_isHealingActive = true;
@@ -220,7 +219,17 @@ public class CognitivePlayer : MonoBehaviour
                     // Heal
                     animator.SetTrigger("healOther");
                 }
-                else if (m_health != m_maxHealth && m_isHoldingSpace == false)
+            }
+        }
+        else if (Input.GetKey(KeyCode.Space) && playerController.m_CognitiveWorldResetting == false && m_health < 4 && m_CurrentHealthKits > 0)
+        {
+            m_CurrentlyComitting = true;
+            m_CommitActionTime += Time.deltaTime;
+            if (m_CommitActionTime >= m_TimeToPerformHeal)
+            {
+                FOV.UpdateFOVHealing();
+                m_isHealingActive = true;
+                if (m_health != m_maxHealth && m_isHoldingSpace == false)
                 {
                     m_isHoldingSpace = true;
                     m_CurrentlyComitting = false;

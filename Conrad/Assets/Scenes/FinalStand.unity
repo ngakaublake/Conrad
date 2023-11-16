@@ -1599,7 +1599,7 @@ MonoBehaviour:
   Crosshair: {fileID: 398748529}
   playerController: {fileID: 1149861902}
   weaponUI: {fileID: 843508737}
-  Sound: {fileID: 0}
+  Sound: {fileID: 103654969}
   m_firePoint: {fileID: 1025692923}
   m_MeleePoint: {fileID: 881811881}
   meeleTransform: {fileID: 881811881}
@@ -1650,6 +1650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FOV: {fileID: 447496651}
+  ConradIII: {fileID: 2050187122}
   CircleFOV: {fileID: 413659495}
   BloodSplatter: {fileID: 646501540}
   m_IsPlayerAiming: 0
@@ -1670,6 +1671,7 @@ MonoBehaviour:
   m_isHoldingSpace: 0
   m_NoWarpCooldown: 0
   m_TimeToCommitAction: 2
+  m_TimeToPerformHeal: 0.5
   m_CurrentlyComitting: 0
   m_CommitActionTime: 0
   m_CanWarp: 0
