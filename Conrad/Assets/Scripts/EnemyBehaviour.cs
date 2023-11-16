@@ -50,6 +50,8 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     // Update is called once per frame
     void Update()
     {
+
+        //cognitivePlayer = FindObjectOfType<CognitivePlayer>();
         if (playerController != null)
         {
             //Look at Player
