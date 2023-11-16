@@ -52,7 +52,6 @@ public class ScriptedEvent4 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ProcessInteraction();
     }
     void ShowInteractionText()
     {
@@ -63,14 +62,11 @@ public class ScriptedEvent4 : MonoBehaviour
         interactionText.gameObject.SetActive(false);
     }
 
-    void ProcessInteraction()
+    public void ProcessInteraction()
     {
-        if (Vector2.Distance(transform.position, playerController.transform.position) < 1f && b_triggered == false)
-        {
             playerController.StopMoving(14);
             StartCoroutine(Scripted1());
             b_triggered = true; //so we aren't locked here
-        }
     }
 
 
