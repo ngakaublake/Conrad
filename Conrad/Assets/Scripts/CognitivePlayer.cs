@@ -10,7 +10,7 @@ public class CognitivePlayer : MonoBehaviour
 {
 
     [SerializeField] private PlayerVision FOV;
-
+    [SerializeField] AudioSource source;
     private PlayerController playerController;
     [SerializeField] private GameObject ConradIII;
     [SerializeField] CircleVision CircleFOV;
@@ -305,12 +305,16 @@ public class CognitivePlayer : MonoBehaviour
         switch (m_randomSound)
         {
             case 1:
+                source.PlayOneShot(Feet);
                 break;
             case 2:
+                source.PlayOneShot(Foot);
                 break; 
             case 3:
+                source.PlayOneShot(Feets);
                 break;   
             default:
+                source.PlayOneShot(Foots);
                 break;
 
         }
