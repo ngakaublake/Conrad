@@ -22,8 +22,8 @@ public class CognitivePlayer : MonoBehaviour
     //Ammo
     public int m_RifleMaxAmmo = 5;
     public int m_ShotgunMaxAmmo = 6;
-    public int m_RifleAmmoSupply = 30;
-    public int m_ShotgunAmmoSupply = 12;
+    public int m_RifleAmmoSupply = 20;
+    public int m_ShotgunAmmoSupply = 0;
     public int m_RifleCurrentAmmo;
     public int m_ShotgunCurrentAmmo;
 
@@ -121,9 +121,9 @@ public class CognitivePlayer : MonoBehaviour
         //RB = GetComponent<Rigidbody2D>();
         m_IsPlayerAiming = false;
         m_RifleCurrentAmmo = m_RifleMaxAmmo;
-        m_ShotgunCurrentAmmo = m_ShotgunMaxAmmo;
+        m_ShotgunCurrentAmmo = 2;
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
-        m_health = m_maxHealth;
+        m_health = 2;
     }
 
     void Update()
