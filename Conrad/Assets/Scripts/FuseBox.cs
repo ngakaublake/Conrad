@@ -34,10 +34,13 @@ public class FuseBox : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //gameObject.GetComponent<SpriteRenderer>().enabled = true;
-        //gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        
 
         m_ChildFuse = GameObject.Find(m_ChildObjectName);
+
+
+        gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        m_ChildFuse.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
