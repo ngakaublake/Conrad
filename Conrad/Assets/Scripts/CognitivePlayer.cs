@@ -123,7 +123,14 @@ public class CognitivePlayer : MonoBehaviour
         m_RifleCurrentAmmo = m_RifleMaxAmmo;
         m_ShotgunCurrentAmmo = 2;
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
-        m_health = 2;
+        if (playerController.b_IsInLastStand)
+        {
+            m_health = m_maxHealth;
+        }
+        else
+        {
+            m_health = 2;
+        }
     }
 
     void Update()

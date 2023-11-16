@@ -15,6 +15,7 @@ public class ScriptedEvent3 : MonoBehaviour
     [SerializeField] private DragFriend Conrad;
     [SerializeField] private ConradHealScript HealthConrad;
     [SerializeField] private HealthUI VisibleHealth;
+    [SerializeField] private GameObject EPrompt;
 
     [SerializeField] private EnemySpawner Spawner;
     [SerializeField] private EnemySpawner Spawner2;
@@ -37,6 +38,7 @@ public class ScriptedEvent3 : MonoBehaviour
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
         b_triggered = false;
         m_EventFinished = false;
+        EPrompt.SetActive(false);
     }
 
     // Update is called once per frame
@@ -91,6 +93,7 @@ public class ScriptedEvent3 : MonoBehaviour
         Spawner5.ManualTurnOn();
         Spawner6.ManualTurnOn();
         m_EventFinished = true;
+        EPrompt.SetActive(true);
     }
 
     IEnumerator ConradSpeaks()
