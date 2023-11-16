@@ -84,6 +84,7 @@ public class PlayerShooting : MonoBehaviour
     //Particle Systems
     [SerializeField] ParticleSystem CasingEmit;
     [SerializeField] ParticleSystem ShellEmit;
+    [SerializeField] ParticleSystem BANG;
 
     private void Start()
     {
