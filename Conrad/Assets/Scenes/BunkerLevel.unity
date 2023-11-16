@@ -13075,6 +13075,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d22500024eac940a072dbe4f5ccf6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1149861905}
 --- !u!58 &708688917
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -49766,6 +49767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d22500024eac940a072dbe4f5ccf6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1149861905}
 --- !u!95 &1446860579
 Animator:
   serializedVersion: 4
