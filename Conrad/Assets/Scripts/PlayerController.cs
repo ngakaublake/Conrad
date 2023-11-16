@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour
     public bool b_Keydoorisopen;
     public SpriteRenderer s_overlaysprite;
     public bool b_IsInLastStand;
-
+    public bool b_EndingCutsceneTriggered;
 
     //Main Key things
     public bool m_key1Obtained;
@@ -234,7 +234,10 @@ public class PlayerController : MonoBehaviour
         {
             m_CognitiveWorldResetting = resetConfirmation;
             m_RealWorldPosition = m_IntialRealWorldPosition;
-            m_CognitiveWorldPosition = m_IntialCognitiveWorldPosition;
+            if (!b_EndingCutsceneTriggered)
+            {
+                m_CognitiveWorldPosition = m_IntialCognitiveWorldPosition;
+            }
             if (!b_IsInLastStand)
             {
                 ScriptedTeleport(true); //Move to real world
@@ -263,6 +266,13 @@ public class PlayerController : MonoBehaviour
             b_currentlyTeleporting = false;
         }
     }
+
+    public void ScriptedEventSunrise()
+    {
+        b_EndingCutsceneTriggered = true;
+        ResetCognitive(true);
+    }
+
 
         IEnumerator TeleportVisuals(float TeleportTime)
         {

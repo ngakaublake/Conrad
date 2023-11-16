@@ -125,6 +125,10 @@ public class EnemySpawner : MonoBehaviour
     {
         m_spawnerTriggered = true;
     }
+    public void ManualTurnOff()
+    {
+        m_spawnerTriggered = false;
+    }
 
     private void SpawnEnemy()
     {
