@@ -241,6 +241,9 @@ public class PlayerController : MonoBehaviour
             if (!b_IsInLastStand)
             {
                 ScriptedTeleport(true); //Move to real world
+                StopMoving(1);
+                m_HorizontalVelocity = 1f;
+                m_VerticalVelocity = 1f;
             }
         }
         if (m_CognitiveWorldResetting)
