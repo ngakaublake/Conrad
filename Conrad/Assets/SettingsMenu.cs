@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class SettingsMenu : MonoBehaviour
 {
 
@@ -53,5 +54,11 @@ public class SettingsMenu : MonoBehaviour
         Resolution Res = Resolutions[_ResIndex];
         Screen.SetResolution(Res.width, Res.height, Screen.fullScreen);
     }
+
+    public void GoBack(float _Volume)
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
 
 }
