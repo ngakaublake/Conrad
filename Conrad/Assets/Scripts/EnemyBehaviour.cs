@@ -32,8 +32,12 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        cognitivePlayer = FindObjectOfType<CognitivePlayer>();
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
+        if (cognitivePlayer == null )
+        {
+            cognitivePlayer = FindObjectOfType<CognitivePlayer>();
+        }
 
         spawnpoint = rb.position;
 

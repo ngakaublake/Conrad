@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DogBehaviour : MonoBehaviour
 {
-    private Transform player;
+    public Transform player;
     private bool b_bookingitdownthehallway;
 
 
@@ -12,17 +12,6 @@ public class DogBehaviour : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        GameObject playerObject = GameObject.FindGameObjectWithTag("RealWorldPlayer");
-
-        // Check if the playerObject is not null before accessing its transform
-        if (playerObject != null)
-        {
-            player = playerObject.transform;
-        }
-        else
-        {
-            Debug.LogError("Player not found in the scene with tag 'Player'. Make sure the player object is tagged correctly.");
-        }
     }
 
     // Update is called once per frame
