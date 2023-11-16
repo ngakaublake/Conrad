@@ -22,7 +22,7 @@ public class ScriptedEvent3 : MonoBehaviour
     [SerializeField] private EnemySpawner Spawner4;
     [SerializeField] private EnemySpawner Spawner5;
     [SerializeField] private EnemySpawner Spawner6;
-
+    private bool m_EventFinished;
 
     //Conversations in Act II
     public string m_Line1;
@@ -36,12 +36,22 @@ public class ScriptedEvent3 : MonoBehaviour
         HideInteractionText();
         playerController = GameObject.Find("PlayerController").GetComponent<PlayerController>();
         b_triggered = false;
+        m_EventFinished = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         ProcessInteraction();
+        if (playerController.m_CognitiveWorldResetting && m_EventFinished)
+        {
+            Spawner.ManualTurnOn();
+            Spawner2.ManualTurnOn();
+            Spawner3.ManualTurnOn();
+            Spawner4.ManualTurnOn();
+            Spawner5.ManualTurnOn();
+            Spawner6.ManualTurnOn();
+        }
     }
     void ShowInteractionText()
     {
@@ -80,6 +90,7 @@ public class ScriptedEvent3 : MonoBehaviour
         Spawner4.ManualTurnOn();
         Spawner5.ManualTurnOn();
         Spawner6.ManualTurnOn();
+        m_EventFinished = true;
     }
 
     IEnumerator ConradSpeaks()
