@@ -205,7 +205,7 @@ public class CognitivePlayer : MonoBehaviour
     void CommitingActions() //Handles all instances where the player is 'committing' to the action (Heal/Teleport)
     {
         //Heal is done with 'Space'. Priortized over Teleport.
-        if (Input.GetKey(KeyCode.Space) && playerController.m_CognitiveWorldResetting == false && ConradIII != null && Vector2.Distance(transform.position, ConradIII.transform.position) <= 1f)
+        if (Input.GetKey(KeyCode.E) && playerController.m_CognitiveWorldResetting == false && ConradIII != null && Vector2.Distance(transform.position, ConradIII.transform.position) <= 1f)
         {
             Debug.Log("AAAAAAA");
             m_CurrentlyComitting = true;
