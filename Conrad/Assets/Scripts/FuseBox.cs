@@ -55,7 +55,17 @@ public class FuseBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
+
+        if (isFuseActive == true)
+        {
+            m_FuseState = FuseState.State_Active;
+        }
+        else if (isFuseActive == true)
+        {
+            m_FuseState = FuseState.State_Inactive;
+        }
+
         if (isInRange == true && Input.GetKeyDown(KeyCode.E)) //Checking if the Player is in range of the Pickup & Checking for Player Input 
         {
             switch (m_FuseState)
@@ -65,9 +75,12 @@ public class FuseBox : MonoBehaviour
                     {
                         case FuseColour.Fuse_Yellow:
                             Debug.Log("Fuse Yellow Works");
+
                             isFuseActive = false;
                             gameObject.GetComponent<SpriteRenderer>().enabled = false;
                             gameObject.GetComponentInChildren<SpriteRenderer>().enabled = true;
+                            //gameObject.GetComponent<AudioSource>().Play();
+                            gameObject.GetComponentInChildren<AudioSource>().Play();
                             break;
                         case FuseColour.Fuse_Purple:
                             break;
@@ -78,10 +91,15 @@ public class FuseBox : MonoBehaviour
                     switch (m_FuseColour) //Checking Item Type 
                     {
                         case FuseColour.Fuse_Yellow:
+                            isFuseActive = true;
                             Debug.Log("Fuse Yellow Works off");
+                            
+                            gameObject.GetComponentInChildren<AudioSource>().Play();
+
                             gameObject.GetComponent<SpriteRenderer>().enabled = true;
                             gameObject.GetComponentInChildren<SpriteRenderer>().enabled = false;
-                            isFuseActive = true;
+                            
+                            
                             break;
                         case FuseColour.Fuse_Purple:
                             break;
