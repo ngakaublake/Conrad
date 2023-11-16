@@ -29,6 +29,12 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
     public Animator animator;
     [SerializeField] AudioClip meleeSound;
     [SerializeField] AudioSource audioSource;
+
+    public GameObject ShotgunPrefab;
+    public GameObject RiflePreab;
+    public GameObject HealthPrefab;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -202,6 +208,28 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
                 //Make Corpse at location (when Corpse set up)
                 Instantiate(Corpse, deathLocation, spawnRotation);
 
+
+
+
+                float drop = Random.Range(0f, 100f);
+
+                if (drop > 0 && drop < 5)
+                {
+                    GameObject newPickup = Instantiate(RiflePreab, deathLocation, spawnRotation);
+                    newPickup.GetComponent<Pickups>().PickupType = PickupType.Pickup_RifleAmmo;
+
+                }
+                else if (drop > 5 && drop < 10)
+                {
+                    GameObject newPickup = Instantiate(ShotgunPrefab, deathLocation, spawnRotation);
+                    newPickup.GetComponent<Pickups>().PickupType = PickupType.Pickup_ShotgunAmmo;
+                }
+                else if (drop > 10 && drop < 15)
+                {
+                    GameObject newPickup = Instantiate(HealthPrefab, deathLocation, spawnRotation);
+                    newPickup.GetComponent<Pickups>().PickupType = PickupType.Pickup_HealthKit;
+                }
+
                 //Die.
                 Destroy(gameObject);
             }
@@ -223,6 +251,27 @@ public class EnemyBehaviour : MonoBehaviour, EnemyDamageInterface
             Quaternion spawnRotation = transform.rotation;
             //Make Corpse at location (when Corpse set up)
             Instantiate(Corpse, deathLocation, spawnRotation);
+
+            float drop = Random.Range(0f, 100f);
+
+            if (drop > 0 && drop < 5)
+            {
+                GameObject newPickup = Instantiate(RiflePreab, deathLocation, spawnRotation);
+                newPickup.GetComponent<Pickups>().PickupType = PickupType.Pickup_RifleAmmo;
+
+            }
+            else if (drop > 5 && drop < 10)
+            {
+                GameObject newPickup = Instantiate(ShotgunPrefab, deathLocation, spawnRotation);
+                newPickup.GetComponent<Pickups>().PickupType = PickupType.Pickup_ShotgunAmmo;
+            }
+            else if (drop > 10 && drop < 15)
+            {
+                GameObject newPickup = Instantiate(HealthPrefab, deathLocation, spawnRotation);
+                newPickup.GetComponent<Pickups>().PickupType = PickupType.Pickup_HealthKit;
+            }
+
+
             if (b_enemyrespawns)
             {
                 //Get Banished to the ShadowRealm, Jimbo

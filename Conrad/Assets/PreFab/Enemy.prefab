@@ -158,6 +158,9 @@ MonoBehaviour:
   animator: {fileID: 5308599085096966388}
   meleeSound: {fileID: 8300000, guid: e5a7368fa5408474eb74763f204b49f7, type: 3}
   audioSource: {fileID: 0}
+  ShotgunPrefab: {fileID: 6181419263760177398, guid: bae3a0039a0704b4db129018414162a3, type: 3}
+  RiflePreab: {fileID: 6701286017851829101, guid: 087681a3aec789c44b6f990d4ef3ca05, type: 3}
+  HealthPrefab: {fileID: 6152085198518670074, guid: 14d3e53b005aec843b0dbc167bbdf810, type: 3}
 --- !u!95 &5308599085096966388
 Animator:
   serializedVersion: 4

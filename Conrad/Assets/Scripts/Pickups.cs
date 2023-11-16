@@ -52,6 +52,22 @@ public class Pickups : MonoBehaviour
         //rifleAmmoText.name = TextPopup;
         //playerController = FindObjectOfType<PlayerController>();
 
+        if (Player == null)
+        {
+            Player = GameObject.FindObjectOfType<CognitivePlayer>();
+        }
+       
+
+        if (playerController == null)
+        {
+            playerController = GameObject.FindObjectOfType<PlayerController>();
+        }
+
+        if (playerWeapon == null)
+        {
+            playerWeapon = GameObject.FindObjectOfType<PlayerShooting>();
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -205,7 +221,7 @@ public class Pickups : MonoBehaviour
         Debug.Log("Pickup Test");
         m_TextCurrentTime -= Time.deltaTime;
 
-        if (m_TextCurrentTime >= 0)
+        if (m_TextCurrentTime >= 0 && UIText != null)
         {
             Vector2 playerPosition = playerController.transform.position;
             Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)playerPosition + new Vector3((m_textPosition.x * m_TextCurrentTime) , (m_textPosition.y * m_TextCurrentTime), 0f));
@@ -219,7 +235,12 @@ public class Pickups : MonoBehaviour
         {
             Debug.Log("TEST DESTROY");
             //gameObject.GetComponent<Pickups>().UIText.enabled = false;
-            UIText.text = "";
+
+            if (UIText != null)
+            {
+                UIText.text = "";
+            }
+            
             Destroy(gameObject);
             
         }
@@ -231,7 +252,7 @@ public class Pickups : MonoBehaviour
         Debug.Log("Pickup Test");
         m_TextCurrentTime -= Time.deltaTime;
 
-        if (m_TextCurrentTime >= 0)
+        if (m_TextCurrentTime >= 0 && UIText != null)
         {
             Vector2 playerPosition = playerController.transform.position;
             Vector3 screenPosition = Camera.main.WorldToScreenPoint((Vector3)playerPosition + new Vector3((m_textPosition.x * m_TextCurrentTime), (m_textPosition.y * m_TextCurrentTime), 0f));
@@ -243,9 +264,12 @@ public class Pickups : MonoBehaviour
         }
         else
         {
-            isInvalidPickup = false;     
-            UIText.text = "";
-            
+            isInvalidPickup = false;
+            if (UIText != null)
+            {
+                UIText.text = "";
+            }
+
 
         }
 
