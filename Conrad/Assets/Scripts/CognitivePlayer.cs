@@ -274,6 +274,7 @@ public class CognitivePlayer : MonoBehaviour
     public void HealOther()
     {
         ConradIII.GetComponent<ConradHealScript>().IncreaseHealth();
+        m_isHealingActive = false;
     }
     
     public void HealSelf()
