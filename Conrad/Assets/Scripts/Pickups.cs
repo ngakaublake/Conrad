@@ -33,6 +33,12 @@ public class Pickups : MonoBehaviour
     private bool isPickedUp = false;
     private bool isInvalidPickup = false;
 
+    //sound refs
+    [SerializeField] AudioClip pickupAmmoSound;
+    [SerializeField] AudioClip pickupSoftSound;
+    [SerializeField] AudioClip pickupKeySound;
+    [SerializeField] AudioClip pickupGunSound;
+    [SerializeField] AudioSource pickupSound;
 
     //Object Refs 
     public CognitivePlayer Player;
@@ -45,6 +51,7 @@ public class Pickups : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pickupSound = GetComponentInParent<AudioSource>();
         //rifleAmmoText = Instantiate(TextObject, new Vector3(10000f, 10000.0f, 0.0f), transform.rotation, TextTransform);
         ////TextMesh theText = rifleAmmoText.GetComponent<TextMesh>();
         //Text theText = rifleAmmoText.GetComponent<Text>();
@@ -105,6 +112,7 @@ public class Pickups : MonoBehaviour
 
                     if (Player.m_RifleAmmoSupply < 25)
                     {
+                        pickupSound.PlayOneShot(pickupAmmoSound);
                         transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
 
                         for (int i = 0; i != 5; i++)
@@ -129,6 +137,7 @@ public class Pickups : MonoBehaviour
 
                     if (Player.m_ShotgunAmmoSupply < 6)
                     {
+                        pickupSound.PlayOneShot(pickupAmmoSound);
                         transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
                         for (int i = 0; i != 3; i++)
                         {
@@ -147,6 +156,7 @@ public class Pickups : MonoBehaviour
                     break;
                 case PickupType.Pickup_Shotgun:
                     //Bool goes here to activate shotgun 
+                    pickupSound.PlayOneShot(pickupGunSound);
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
                     isPickedUp = true;
 
@@ -156,6 +166,7 @@ public class Pickups : MonoBehaviour
                 case PickupType.Pickup_HealthKit:
                     if (Player.m_CurrentHealthKits < Player.m_MaxHealthKits)
                     {
+                        pickupSound.PlayOneShot(pickupSoftSound);
                         isPickedUp = true;
                         transform.position = new Vector3(10000f, 10000.0f, 0.0f); //Sending to Narnia 
                         Player.m_CurrentHealthKits++;
@@ -167,18 +178,22 @@ public class Pickups : MonoBehaviour
                     break;
 
                 case PickupType.Pickup_Key1:
+                    pickupSound.PlayOneShot(pickupKeySound);
                     playerController.CollectKey(1);
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f);
                     break;
                 case PickupType.Pickup_Key2:
+                    pickupSound.PlayOneShot(pickupKeySound);
                     playerController.CollectKey(2);
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f);
                     break;
                 case PickupType.Pickup_Key3:
+                    pickupSound.PlayOneShot(pickupKeySound);
                     playerController.CollectKey(3);
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f);
                     break;
                 case PickupType.Pickup_Key4:
+                    pickupSound.PlayOneShot(pickupKeySound);
                     playerController.CollectKey(4);
                     transform.position = new Vector3(10000f, 10000.0f, 0.0f);
                     break;

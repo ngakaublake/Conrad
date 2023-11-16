@@ -221,6 +221,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1269058367}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 103654965}
@@ -228,6 +232,22 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupGunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bbc1b6f57ba3584a9f50858f5ffa1d6, type: 3}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 64f8c4ffc09712a42aea254563c1bc9e, type: 3}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 447134afdb487af428d8b568cd75828f, type: 3}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupSoftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff4036512d421a4409d25cc3b3809dac, type: 3}
     - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
       propertyPath: playerController
       value: 
@@ -7558,6 +7578,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1269058367}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 103654965}
@@ -7565,6 +7589,22 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupGunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bbc1b6f57ba3584a9f50858f5ffa1d6, type: 3}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 64f8c4ffc09712a42aea254563c1bc9e, type: 3}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 447134afdb487af428d8b568cd75828f, type: 3}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupSoftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff4036512d421a4409d25cc3b3809dac, type: 3}
     - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
       propertyPath: playerController
       value: 
@@ -9474,6 +9514,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1269058367}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 103654965}
@@ -9481,6 +9525,22 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupGunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bbc1b6f57ba3584a9f50858f5ffa1d6, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 64f8c4ffc09712a42aea254563c1bc9e, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 447134afdb487af428d8b568cd75828f, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupSoftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff4036512d421a4409d25cc3b3809dac, type: 3}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: m_textPosition.y
       value: -0.6
@@ -16065,6 +16125,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1269058367}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 103654965}
@@ -16072,6 +16136,22 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupGunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bbc1b6f57ba3584a9f50858f5ffa1d6, type: 3}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 64f8c4ffc09712a42aea254563c1bc9e, type: 3}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 447134afdb487af428d8b568cd75828f, type: 3}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupSoftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff4036512d421a4409d25cc3b3809dac, type: 3}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: m_textPosition.x
       value: 0
@@ -18529,6 +18609,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1269058367}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 103654965}
@@ -18536,6 +18620,22 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupGunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bbc1b6f57ba3584a9f50858f5ffa1d6, type: 3}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 64f8c4ffc09712a42aea254563c1bc9e, type: 3}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 447134afdb487af428d8b568cd75828f, type: 3}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupSoftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff4036512d421a4409d25cc3b3809dac, type: 3}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: m_textPosition.y
       value: -0.6
@@ -20108,6 +20208,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1269058367}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 103654965}
@@ -20115,6 +20219,22 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupGunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bbc1b6f57ba3584a9f50858f5ffa1d6, type: 3}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 64f8c4ffc09712a42aea254563c1bc9e, type: 3}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 447134afdb487af428d8b568cd75828f, type: 3}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupSoftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff4036512d421a4409d25cc3b3809dac, type: 3}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: m_textPosition.x
       value: 0
@@ -21144,6 +21264,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1215283818}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1269058367}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 103654965}
@@ -21151,6 +21275,22 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 1215283819}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupGunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bbc1b6f57ba3584a9f50858f5ffa1d6, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 64f8c4ffc09712a42aea254563c1bc9e, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 447134afdb487af428d8b568cd75828f, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupSoftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff4036512d421a4409d25cc3b3809dac, type: 3}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: m_textPosition.y
       value: -0.6
@@ -47869,6 +48009,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1269058367}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 103654965}
@@ -47876,6 +48020,22 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupGunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bbc1b6f57ba3584a9f50858f5ffa1d6, type: 3}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 64f8c4ffc09712a42aea254563c1bc9e, type: 3}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 447134afdb487af428d8b568cd75828f, type: 3}
+    - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
+      propertyPath: pickupSoftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff4036512d421a4409d25cc3b3809dac, type: 3}
     - target: {fileID: 5899101941244678787, guid: c483d92914f443048bf2827acbc70194, type: 3}
       propertyPath: m_textPosition.y
       value: -0.6
@@ -48537,6 +48697,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1269058367}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 103654965}
@@ -48544,6 +48708,22 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupGunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bbc1b6f57ba3584a9f50858f5ffa1d6, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 64f8c4ffc09712a42aea254563c1bc9e, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 447134afdb487af428d8b568cd75828f, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupSoftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff4036512d421a4409d25cc3b3809dac, type: 3}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: m_textPosition.y
       value: -0.6
@@ -48687,6 +48867,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1269058366}
+  - component: {fileID: 1269058367}
   m_Layer: 0
   m_Name: Pickups
   m_TagString: Untagged
@@ -48722,6 +48903,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1269058367
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1269058365}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &1279433266
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53197,6 +53474,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1269058367}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 103654965}
@@ -53204,6 +53485,22 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupGunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bbc1b6f57ba3584a9f50858f5ffa1d6, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 64f8c4ffc09712a42aea254563c1bc9e, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 447134afdb487af428d8b568cd75828f, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupSoftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff4036512d421a4409d25cc3b3809dac, type: 3}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: m_textPosition.y
       value: -0.6
@@ -54161,6 +54458,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1269058367}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 103654965}
@@ -54168,6 +54469,22 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupGunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bbc1b6f57ba3584a9f50858f5ffa1d6, type: 3}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 64f8c4ffc09712a42aea254563c1bc9e, type: 3}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 447134afdb487af428d8b568cd75828f, type: 3}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupSoftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff4036512d421a4409d25cc3b3809dac, type: 3}
     - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
       propertyPath: playerController
       value: 
@@ -63783,6 +64100,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1269058367}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 103654965}
@@ -63790,6 +64111,22 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupGunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bbc1b6f57ba3584a9f50858f5ffa1d6, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 64f8c4ffc09712a42aea254563c1bc9e, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 447134afdb487af428d8b568cd75828f, type: 3}
+    - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
+      propertyPath: pickupSoftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff4036512d421a4409d25cc3b3809dac, type: 3}
     - target: {fileID: 6271472790106590229, guid: 3a1f8e5440b07d64091e8f6d375d023e, type: 3}
       propertyPath: m_textPosition.y
       value: -0.6
@@ -69672,6 +70009,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 978191056}
     - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 1269058367}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
       propertyPath: playerWeapon
       value: 
       objectReference: {fileID: 103654965}
@@ -69679,6 +70020,22 @@ PrefabInstance:
       propertyPath: TextTransform
       value: 
       objectReference: {fileID: 978191057}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupGunSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7bbc1b6f57ba3584a9f50858f5ffa1d6, type: 3}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 64f8c4ffc09712a42aea254563c1bc9e, type: 3}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 447134afdb487af428d8b568cd75828f, type: 3}
+    - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
+      propertyPath: pickupSoftSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff4036512d421a4409d25cc3b3809dac, type: 3}
     - target: {fileID: 1546568094704935711, guid: f984d4412782c324d958167f27f24d11, type: 3}
       propertyPath: m_textPosition.y
       value: -0.6
